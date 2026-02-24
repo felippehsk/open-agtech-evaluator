@@ -12,12 +12,13 @@ import {
   getBestSuitedFor,
 } from '@/lib/dashboardUtils'
 import { MiniRadar } from './MiniRadar'
+import { InfoTip } from './InfoTip'
 
 interface PlatformCardProps {
   evaluation: Evaluation
   platforms: PlatformRecord[]
   compareChecked: boolean
-  onCompareClick: (e: React.MouseEvent) => void
+  onCompareToggle: (platformName: string) => void
 }
 
 const PRICE_BADGE_STYLE: Record<string, string> = {
@@ -27,7 +28,7 @@ const PRICE_BADGE_STYLE: Record<string, string> = {
   '$$$': 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-200',
 }
 
-export function PlatformCard({ evaluation, platforms, compareChecked, onCompareClick }: PlatformCardProps) {
+export function PlatformCard({ evaluation, platforms, compareChecked, onCompareToggle }: PlatformCardProps) {
   const { meta, identity } = evaluation
   const category = getCategoryForPlatform(meta.platform_slug, platforms)
   const priceBadge = getPriceBadge(evaluation)
@@ -47,8 +48,19 @@ export function PlatformCard({ evaluation, platforms, compareChecked, onCompareC
     { key: 'publicApi', label: 'Public API', value: flags.publicApi },
   ]
 
+  const dateStr = meta.evaluation_date
+    ? (() => {
+        const d = new Date(meta.evaluation_date)
+        return Number.isNaN(d.getTime()) ? meta.evaluation_date : d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+      })()
+    : ''
+  const cardTitle = `Evaluation of ${meta.platform_name} by ${meta.evaluator}${dateStr ? `, ${dateStr}` : ''}. Click to view full details or check Compare to add to side-by-side comparison.`
+
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:shadow-md dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
+    <div
+      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:shadow-md dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark"
+      title={cardTitle}
+    >
       <div className="flex items-start justify-between gap-2">
         <div className="flex flex-wrap gap-1.5">
           <span className="rounded bg-slate-200 px-2 py-0.5 text-xs font-medium text-slate-700 dark:bg-slate-600 dark:text-slate-200">
@@ -60,12 +72,11 @@ export function PlatformCard({ evaluation, platforms, compareChecked, onCompareC
             </span>
           )}
         </div>
-        <label className="flex shrink-0 items-center gap-1.5 text-sm">
+        <label className="flex shrink-0 cursor-pointer items-center gap-1.5 text-sm" onClick={(e) => e.stopPropagation()}>
           <input
             type="checkbox"
             checked={compareChecked}
-            onChange={() => {}}
-            onClick={onCompareClick}
+            onChange={() => onCompareToggle(meta.platform_name)}
             className="rounded border-slate-300 text-primary dark:border-slate-500"
             aria-label={`Compare ${meta.platform_name}`}
           />
@@ -82,9 +93,12 @@ export function PlatformCard({ evaluation, platforms, compareChecked, onCompareC
         <MiniRadar evaluation={evaluation} size={100} />
       </div>
 
-      <div className="flex gap-4 text-sm">
+      <div className="flex flex-wrap items-center gap-4 text-sm">
         <span className="font-medium text-slate-700 dark:text-slate-300">Score: {score}%</span>
-        <span className="text-slate-600 dark:text-slate-400">Evidence: {evidence.percent}% verified</span>
+        <span className="flex items-center gap-1 text-slate-600 dark:text-slate-400">
+          Evidence: {evidence.percent}% verified
+          <InfoTip text="Share of this evaluation’s answers that were marked hands-on verified or documentation verified. Higher means the evaluator checked more answers against real use or official docs." />
+        </span>
       </div>
 
       <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
