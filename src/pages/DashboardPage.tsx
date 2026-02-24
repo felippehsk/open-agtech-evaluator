@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import type { Evaluation } from '@/lib/schema'
 import { calculateSectionScore } from '@/lib/scoring'
@@ -11,6 +11,8 @@ export function DashboardPage() {
   const [evaluations, setEvaluations] = useState<Evaluation[]>([])
   const [loading, setLoading] = useState(true)
   const [compareSelected, setCompareSelected] = useState<string[]>([])
+  const [searchQuery, setSearchQuery] = useState('')
+  const [categoryFilter, setCategoryFilter] = useState<string>('')
 
   useEffect(() => {
     fetch(`${BASE}api/all_evaluations.json`)
@@ -19,6 +21,28 @@ export function DashboardPage() {
       .catch(() => setEvaluations([]))
       .finally(() => setLoading(false))
   }, [])
+
+  const categoryOptions = useMemo(() => {
+    const set = new Set<string>()
+    evaluations.forEach((e) => {
+      const focus = e.identity?.primary_agricultural_focus
+      if (Array.isArray(focus)) focus.forEach((f) => set.add(f))
+    })
+    return ['', ...Array.from(set).sort()]
+  }, [evaluations])
+
+  const filteredEvaluations = useMemo(() => {
+    return evaluations.filter((e) => {
+      const matchSearch =
+        !searchQuery.trim() ||
+        e.meta.platform_name.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
+        (e.meta.evaluator && e.meta.evaluator.toLowerCase().includes(searchQuery.trim().toLowerCase()))
+      const focus = e.identity?.primary_agricultural_focus ?? []
+      const arr = Array.isArray(focus) ? focus : [focus]
+      const matchCategory = !categoryFilter || arr.includes(categoryFilter)
+      return matchSearch && matchCategory
+    })
+  }, [evaluations, searchQuery, categoryFilter])
 
   function toggleCompare(ev: React.MouseEvent, name: string) {
     ev.preventDefault()
@@ -43,20 +67,52 @@ export function DashboardPage() {
         </Link>
       </div>
 
-      <p className="mb-8 text-slate-600 dark:text-slate-400">
+      <p className="mb-4 text-slate-600 dark:text-slate-400">
         {evaluations.length} evaluation{evaluations.length !== 1 ? 's' : ''} loaded. Click a platform to view full details, or select several to compare scores.
       </p>
+
+      {/* Filters */}
+      <div className="mb-6 flex flex-wrap items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
+        <label className="flex items-center gap-2">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Search</span>
+          <input
+            type="search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Platform or evaluator name…"
+            className="w-48 rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 sm:w-56"
+          />
+        </label>
+        <label className="flex items-center gap-2">
+          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Focus</span>
+          <select
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+            className="rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-slate-900 dark:text-slate-100"
+          >
+            <option value="">All</option>
+            {categoryOptions.filter(Boolean).map((opt) => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
+          </select>
+        </label>
+        {filteredEvaluations.length < evaluations.length && (
+          <span className="text-sm text-slate-500 dark:text-slate-400">
+            Showing {filteredEvaluations.length} of {evaluations.length}
+          </span>
+        )}
+      </div>
 
       {/* Compare: radar + bar chart */}
       <div className="mb-10 space-y-6">
         <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Compare platforms</h2>
         <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
-          <ScoreRadar evaluations={evaluations} selectedNames={compareSelected} />
+          <ScoreRadar evaluations={filteredEvaluations} selectedNames={compareSelected} />
         </div>
         {compareSelected.length > 0 && (
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
             <h3 className="mb-3 text-base font-semibold text-slate-900 dark:text-slate-100">Section scores (bar)</h3>
-            <SectionScoreBarChart evaluations={evaluations} selectedNames={compareSelected} />
+            <SectionScoreBarChart evaluations={filteredEvaluations} selectedNames={compareSelected} />
           </div>
         )}
       </div>
@@ -64,8 +120,8 @@ export function DashboardPage() {
       {/* Platform cards: click to view details, checkbox to compare */}
       <h2 className="mb-4 text-lg font-semibold text-slate-900 dark:text-slate-100">All evaluations</h2>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {evaluations.map((e, idx) => {
-          const sections = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'usability'] as const
+        {filteredEvaluations.map((e) => {
+          const sections = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'governance', 'access', 'pricing', 'usability'] as const
           const scores = sections.map((key) => {
             const sec = e.sections?.[key]
             const s = sec ? calculateSectionScore(sec) : { evidence_weighted_score: 0 }
@@ -74,10 +130,11 @@ export function DashboardPage() {
           const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0
           const name = e.meta.platform_name
           const checked = compareSelected.includes(name)
+          const evaluatorSlug = e.meta.evaluator.replace(/[^a-zA-Z0-9_-]/g, '-')
           return (
             <Link
               key={`${e.meta.platform_slug}-${e.meta.evaluator}-${e.meta.evaluation_date}`}
-              to={`/evaluation/${idx}`}
+              to={`/evaluation/${e.meta.platform_slug}/${evaluatorSlug}`}
               className="block rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:shadow-md hover:border-primary/30 dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark dark:hover:border-primary/40"
             >
               <div className="flex items-start gap-3">
@@ -103,7 +160,7 @@ export function DashboardPage() {
         })}
       </div>
 
-      {evaluations.length > 0 && (
+      {filteredEvaluations.length > 0 && (
         <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
           <table className="w-full text-sm">
             <thead>
@@ -117,22 +174,22 @@ export function DashboardPage() {
               </tr>
             </thead>
             <tbody>
-              {evaluations.map((e, i) => {
-                const secKeys = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'usability'] as const
+              {filteredEvaluations.map((e) => {
+                const secKeys = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'governance', 'access', 'pricing', 'usability'] as const
                 const avg = secKeys.length
                   ? Math.round(
                       (secKeys.reduce((a, k) => a + (e.sections?.[k] ? calculateSectionScore(e.sections[k]).evidence_weighted_score * 100 : 0), 0) / secKeys.length)
                     )
                   : 0
                 return (
-                  <tr key={i} className="border-b border-slate-100 transition hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-700/50">
+                  <tr key={`${e.meta.platform_slug}-${e.meta.evaluator}-${e.meta.evaluation_date}`} className="border-b border-slate-100 transition hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-700/50">
                     <td className="p-4 font-medium text-slate-900 dark:text-slate-100">{e.meta.platform_name}</td>
                     <td className="p-4 text-slate-600 dark:text-slate-400">{e.meta.evaluator}</td>
                     <td className="p-4 text-slate-600 dark:text-slate-400">{e.meta.evaluation_date}</td>
                     <td className="p-4 text-slate-600 dark:text-slate-400">{e.identity?.version_module_evaluated ?? '—'}</td>
                     <td className="p-4 text-slate-600 dark:text-slate-400">{avg}%</td>
                     <td className="p-4">
-                      <Link to={`/evaluation/${i}`} className="font-medium text-primary hover:underline">View details</Link>
+                      <Link to={`/evaluation/${e.meta.platform_slug}/${e.meta.evaluator.replace(/[^a-zA-Z0-9_-]/g, '-')}`} className="font-medium text-primary hover:underline">View details</Link>
                     </td>
                   </tr>
                 )

@@ -26,12 +26,21 @@ export async function commitEvaluation(pat: string, evaluation: Evaluation): Pro
     const content = JSON.stringify(evaluation, null, 2)
     const encoded = btoa(unescape(encodeURIComponent(content)))
 
+    let sha: string | undefined
+    try {
+      const { data } = await octokit.rest.repos.getContent({ owner: REPO_OWNER, repo: REPO_NAME, path })
+      if (data && !Array.isArray(data) && 'sha' in data) sha = data.sha
+    } catch {
+      // File does not exist yet; create without sha
+    }
+
     await octokit.rest.repos.createOrUpdateFileContents({
       owner: REPO_OWNER,
       repo: REPO_NAME,
       path,
       message: `Add evaluation: ${evaluation.meta.platform_name} (${username})`,
       content: encoded,
+      ...(sha ? { sha } : {}),
     })
     return { success: true, url: path }
   } catch (err: unknown) {
