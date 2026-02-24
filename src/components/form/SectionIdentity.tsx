@@ -38,20 +38,51 @@ export function SectionIdentity() {
   const isOther = selectedSlug === 'other'
   const customPlatformName = (isOther && state.draft.meta?.platform_name) || ''
 
+  /** Auto-fill company and country from platform registry when we have a known platform. */
+  function applyPlatformToIdentity(platform: PlatformOption) {
+    if (!platform || platform.slug === 'other') return
+    dispatch({
+      type: 'SET_IDENTITY',
+      payload: {
+        company_developer: platform.company,
+        country_of_origin: platform.country,
+      },
+    })
+    setSectionField('identity', 'company_developer', { value: platform.company, evidence_tag: 'documentation_verified' })
+    setSectionField('identity', 'country_of_origin', { value: platform.country, evidence_tag: 'documentation_verified' })
+  }
+
+  // When platforms load: if we have a slug but identity fields are empty, fill from registry. If we have platform_name but no slug, resolve and fill.
+  useEffect(() => {
+    if (loading || platforms.length === 0) return
+    const slug = state.draft.meta?.platform_slug ?? ''
+    const name = (state.draft.meta?.platform_name ?? '').trim()
+    const companyVal = sectionData.company_developer?.value
+    const countryVal = sectionData.country_of_origin?.value
+    const companyEmpty = companyVal == null || (typeof companyVal === 'string' && !companyVal.trim())
+    const countryEmpty = countryVal == null || (typeof countryVal === 'string' && !countryVal.trim())
+
+    if (slug && slug !== 'other') {
+      const bySlug = platforms.find((p) => p.slug === slug)
+      if (bySlug && (companyEmpty || countryEmpty)) applyPlatformToIdentity(bySlug)
+      return
+    }
+    if (name) {
+      const byName = platforms.find((p) => p.name.trim().toLowerCase() === name.toLowerCase())
+      if (byName) {
+        dispatch({ type: 'SET_META', payload: { platform_slug: byName.slug, platform_name: byName.name } })
+        applyPlatformToIdentity(byName)
+      }
+    }
+  }, [loading, platforms, state.draft.meta?.platform_slug, state.draft.meta?.platform_name])
+
   function handlePlatformChange(slug: string) {
     const platform = platforms.find((p) => p.slug === slug)
     dispatch({ type: 'SET_META', payload: { platform_slug: slug || undefined, platform_name: platform?.name ?? undefined } })
     if (platform && platform.slug !== 'other') {
-      dispatch({
-        type: 'SET_IDENTITY',
-        payload: {
-          company_developer: platform.company,
-          country_of_origin: platform.country,
-        },
-      })
-      setSectionField('identity', 'company_developer', { value: platform.company, evidence_tag: 'documentation_verified' })
-      setSectionField('identity', 'country_of_origin', { value: platform.country, evidence_tag: 'documentation_verified' })
+      applyPlatformToIdentity(platform)
     } else if (platform?.slug === 'other') {
+      dispatch({ type: 'SET_IDENTITY', payload: { company_developer: undefined, country_of_origin: undefined } })
       setSectionField('identity', 'company_developer', { value: '', evidence_tag: 'unknown' })
       setSectionField('identity', 'country_of_origin', { value: '', evidence_tag: 'unknown' })
     }

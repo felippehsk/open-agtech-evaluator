@@ -1,53 +1,62 @@
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo, useReducer } from 'react'
 import { Link } from 'react-router-dom'
 import type { Evaluation } from '@/lib/schema'
-import { calculateSectionScore } from '@/lib/scoring'
+import type { PlatformRecord } from '@/lib/dashboardUtils'
+import { oneEvaluationPerPlatform } from '@/lib/dashboardUtils'
+import { SummaryStats } from '@/components/dashboard/SummaryStats'
+import { FilterPanel, filterEvaluations, INITIAL_FILTERS, type DashboardFilters } from '@/components/dashboard/FilterPanel'
+import { PlatformCard } from '@/components/dashboard/PlatformCard'
 import { ScoreRadar } from '@/components/dashboard/ScoreRadar'
-import { SectionScoreBarChart } from '@/components/dashboard/SectionScoreBarChart'
+import { ComparisonMatrix } from '@/components/dashboard/ComparisonMatrix'
+import { PricingChart } from '@/components/dashboard/PricingChart'
+import { AIReliabilityPanel } from '@/components/dashboard/AIReliabilityPanel'
 
 const BASE = import.meta.env.BASE_URL || '/'
 
+function filtersReducer(state: DashboardFilters, action: { type: string; payload?: Partial<DashboardFilters> }): DashboardFilters {
+  if (action.type === 'SET') return { ...state, ...(action.payload ?? {}) }
+  return state
+}
+
 export function DashboardPage() {
   const [evaluations, setEvaluations] = useState<Evaluation[]>([])
+  const [platforms, setPlatforms] = useState<PlatformRecord[]>([])
   const [loading, setLoading] = useState(true)
+  const [filters, dispatchFilters] = useReducer(filtersReducer, INITIAL_FILTERS)
   const [compareSelected, setCompareSelected] = useState<string[]>([])
-  const [searchQuery, setSearchQuery] = useState('')
-  const [categoryFilter, setCategoryFilter] = useState<string>('')
 
   useEffect(() => {
-    fetch(`${BASE}api/all_evaluations.json`)
-      .then((r) => (r.ok ? r.json() : []))
-      .then((data) => setEvaluations(Array.isArray(data) ? data : []))
-      .catch(() => setEvaluations([]))
+    Promise.all([
+      fetch(`${BASE}api/all_evaluations.json`).then((r) => (r.ok ? r.json() : [])),
+      fetch(`${BASE}api/platforms.json`).then((r) => (r.ok ? r.json() : [])),
+    ])
+      .then(([evals, plats]) => {
+        setEvaluations(Array.isArray(evals) ? evals : [])
+        setPlatforms(Array.isArray(plats) ? plats : [])
+      })
+      .catch(() => {
+        setEvaluations([])
+        setPlatforms([])
+      })
       .finally(() => setLoading(false))
   }, [])
 
-  const categoryOptions = useMemo(() => {
-    const set = new Set<string>()
-    evaluations.forEach((e) => {
-      const focus = e.identity?.primary_agricultural_focus
-      if (Array.isArray(focus)) focus.forEach((f) => set.add(f))
-    })
-    return ['', ...Array.from(set).sort()]
-  }, [evaluations])
+  const filteredEvaluations = useMemo(
+    () => filterEvaluations(evaluations, filters, platforms),
+    [evaluations, filters, platforms]
+  )
+  const platformCards = useMemo(() => oneEvaluationPerPlatform(filteredEvaluations), [filteredEvaluations])
+  const compareEvaluations = useMemo(
+    () => platformCards.filter((e) => compareSelected.includes(e.meta.platform_name)),
+    [platformCards, compareSelected]
+  )
 
-  const filteredEvaluations = useMemo(() => {
-    return evaluations.filter((e) => {
-      const matchSearch =
-        !searchQuery.trim() ||
-        e.meta.platform_name.toLowerCase().includes(searchQuery.trim().toLowerCase()) ||
-        (e.meta.evaluator && e.meta.evaluator.toLowerCase().includes(searchQuery.trim().toLowerCase()))
-      const focus = e.identity?.primary_agricultural_focus ?? []
-      const arr = Array.isArray(focus) ? focus : [focus]
-      const matchCategory = !categoryFilter || arr.includes(categoryFilter)
-      return matchSearch && matchCategory
-    })
-  }, [evaluations, searchQuery, categoryFilter])
-
-  function toggleCompare(ev: React.MouseEvent, name: string) {
+  function handleCompareClick(ev: React.MouseEvent, platformName: string) {
     ev.preventDefault()
     ev.stopPropagation()
-    setCompareSelected((prev) => (prev.includes(name) ? prev.filter((n) => n !== name) : [...prev, name]))
+    setCompareSelected((prev) =>
+      prev.includes(platformName) ? prev.filter((n) => n !== platformName) : [...prev, platformName]
+    )
   }
 
   if (loading) {
@@ -59,145 +68,77 @@ export function DashboardPage() {
   }
 
   return (
-    <div className="mx-auto max-w-6xl px-4 py-8">
-      <div className="mb-8 flex items-center justify-between">
+    <div className="mx-auto max-w-6xl px-4 py-6">
+      <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Evaluation dashboard</h1>
-        <Link to="/form" className="rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:opacity-90">
+        <Link
+          to="/form"
+          className="rounded-xl bg-primary px-5 py-2.5 text-sm font-medium text-white shadow-sm transition hover:opacity-90"
+        >
           New evaluation
         </Link>
       </div>
 
-      <p className="mb-4 text-slate-600 dark:text-slate-400">
-        {evaluations.length} evaluation{evaluations.length !== 1 ? 's' : ''} loaded. Click a platform to view full details, or select several to compare scores.
-      </p>
+      <SummaryStats evaluations={evaluations} className="mb-6" />
 
-      {/* Filters */}
-      <div className="mb-6 flex flex-wrap items-center gap-4 rounded-xl border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
-        <label className="flex items-center gap-2">
-          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Search</span>
-          <input
-            type="search"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Platform or evaluator name…"
-            className="w-48 rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-slate-900 dark:text-slate-100 placeholder:text-slate-400 sm:w-56"
-          />
-        </label>
-        <label className="flex items-center gap-2">
-          <span className="text-sm font-medium text-slate-700 dark:text-slate-300">Focus</span>
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-1.5 text-sm text-slate-900 dark:text-slate-100"
-          >
-            <option value="">All</option>
-            {categoryOptions.filter(Boolean).map((opt) => (
-              <option key={opt} value={opt}>{opt}</option>
-            ))}
-          </select>
-        </label>
-        {filteredEvaluations.length < evaluations.length && (
-          <span className="text-sm text-slate-500 dark:text-slate-400">
-            Showing {filteredEvaluations.length} of {evaluations.length}
-          </span>
-        )}
-      </div>
+      <FilterPanel
+        evaluations={evaluations}
+        platforms={platforms}
+        filters={filters}
+        onFiltersChange={(f) => dispatchFilters({ type: 'SET', payload: f })}
+        className="mb-6"
+      />
 
-      {/* Compare: radar + bar chart */}
-      <div className="mb-10 space-y-6">
-        <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Compare platforms</h2>
-        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
-          <ScoreRadar evaluations={filteredEvaluations} selectedNames={compareSelected} />
-        </div>
-        {compareSelected.length > 0 && (
+      {compareSelected.length >= 2 && (
+        <div className="mb-8 space-y-6">
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Compare platforms</h2>
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
-            <h3 className="mb-3 text-base font-semibold text-slate-900 dark:text-slate-100">Section scores (bar)</h3>
-            <SectionScoreBarChart evaluations={filteredEvaluations} selectedNames={compareSelected} />
+            <ScoreRadar evaluations={compareEvaluations} selectedNames={compareSelected} />
           </div>
-        )}
-      </div>
-
-      {/* Platform cards: click to view details, checkbox to compare */}
-      <h2 className="mb-4 text-lg font-semibold text-slate-900 dark:text-slate-100">All evaluations</h2>
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {filteredEvaluations.map((e) => {
-          const sections = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'governance', 'access', 'pricing', 'usability'] as const
-          const scores = sections.map((key) => {
-            const sec = e.sections?.[key]
-            const s = sec ? calculateSectionScore(sec) : { evidence_weighted_score: 0 }
-            return Math.round(s.evidence_weighted_score * 100)
-          })
-          const avg = scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : 0
-          const name = e.meta.platform_name
-          const checked = compareSelected.includes(name)
-          const evaluatorSlug = e.meta.evaluator.replace(/[^a-zA-Z0-9_-]/g, '-')
-          return (
-            <Link
-              key={`${e.meta.platform_slug}-${e.meta.evaluator}-${e.meta.evaluation_date}`}
-              to={`/evaluation/${e.meta.platform_slug}/${evaluatorSlug}`}
-              className="block rounded-2xl border border-slate-200 bg-white p-5 shadow-soft transition hover:shadow-md hover:border-primary/30 dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark dark:hover:border-primary/40"
-            >
-              <div className="flex items-start gap-3">
-                <input
-                  type="checkbox"
-                  checked={checked}
-                  onChange={() => {}}
-                  onClick={(ev) => toggleCompare(ev, name)}
-                  className="mt-1 shrink-0 rounded border-slate-300 text-primary focus:ring-primary dark:border-slate-500"
-                  aria-label={`Compare ${name}`}
-                />
-                <div className="min-w-0 flex-1">
-                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">{name}</h3>
-                  <p className="mt-0.5 text-xs text-slate-500 dark:text-slate-400">
-                    {e.meta.evaluator} • {e.meta.evaluation_date}
-                  </p>
-                  <p className="mt-3 text-sm font-medium text-slate-600 dark:text-slate-300">Overall score: {avg}%</p>
-                  <span className="mt-2 inline-block text-sm font-medium text-primary hover:underline">View full evaluation →</span>
-                </div>
+          <div>
+            <h3 className="mb-2 text-base font-medium text-slate-900 dark:text-slate-100">Feature comparison</h3>
+            <ComparisonMatrix evaluations={compareEvaluations} />
+          </div>
+          <div>
+            <h3 className="mb-2 text-base font-medium text-slate-900 dark:text-slate-100">Pricing comparison</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <p className="mb-1 text-xs text-slate-500 dark:text-slate-400">Grain (2,000 ac)</p>
+                <PricingChart evaluations={compareEvaluations} mode="broadacre" />
               </div>
-            </Link>
-          )
-        })}
-      </div>
-
-      {filteredEvaluations.length > 0 && (
-        <div className="mt-10 overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-slate-200 bg-slate-50 dark:border-slate-600 dark:bg-slate-800">
-                <th className="p-4 text-left font-semibold text-slate-900 dark:text-slate-100">Platform</th>
-                <th className="p-4 text-left font-semibold text-slate-900 dark:text-slate-100">Evaluator</th>
-                <th className="p-4 text-left font-semibold text-slate-900 dark:text-slate-100">Date</th>
-                <th className="p-4 text-left font-semibold text-slate-900 dark:text-slate-100">Version</th>
-                <th className="p-4 text-left font-semibold text-slate-900 dark:text-slate-100">Score</th>
-                <th className="p-4 text-left font-semibold text-slate-900 dark:text-slate-100">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredEvaluations.map((e) => {
-                const secKeys = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'governance', 'access', 'pricing', 'usability'] as const
-                const avg = secKeys.length
-                  ? Math.round(
-                      (secKeys.reduce((a, k) => a + (e.sections?.[k] ? calculateSectionScore(e.sections[k]).evidence_weighted_score * 100 : 0), 0) / secKeys.length)
-                    )
-                  : 0
-                return (
-                  <tr key={`${e.meta.platform_slug}-${e.meta.evaluator}-${e.meta.evaluation_date}`} className="border-b border-slate-100 transition hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-700/50">
-                    <td className="p-4 font-medium text-slate-900 dark:text-slate-100">{e.meta.platform_name}</td>
-                    <td className="p-4 text-slate-600 dark:text-slate-400">{e.meta.evaluator}</td>
-                    <td className="p-4 text-slate-600 dark:text-slate-400">{e.meta.evaluation_date}</td>
-                    <td className="p-4 text-slate-600 dark:text-slate-400">{e.identity?.version_module_evaluated ?? '—'}</td>
-                    <td className="p-4 text-slate-600 dark:text-slate-400">{avg}%</td>
-                    <td className="p-4">
-                      <Link to={`/evaluation/${e.meta.platform_slug}/${e.meta.evaluator.replace(/[^a-zA-Z0-9_-]/g, '-')}`} className="font-medium text-primary hover:underline">View details</Link>
-                    </td>
-                  </tr>
-                )
-              })}
-            </tbody>
-          </table>
+              <div>
+                <p className="mb-1 text-xs text-slate-500 dark:text-slate-400">Livestock (500 head)</p>
+                <PricingChart evaluations={compareEvaluations} mode="livestock" />
+              </div>
+            </div>
+          </div>
         </div>
       )}
+
+      <h2 className="mb-4 text-lg font-semibold text-slate-900 dark:text-slate-100">
+        Platforms {platformCards.length < evaluations.length && `(${platformCards.length} of ${evaluations.length} evaluations)`}
+      </h2>
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {platformCards.map((evaluation) => (
+          <PlatformCard
+            key={`${evaluation.meta.platform_slug}-${evaluation.meta.evaluator}-${evaluation.meta.evaluation_date}`}
+            evaluation={evaluation}
+            platforms={platforms}
+            compareChecked={compareSelected.includes(evaluation.meta.platform_name)}
+            onCompareClick={(ev) => handleCompareClick(ev, evaluation.meta.platform_name)}
+          />
+        ))}
+      </div>
+
+      {platformCards.length === 0 && (
+        <p className="py-12 text-center text-slate-500 dark:text-slate-400">
+          No platforms match the current filters. Adjust filters or add evaluations.
+        </p>
+      )}
+
+      <div className="mt-12">
+        <AIReliabilityPanel evaluations={evaluations} />
+      </div>
     </div>
   )
 }
