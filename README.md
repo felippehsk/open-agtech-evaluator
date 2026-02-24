@@ -1,5 +1,9 @@
 # Open AgTech Evaluator
 
+<p align="center">
+  <img src="public/icon.png" alt="Open AgTech Evaluator logo" width="120" />
+</p>
+
 Web app for **Olds College** (Alberta, Canada) course **AGT3510** — students evaluate off-the-shelf precision agriculture software. The app runs on **GitHub Pages**: fill the evaluation form, sign in with GitHub, and submit evaluations to this repository. The dashboard shows all evaluations and lets you compare platforms.
 
 ---
