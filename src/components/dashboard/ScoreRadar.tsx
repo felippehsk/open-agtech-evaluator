@@ -17,10 +17,13 @@ const SECTION_LABELS: Record<string, string> = {
   processing_2b: 'Yield',
   export: 'Export',
   integration: 'Integration',
+  governance: 'Governance',
+  access: 'Access',
+  pricing: 'Pricing',
   usability: 'Usability',
 }
 
-const SECTION_KEYS = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'usability'] as const
+const SECTION_KEYS = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'governance', 'access', 'pricing', 'usability'] as const
 
 function evaluationToRadarPoints(e: Evaluation): { section: string; score: number; fullMark: number }[] {
   return SECTION_KEYS.map((key) => {

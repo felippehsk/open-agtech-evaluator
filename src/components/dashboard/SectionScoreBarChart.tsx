@@ -2,13 +2,16 @@ import { Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAx
 import { calculateSectionScore } from '@/lib/scoring'
 import type { Evaluation } from '@/lib/schema'
 
-const SECTION_KEYS = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'usability'] as const
+const SECTION_KEYS = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'governance', 'access', 'pricing', 'usability'] as const
 const SECTION_LABELS: Record<string, string> = {
   ingestion: 'Ingestion',
   processing_2a: 'Spatial',
   processing_2b: 'Yield',
   export: 'Export',
   integration: 'Integration',
+  governance: 'Governance',
+  access: 'Access',
+  pricing: 'Pricing',
   usability: 'Usability',
 }
 

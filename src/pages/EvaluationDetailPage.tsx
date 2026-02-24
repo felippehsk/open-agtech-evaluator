@@ -8,6 +8,10 @@ import { calculateSectionScore } from '@/lib/scoring'
 
 const BASE = import.meta.env.BASE_URL || '/'
 
+function evaluatorToSlug(evaluator: string): string {
+  return evaluator.replace(/[^a-zA-Z0-9_-]/g, '-')
+}
+
 function formatFieldValue(fr: FieldResponse | undefined): string {
   if (!fr) return '—'
   const v = fr.value
@@ -29,7 +33,7 @@ const EVIDENCE_TAG_LABELS: Record<string, string> = {
 }
 
 export function EvaluationDetailPage() {
-  const { index } = useParams<{ index: string }>()
+  const { platformSlug, evaluatorId } = useParams<{ platformSlug: string; evaluatorId: string }>()
   const [evaluations, setEvaluations] = useState<Evaluation[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -41,8 +45,12 @@ export function EvaluationDetailPage() {
       .finally(() => setLoading(false))
   }, [])
 
-  const i = index != null ? parseInt(index, 10) : NaN
-  const evaluation = !Number.isNaN(i) && i >= 0 && i < evaluations.length ? evaluations[i] : null
+  const evaluation =
+    platformSlug != null && evaluatorId != null
+      ? evaluations.find(
+          (e) => e.meta.platform_slug === platformSlug && evaluatorToSlug(e.meta.evaluator) === evaluatorId
+        ) ?? null
+      : null
 
   if (loading) {
     return (
@@ -62,7 +70,7 @@ export function EvaluationDetailPage() {
   }
 
   const { meta, identity, sections = {}, assessment, evidence_log } = evaluation
-  const scoreSections = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'usability'] as const
+  const scoreSections = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'governance', 'access', 'pricing', 'usability'] as const
   const sectionScores = scoreSections.map((key) => {
     const sec = sections[key]
     const s = sec ? calculateSectionScore(sec) : { evidence_weighted_score: 0 }

@@ -3,9 +3,6 @@ import type { FieldConfig } from '@/lib/fieldConfig'
 import { EvidenceTagSelect } from './EvidenceTagSelect'
 import { cn } from '@/lib/utils'
 
-export type { FieldConfig } from '@/lib/fieldConfig'
-export type { FieldType } from '@/lib/fieldConfig'
-
 interface FieldWithEvidenceProps {
   config: FieldConfig
   sectionKey: string
@@ -28,11 +25,6 @@ export function FieldWithEvidence({ config, sectionKey, value, onChange, disable
     onChange({ ...value, notes: notes || undefined })
   }
 
-  const showOtherSpecify =
-    (type === 'single_select' && strVal === OTHER_SPECIFY) ||
-    (type === 'multi_select' && arrVal.includes(OTHER_SPECIFY))
-  const otherNotes = value.notes ?? ''
-
   function updateTag(tag: EvidenceTag) {
     onChange({ ...value, evidence_tag: tag })
   }
@@ -44,6 +36,10 @@ export function FieldWithEvidence({ config, sectionKey, value, onChange, disable
   const val = value.value
   const strVal = typeof val === 'string' ? val : Array.isArray(val) ? '' : val != null ? String(val) : ''
   const arrVal = Array.isArray(val) ? val : []
+  const showOtherSpecify =
+    (type === 'single_select' && strVal === OTHER_SPECIFY) ||
+    (type === 'multi_select' && arrVal.includes(OTHER_SPECIFY))
+  const otherNotes = value.notes ?? ''
 
   return (
     <div className="space-y-1.5 rounded border border-slate-100 dark:border-slate-700/50 bg-slate-50/50 dark:bg-slate-800/30 p-3">

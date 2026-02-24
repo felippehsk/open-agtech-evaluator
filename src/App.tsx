@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { HashRouter, Routes, Route, Outlet } from 'react-router-dom'
 import { FormStateProvider, useFormState } from '@/context/FormStateContext'
 import { ThemeProvider } from '@/context/ThemeContext'
@@ -7,10 +7,11 @@ import { Footer } from '@/components/layout/Footer'
 import { PATModal } from '@/components/PATModal'
 import { getStoredUsername } from '@/components/PATModal'
 import { DashboardPage } from '@/pages/DashboardPage'
-import { FormPage } from '@/pages/FormPage'
 import { AboutPage } from '@/pages/AboutPage'
 import { ProtocolPage } from '@/pages/ProtocolPage'
 import { EvaluationDetailPage } from '@/pages/EvaluationDetailPage'
+
+const FormPage = lazy(() => import('@/pages/FormPage').then((m) => ({ default: m.FormPage })))
 
 function Layout() {
   const [signedInUser, setSignedInUser] = useState<string | null>(() => getStoredUsername())
@@ -52,9 +53,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<DashboardPage />} />
-            <Route path="form" element={<FormPage />} />
+            <Route path="form" element={<Suspense fallback={<div className="flex min-h-[40vh] items-center justify-center text-slate-500">Loading form…</div>}><FormPage /></Suspense>} />
             <Route path="protocol" element={<ProtocolPage />} />
-            <Route path="evaluation/:index" element={<EvaluationDetailPage />} />
+            <Route path="evaluation/:platformSlug/:evaluatorId" element={<EvaluationDetailPage />} />
             <Route path="about" element={<AboutPage />} />
           </Route>
         </Routes>
