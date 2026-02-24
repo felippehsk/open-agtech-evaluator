@@ -1,0 +1,112 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "platform_slug": "ag-leader-sms-advanced",
+    "platform_name": "Ag Leader SMS Advanced",
+    "evaluator": "mock-calibration",
+    "evaluation_date": "2026-02-15T00:00:00.000Z",
+    "last_verified_date": "2026-02-15T00:00:00.000Z",
+    "cohort": "2026-winter",
+    "total_hours_spent": 12
+  },
+  "identity": {
+    "version_module_evaluated": "SMS Advanced v22.10 — trial license, desktop Windows",
+    "company_developer": "Ag Leader Technology",
+    "country_of_origin": "United States",
+    "year_founded": "1992",
+    "platform_type": ["Desktop installed (Windows)", "Hybrid (web + mobile)"],
+    "primary_agricultural_focus": ["Broadacre crops (grains, oilseeds, pulses)", "Row crops (corn, soybeans, cotton)"],
+    "website_url": "https://www.agleader.com",
+    "last_updated_version": "v22.10 — February 2026"
+  },
+  "sections": {
+    "ingestion": {
+      "manual_data_entry": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "https://www.agleader.com/sms", "notes": "" },
+      "file_upload_shapefile": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "file_upload_geotiff": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "file_upload_csv": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "file_upload_isoxml": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com/isoxml", "notes": "" },
+      "yield_monitor_import": { "value": ["John Deere (S-Series, X-Series, T-Series)", "Case IH (Axial-Flow series)", "Ag Leader (aftermarket, brand-agnostic)", "Trimble (aftermarket)"], "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Class calibration platform." },
+      "ease_of_import": { "value": 4, "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Easy for common formats." }
+    },
+    "processing_2a": {
+      "spatial_data_visualization": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "temporal_data_visualization": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "multi_year_comparison": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "coordinate_system_handling": { "value": "Automatic (detects and transforms CRS)", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" }
+    },
+    "processing_2b": {
+      "yield_data_cleaning": { "value": ["Start/stop pass delay removal (ramp-up/ramp-down)", "Grain flow lag / time delay correction", "Speed anomaly filtering", "Header height status filtering", "Statistical outlier removal", "Automated cleaning pipeline (one-click)", "User-configurable cleaning parameters"], "evidence_tag": "hands_on_verified", "source_url": "", "notes": "12+ error types supported." },
+      "yield_map_generation": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "vegetation_index_calculation": { "value": ["NDVI (Normalized Difference Vegetation Index)", "NDRE (Normalized Difference Red Edge)"], "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "vra_prescription_map_creation": { "value": ["Seeding / planting rate prescriptions", "Fertilizer rate prescriptions (N, P, K, S, micronutrients)", "Based on management zones"], "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "prescription_export_formats": { "value": ["ISOXML / ISOBUS (ISO 11783)", "Shapefile (.shp)", "John Deere format (GS3 / Gen4 compatible)", "CNH / Case IH / New Holland format", "Ag Leader format"], "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "combine_calibration_adjustment": { "value": ["Multi-combine normalization / pathwise calibration", "Scale ticket reconciliation (adjust to known weights)"], "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Anchor platform for calibration." }
+    },
+    "processing_2c_livestock": {},
+    "processing_2d_cea": {},
+    "processing_2e_financial": {
+      "income_tracking": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "expense_tracking": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "profitability_analysis": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Per field/zone." }
+    },
+    "export": {
+      "export_shapefile": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "export_csv": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "export_isoxml": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "api_export": { "value": "No", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "Limited API." }
+    },
+    "integration": {
+      "api_availability": { "value": "Partner / developer API — documented, requires agreement", "evidence_tag": "documentation_verified", "source_url": "https://www.agleader.com", "notes": "" },
+      "isobus_compliance": { "value": "Full compliance (import and export)", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "data_format_interoperability": { "value": 4, "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Very good." },
+      "hardware_dependency": { "value": "Fully software-independent — all core features work without proprietary hardware (manual uploads, API, third-party connections)", "evidence_tag": "documentation_verified", "source_url": "https://www.agleader.com", "notes": "OEM-independent." }
+    },
+    "governance": {
+      "data_ownership_policy": { "value": "User owns all data (clearly stated in terms)", "evidence_tag": "documentation_verified", "source_url": "https://www.agleader.com/terms", "notes": "" },
+      "data_portability": { "value": "Full export — all raw and processed data downloadable in standard formats", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" },
+      "ag_data_transparent": { "value": "Not certified", "evidence_tag": "vendor_claimed", "source_url": "", "notes": "" }
+    },
+    "pricing": {
+      "pricing_model": { "value": ["Flat subscription (annual)", "Per-seat / per-user pricing"], "evidence_tag": "documentation_verified", "source_url": "https://www.agleader.com/pricing", "notes": "" },
+      "free_tier_available": { "value": "No", "evidence_tag": "documentation_verified", "source_url": "https://www.agleader.com", "notes": "" },
+      "standardized_cost_broadacre_currency": { "value": "CAD", "evidence_tag": "documentation_verified", "source_url": "", "notes": "" },
+      "standardized_cost_broadacre_annual": { "value": 2400, "evidence_tag": "vendor_claimed", "source_url": "https://www.agleader.com/pricing", "notes": "Est. 2000 ac grain farm." }
+    },
+    "usability": {
+      "onboarding_setup": { "value": 3, "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Moderate learning curve." },
+      "documentation_quality": { "value": "Good — adequate documentation, covers main features", "evidence_tag": "documentation_verified", "source_url": "https://support.agleader.com", "notes": "" }
+    }
+  },
+  "ai_checks": {
+    "ingestion": "ai_100_correct",
+    "processing_2a": "ai_100_correct",
+    "processing_2b": "ai_minor_errors",
+    "export": "ai_100_correct",
+    "integration": "ai_minor_errors",
+    "governance": "ai_100_correct",
+    "pricing": "ai_100_correct",
+    "usability": "ai_100_correct"
+  },
+  "assessment": {
+    "strongest_capability": "Yield data cleaning and processing",
+    "strongest_capability_justification": "Industry-standard yield cleaning with 12+ error types, multi-combine calibration, and one-click pipeline. Class calibration platform.",
+    "weakest_capability": "Integration / interoperability with other systems",
+    "weakest_capability_justification": "Limited public API; strong file-based workflow but fewer live integrations than cloud platforms.",
+    "best_suited_for": ["Medium farms (500–5,000 acres / 200–2,000 ha)", "Advanced precision ag users", "Agronomists / crop advisors / consultants"],
+    "worst_suited_for": "Operations that need real-time cloud sync and mobile-first workflows.",
+    "unique_differentiator": "OEM-independent; ingests and exports to all major equipment brands. Desktop-first with robust yield and VRA tools.",
+    "recommendation": "Yes — strong recommendation for the right operation",
+    "ai_claims_total": 45,
+    "ai_claims_correct": 43,
+    "ai_claims_incorrect": 2,
+    "ai_claims_unverifiable": 0,
+    "ai_notable_error": "AI overstated API availability; actual API is partner-only."
+  },
+  "evidence_log": {
+    "source_types_used": ["Official platform documentation / help center", "Platform trial or demo account (hands-on)"],
+    "official_doc_urls": ["https://support.agleader.com", "https://www.agleader.com/sms"],
+    "third_party_urls": [],
+    "hands_on_notes": "Tested SMS Advanced v22.10 trial on Windows. Imported yield and shapefiles; ran yield cleaning and generated VRA prescription. Exported to ISOXML and shapefile."
+  }
+}

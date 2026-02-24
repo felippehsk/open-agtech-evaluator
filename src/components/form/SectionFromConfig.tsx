@@ -1,0 +1,62 @@
+import { useFormState } from '@/context/FormStateContext'
+import { getFieldsForSection, getAiCheckOptions } from '@/lib/fieldConfig'
+import { FieldWithEvidence } from '@/components/shared/FieldWithEvidence'
+import type { FieldResponse } from '@/lib/schema'
+
+const SECTIONS_WITH_AI_CHECK = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration']
+
+const DEFAULT_RESPONSE: FieldResponse = { value: null, evidence_tag: 'unknown' }
+
+interface SectionFromConfigProps {
+  sectionKey: string
+  title: string
+}
+
+export function SectionFromConfig({ sectionKey, title }: SectionFromConfigProps) {
+  const { state, setSectionField, dispatch } = useFormState()
+  const fields = getFieldsForSection(sectionKey)
+  const sectionData = state.draft.sections?.[sectionKey] ?? {}
+  const showAiCheck = SECTIONS_WITH_AI_CHECK.includes(sectionKey)
+  const aiCheckValue = state.draft.ai_checks?.[sectionKey] ?? ''
+
+  return (
+    <div className="space-y-6">
+      <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">{title}</h3>
+
+      {fields.map((config) => {
+        const current = sectionData[config.key]
+        const value: FieldResponse = current ?? {
+          ...DEFAULT_RESPONSE,
+          value: config.type === 'multi_select' ? [] : config.type === 'rating' ? null : null,
+        }
+        return (
+          <FieldWithEvidence
+            key={config.key}
+            config={config}
+            sectionKey={sectionKey}
+            value={value}
+            onChange={(response) => setSectionField(sectionKey, config.key, response)}
+          />
+        )
+      })}
+
+      {showAiCheck && (
+        <div className="mt-6 rounded border border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-900/20 p-3">
+          <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+            AI hallucination check — this section
+          </label>
+          <select
+            value={aiCheckValue}
+            onChange={(e) => dispatch({ type: 'SET_AI_CHECK', section: sectionKey, value: e.target.value })}
+            className="mt-1 w-full max-w-md rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100"
+          >
+            <option value="">Select…</option>
+            {getAiCheckOptions().map((opt) => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
+          </select>
+        </div>
+      )}
+    </div>
+  )
+}

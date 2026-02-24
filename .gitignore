@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+*.local
+
+# Environment and secrets
+.env
+.env.local
+.env.*.local
+
+# Editor and IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs and cache
+*.log
+npm-debug.log*
+.npm
+.eslintcache
+*.tsbuildinfo
+node_modules/.vite/
+
+# Internal / non-website docs (design specs, internal notes)
+docs/
+
+# Optional: keep docs in repo by commenting out the line above and ignoring only specific files, e.g.:
+# docs/Internal_*.md

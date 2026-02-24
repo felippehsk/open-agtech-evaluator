@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "platform_slug": "agriwebb",
+    "platform_name": "AgriWebb",
+    "evaluator": "mock-livestock",
+    "evaluation_date": "2026-02-20T00:00:00.000Z",
+    "last_verified_date": "2026-02-20T00:00:00.000Z",
+    "cohort": "2026-winter",
+    "total_hours_spent": 10
+  },
+  "identity": {
+    "version_module_evaluated": "AgriWebb — subscription, web + mobile, Feb 2026",
+    "company_developer": "AgriWebb",
+    "country_of_origin": "Australia",
+    "year_founded": "2014",
+    "platform_type": ["Web-based (browser)", "Mobile app — iOS", "Mobile app — Android", "Hybrid (web + mobile)"],
+    "primary_agricultural_focus": ["Livestock — Beef", "Livestock — Sheep/Goat", "Mixed / Whole-farm"],
+    "website_url": "https://www.agriwebb.com",
+    "last_updated_version": "2026 — continuous"
+  },
+  "sections": {
+    "ingestion": {
+      "manual_data_entry": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "file_upload_shapefile": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "Paddock boundaries." },
+      "file_upload_csv": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" },
+      "file_upload_geotiff": { "value": "No", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" },
+      "file_upload_isoxml": { "value": "No", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "Not applicable for livestock." },
+      "yield_monitor_import": { "value": ["Not supported"], "evidence_tag": "not_applicable", "source_url": "", "notes": "N/A — livestock platform." },
+      "soil_sample_import": { "value": "Partial", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "For pasture/forage context." },
+      "ease_of_import": { "value": 4, "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Easy for livestock data." }
+    },
+    "processing_2a": {
+      "spatial_data_visualization": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Paddock maps." },
+      "temporal_data_visualization": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "Time series for weights, grazing." },
+      "multi_year_comparison": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" },
+      "coordinate_system_handling": { "value": "Automatic (detects and transforms CRS)", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" }
+    },
+    "processing_2b": {
+      "yield_data_cleaning": { "value": [], "evidence_tag": "not_applicable", "source_url": "", "notes": "N/A — livestock platform." },
+      "yield_map_generation": { "value": "No", "evidence_tag": "not_applicable", "source_url": "", "notes": "N/A." },
+      "vegetation_index_calculation": { "value": [], "evidence_tag": "not_applicable", "source_url": "", "notes": "N/A for core product." },
+      "vra_prescription_map_creation": { "value": [], "evidence_tag": "not_applicable", "source_url": "", "notes": "N/A — livestock." },
+      "prescription_export_formats": { "value": [], "evidence_tag": "not_applicable", "source_url": "", "notes": "N/A." },
+      "combine_calibration_adjustment": { "value": [], "evidence_tag": "not_applicable", "source_url": "", "notes": "N/A." }
+    },
+    "processing_2c_livestock": {
+      "individual_animal_records": { "value": "Yes — individual animal tracking with unique ID", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "rfid_eid_integration": { "value": ["ISO 11784/11785 (FDX-B, HDX)", "Allflex / Datamars readers", "Tru-Test readers"], "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" },
+      "breeding_genetics_tracking": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" },
+      "health_treatment_records": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Withdrawal periods." },
+      "grazing_management": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Paddock rotation, stocking rates." },
+      "weight_growth_tracking": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "ADG, crush-side." },
+      "traceability_birth_to_harvest": { "value": ["Birth / acquisition records", "Movement / transfer tracking", "Health & treatment records with withdrawal periods", "Breeding / genetics / pedigree", "Weight / growth tracking (ADG, feed conversion)", "Grazing / paddock management"], "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "CCIA integration claimed by AI but NOT verified — see ai_notable_error." }
+    },
+    "processing_2d_cea": {},
+    "processing_2e_financial": {
+      "income_tracking": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "Livestock gross margins." },
+      "expense_tracking": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "cost_of_production": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "Per head." },
+      "profitability_analysis": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "By paddock/enterprise." }
+    },
+    "export": {
+      "export_shapefile": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" },
+      "export_csv": { "value": "Yes", "evidence_tag": "hands_on_verified", "source_url": "", "notes": "" },
+      "api_export": { "value": "Yes", "evidence_tag": "documentation_verified", "source_url": "https://developer.agriwebb.com", "notes": "" }
+    },
+    "integration": {
+      "api_availability": { "value": "Public API — documented, open to third parties", "evidence_tag": "documentation_verified", "source_url": "https://developer.agriwebb.com", "notes": "" },
+      "data_format_interoperability": { "value": 4, "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "Good for livestock data." },
+      "hardware_dependency": { "value": "Fully software-independent — all core features work without proprietary hardware (manual uploads, API, third-party connections)", "evidence_tag": "documentation_verified", "source_url": "https://www.agriwebb.com", "notes": "Crush-side hardware optional." }
+    },
+    "governance": {
+      "data_ownership_policy": { "value": "User owns all data (clearly stated in terms)", "evidence_tag": "documentation_verified", "source_url": "https://www.agriwebb.com/legal", "notes": "" },
+      "data_portability": { "value": "Full export — all raw and processed data downloadable in standard formats", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" },
+      "data_storage_location": { "value": ["Australia", "Multiple regions (geo-replicated)"], "evidence_tag": "documentation_verified", "source_url": "https://www.agriwebb.com", "notes": "Canadian data sovereignty consideration." }
+    },
+    "pricing": {
+      "pricing_model": { "value": ["Flat subscription (annual)", "Per-head pricing (livestock)"], "evidence_tag": "documentation_verified", "source_url": "https://www.agriwebb.com/pricing", "notes": "" },
+      "free_tier_available": { "value": "No", "evidence_tag": "documentation_verified", "source_url": "https://www.agriwebb.com", "notes": "" },
+      "standardized_cost_livestock_currency": { "value": "CAD", "evidence_tag": "vendor_claimed", "source_url": "https://www.agriwebb.com/pricing", "notes": "" },
+      "standardized_cost_livestock_annual": { "value": 3500, "evidence_tag": "vendor_claimed", "source_url": "https://www.agriwebb.com/pricing", "notes": "Est. 500 head cow-calf; USD converted to CAD." }
+    },
+    "usability": {
+      "onboarding_setup": { "value": 4, "evidence_tag": "hands_on_verified", "source_url": "", "notes": "Mobile-first; easy for livestock users." },
+      "documentation_quality": { "value": "Good — adequate documentation, covers main features", "evidence_tag": "documentation_verified", "source_url": "https://support.agriwebb.com", "notes": "" }
+    }
+  },
+  "ai_checks": {
+    "ingestion": "ai_100_correct",
+    "processing_2a": "ai_100_correct",
+    "processing_2b": "ai_not_used",
+    "processing_2c_livestock": "ai_significant_errors",
+    "export": "ai_100_correct",
+    "integration": "ai_100_correct",
+    "governance": "ai_100_correct",
+    "pricing": "ai_100_correct",
+    "usability": "ai_100_correct"
+  },
+  "assessment": {
+    "strongest_capability": "Livestock management",
+    "strongest_capability_justification": "End-to-end livestock records: individual animal ID, RFID, breeding, health, grazing, weight tracking, and gross margins. Strong in Australian market.",
+    "weakest_capability": "Data ingestion / format compatibility",
+    "weakest_capability_justification": "No broadacre/yield/ISOXML; limited Canadian regulatory integrations (e.g. CCIA) compared to TELUS ARM.",
+    "best_suited_for": ["Livestock producers (cow-calf, feedlot)", "Medium farms (500–5,000 acres / 200–2,000 ha)", "Grazing operations"],
+    "worst_suited_for": "Grain-only or row-crop operations that need yield maps and VRA prescriptions.",
+    "unique_differentiator": "Livestock-first platform with 25%+ of Australia's grazing animals; mobile crush-side; cost of production and gross margins per head.",
+    "recommendation": "Conditionally — good for specific use cases (explain in notes)",
+    "ai_claims_total": 38,
+    "ai_claims_correct": 34,
+    "ai_claims_incorrect": 4,
+    "ai_claims_unverifiable": 0,
+    "ai_notable_error": "AI claimed CCIA (Canadian Cattle Identification Agency) integration; vendor documentation and support did not confirm this. May be planned or region-specific."
+  },
+  "evidence_log": {
+    "source_types_used": ["Official platform documentation / help center", "Platform trial or demo account (hands-on)"],
+    "official_doc_urls": ["https://support.agriwebb.com", "https://developer.agriwebb.com", "https://www.agriwebb.com"],
+    "third_party_urls": [],
+    "hands_on_notes": "Tested AgriWebb subscription (web + mobile). Created paddocks, added animal records, grazing moves, and weight entries. Did not verify CCIA integration (AI hallucination)."
+  }
+}

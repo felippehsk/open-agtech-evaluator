@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "fields": {
+    "platform_name": { "type": "single_select", "label": "Platform Name", "options": ["John Deere Operations Center", "Ag Leader SMS Advanced", "AgriWebb", "Climate FieldView", "AgExpert (FCC)", "PTx Trimble FarmENGAGE", "CNH AFS Connect / PLM Connect", "farmOS", "Other"], "allow_custom": true },
+    "country_of_origin": { "type": "single_select", "label": "Country of Origin", "options": ["United States", "Canada", "Netherlands", "Australia", "New Zealand", "Israel", "Germany", "Brazil", "Switzerland", "United Kingdom", "Ukraine"], "allow_custom": true },
+    "platform_type": { "type": "multi_select", "label": "Platform Type", "options": ["Web-based (browser)", "Desktop installed (Windows)", "Desktop installed (Mac)", "Mobile app — iOS", "Mobile app — Android", "Hybrid (web + mobile)", "API-only (no GUI)", "Plugin/extension for other software"], "allow_custom": true },
+    "primary_agricultural_focus": { "type": "multi_select", "label": "Primary Agricultural Focus", "options": ["Broadacre crops (grains, oilseeds, pulses)", "Row crops (corn, soybeans, cotton)", "Specialty crops (vegetables, fruit, horticulture)", "Livestock — Beef", "Livestock — Dairy", "Livestock — Sheep/Goat", "Livestock — Swine", "Livestock — Poultry", "Greenhouse / Controlled Environment Agriculture (CEA)", "Mixed / Whole-farm", "Sector-agnostic (any agriculture)"], "allow_custom": true }
+  }
+}

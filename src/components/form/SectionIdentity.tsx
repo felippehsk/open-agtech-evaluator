@@ -1,0 +1,95 @@
+import { useState, useEffect } from 'react'
+import { useFormState } from '@/context/FormStateContext'
+import { getFieldsForSection } from '@/lib/fieldConfig'
+import { FieldWithEvidence } from '@/components/shared/FieldWithEvidence'
+import type { FieldResponse } from '@/lib/schema'
+
+const DEFAULT_RESPONSE: FieldResponse = { value: null, evidence_tag: 'unknown' }
+const BASE = import.meta.env.BASE_URL || '/'
+
+interface PlatformOption {
+  slug: string
+  name: string
+  company: string
+  category: string
+  country: string
+}
+
+export function SectionIdentity() {
+  const { state, setSectionField, dispatch } = useFormState()
+  const [platforms, setPlatforms] = useState<PlatformOption[]>([])
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    fetch(`${BASE}api/platforms.json`)
+      .then((r) => (r.ok ? r.json() : []))
+      .then((data) => {
+        setPlatforms(Array.isArray(data) ? data : [])
+      })
+      .catch(() => setPlatforms([]))
+      .finally(() => setLoading(false))
+  }, [])
+
+  const sectionData = state.draft.sections?.identity ?? {}
+  const selectedSlug = state.draft.meta?.platform_slug ?? ''
+  const selectedPlatform = platforms.find((p) => p.slug === selectedSlug)
+  const identityFields = getFieldsForSection('identity')
+
+  function handlePlatformChange(slug: string) {
+    const platform = platforms.find((p) => p.slug === slug)
+    dispatch({ type: 'SET_META', payload: { platform_slug: slug || undefined, platform_name: platform?.name } })
+    if (platform) {
+      dispatch({
+        type: 'SET_IDENTITY',
+        payload: {
+          company_developer: platform.company,
+          country_of_origin: platform.country,
+        },
+      })
+      setSectionField('identity', 'company_developer', { value: platform.company, evidence_tag: 'documentation_verified' })
+      setSectionField('identity', 'country_of_origin', { value: platform.country, evidence_tag: 'documentation_verified' })
+    }
+  }
+
+  return (
+    <div className="space-y-6">
+      <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Platform identity</h3>
+
+      <div>
+        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Platform</label>
+        <select
+          value={selectedSlug}
+          onChange={(e) => handlePlatformChange(e.target.value)}
+          disabled={loading}
+          className="mt-1 w-full max-w-md rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100"
+        >
+          <option value="">Select platform…</option>
+          {platforms.map((p) => (
+            <option key={p.slug} value={p.slug}>
+              {p.name} — {p.company}
+            </option>
+          ))}
+        </select>
+        {selectedPlatform && (
+          <p className="mt-1 text-xs text-slate-500">
+            {selectedPlatform.category} • {selectedPlatform.country}
+          </p>
+        )}
+      </div>
+
+      {identityFields.map((config) => {
+        const current = sectionData[config.key]
+        const value: FieldResponse = current ?? { ...DEFAULT_RESPONSE, value: config.type === 'multi_select' ? [] : null }
+        return (
+          <FieldWithEvidence
+            key={config.key}
+            config={config}
+            sectionKey="identity"
+            value={value}
+            onChange={(response) => setSectionField('identity', config.key, response)}
+          />
+        )
+      })}
+    </div>
+  )
+}
