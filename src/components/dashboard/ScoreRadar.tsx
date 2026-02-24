@@ -44,7 +44,7 @@ export function ScoreRadar({
   const selected = evaluations.filter((e) => selectedNames.includes(e.meta.platform_name))
   if (selected.length === 0) {
     return (
-      <div className="flex h-64 items-center justify-center rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-500">
+      <div className="flex h-64 items-center justify-center rounded-xl border border-dashed border-slate-200 bg-slate-50/50 text-sm text-slate-500 dark:border-slate-600 dark:bg-slate-800/50 dark:text-slate-400">
         Select platforms to compare (e.g. from the cards below).
       </div>
     )

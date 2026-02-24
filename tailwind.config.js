@@ -18,8 +18,16 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['JetBrains Mono', 'monospace'],
+        sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        mono: ['ui-monospace', 'monospace'],
+      },
+      borderRadius: {
+        xl: '1rem',
+        '2xl': '1.5rem',
+      },
+      boxShadow: {
+        'soft': '0 2px 15px -3px rgb(0 0 0 / 0.07), 0 10px 20px -2px rgb(0 0 0 / 0.04)',
+        'soft-dark': '0 2px 15px -3px rgb(0 0 0 / 0.2), 0 10px 20px -2px rgb(0 0 0 / 0.15)',
       },
     },
   },

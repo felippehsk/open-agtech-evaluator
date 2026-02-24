@@ -1,100 +1,105 @@
 # Open AgTech Evaluator
 
-Web app for **Olds College** (Alberta, Canada) course **AGT3510** — students evaluate off-the-shelf precision agriculture software. Includes an evaluation form (evidence-tagged, multi-section), dashboard with comparisons and radar charts, and optional submit-to-GitHub for storing evaluations in the repo.
-
-- **Tech:** React 18, TypeScript, Vite, Tailwind CSS, Recharts, React Router (hash), GitHub REST API (Octokit)
-- **Deploy:** Static site (e.g. GitHub Pages)
+Web app for **Olds College** (Alberta, Canada) course **AGT3510** — students evaluate off-the-shelf precision agriculture software. The app runs on **GitHub Pages**: fill the evaluation form, sign in with GitHub, and submit evaluations to this repository. The dashboard shows all evaluations and lets you compare platforms.
 
 ---
 
-## Quick start
+## Running on GitHub Pages
 
-```bash
-npm install
-npm run dev
-```
+The site is built and deployed automatically when you push to `main`.
 
-Open **http://localhost:5173/** — Dashboard, **New evaluation** for the form.
+### One-time setup (repo maintainer)
 
-On Windows if `node`/`npm` aren’t on PATH, use the helper script:
-
-```bat
-.\scripts\run-npm.bat install
-.\scripts\run-npm.bat run dev
-```
-
-If `node`/`npm` aren’t found or you see install errors, try a clean reinstall: remove `node_modules` and `package-lock.json`, then run `npm install` again (or use the script above with a system Node on PATH).
-
----
-
-## Scripts
-
-| Command | Description |
-|--------|-------------|
-| `npm run dev` | Aggregate evaluation data → `public/api/`, then start Vite dev server |
-| `npm run build` | Aggregate data, then production build to `dist/` |
-| `npm run preview` | Serve `dist/` locally |
-| `npm run aggregate` | Only run `scripts/aggregate-data.js` (copy registries, merge evaluations) |
-
----
-
-## Repository layout
-
-- **`src/`** — React app: form (identity → evidence), dashboard, layout, PAT sign-in
-- **`data/registries/`** — `platforms.json` (24 platforms), optional `options.json`
-- **`data/evaluations/`** — One folder per platform, JSON files per evaluation (used by aggregate script)
-- **`public/api/`** — Built by aggregate: `all_evaluations.json`, `platforms.json`, `options.json` (so the app doesn’t hit GitHub API at runtime)
-- **`scripts/aggregate-data.js`** — Run before dev/build; copies registries and merges all evaluation JSONs
-
----
-
-## Environment (optional)
-
-- `VITE_GITHUB_REPO_OWNER` — GitHub org/user (default: `OldsCollege`)
-- `VITE_GITHUB_REPO_NAME` — Repo name (default: `open-agtech-evaluator`)
-
-Used when submitting evaluations via GitHub (PAT with `repo` scope).
-
----
-
-## Deploy to GitHub Pages
-
-The app is set up to build and deploy as a static site on GitHub Pages.
-
-### One-time setup
-
-1. In your GitHub repo go to **Settings → Pages**.
+1. In the repo go to **Settings → Pages**.
 2. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
-3. If your default branch is `master` instead of `main`, edit [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and change `branches: [main]` to `branches: [master]`.
+3. If your default branch is `master` instead of `main`, edit [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and set `branches: [master]`.
 
 ### Deploying
 
-- **Automatic:** Push (or merge) to `main` — the workflow builds the app and deploys to GitHub Pages.
+- **Automatic:** Push or merge to `main` — the workflow builds and deploys.
 - **Manual:** **Actions** → **Deploy to GitHub Pages** → **Run workflow**.
 
-### URL
+### Live URL
 
-After the first successful run, the site is available at:
+After the first successful run:
 
-- **Project site:** `https://<owner>.github.io/<repo-name>/`  
+- **`https://<owner>.github.io/<repo-name>/`**  
   Example: `https://OldsCollege.github.io/open-agtech-evaluator/`
 
-The app uses hash routing and a configurable base URL, so it works correctly when served from that path.
+---
+
+## Sign in with GitHub (PAT)
+
+To **submit** an evaluation, you must sign in using a GitHub **Personal Access Token (PAT)**. The app does not store your password; it only uses the token to create or update the evaluation file in this repo.
+
+### How to create a PAT
+
+1. On GitHub: click your profile picture → **Settings** → **Developer settings** (left sidebar) → **Personal access tokens** → **Tokens (classic)**.
+2. Click **Generate new token (classic)**.
+3. Give it a name (e.g. `AGT3510 Evaluator`), choose an expiration, and under **Scopes** check **`repo`** (full control of private repositories). For a public repo, **`public_repo`** is enough.
+4. Click **Generate token**, then **copy the token** (it starts with `ghp_`). You won’t see it again.
+5. In the evaluator app, click **Sign in**, paste the token, and click **Sign in**. The token is kept only in your browser (session) and is sent to GitHub only when you submit.
+
+### Security
+
+- Do not share your PAT or commit it. Treat it like a password.
+- To revoke it later: GitHub **Settings** → **Developer settings** → **Personal access tokens** → revoke the token.
+
+---
+
+## Evaluation protocol & guidelines (for students)
+
+A **downloadable protocol document** explains how to fill out the form, how to use generative AI to draft answers (then verify and enter them), and includes **all form questions** and a **ready-to-use prompt** for Gen AI.
+
+- **In this repo:** `public/AGT3510_Evaluation_Protocol.md` (open or download from GitHub).
+- **On the live site:** Use the link **“Download evaluation protocol & Gen AI prompt”** on the form page; it opens the same file from the deployed site.
+
+The protocol covers: step-by-step workflow (Gen AI draft → verify → fill form), evidence tags, best practices, full question list, and a copy-paste prompt for ChatGPT/Claude/etc. so the AI can produce a structured draft for a chosen platform.
+
+---
+
+## What the evaluations cover
+
+Each evaluation is a structured assessment of one **platform** (one software product) and is saved as a single JSON file in this repo.
+
+### Form sections
+
+| Section | What it captures |
+|--------|-------------------|
+| **Platform identity** | Platform name (from a fixed list), version evaluated, company, country, platform type, primary agricultural focus, website. |
+| **1. Data ingestion** | Supported file formats (shapefile, GeoTIFF, CSV, ISOXML, proprietary), yield monitor import, satellite/drone imagery, weather, telematics, unit system, ease of import. |
+| **2A. Spatial & temporal** | Spatial/temporal filtering, multi-layer overlay, coordinate system handling. |
+| **2B. Yield & agronomic** | Yield cleaning, calibration, vegetation indices, zones, VRA prescriptions, export formats, interpolation, scouting, profit/loss mapping. |
+| **2C. Livestock** *(if focus includes livestock)* | Individual animal records, RFID, breeding/health/grazing/weight, traceability. |
+| **2D. Greenhouse / CEA** *(if focus includes CEA)* | Climate control, irrigation/fertigation, growth stage, labour, production planning. |
+| **2E. Financial** | Income/expense tracking, cost of production, profitability, accounting integration. |
+| **3. Data export** | Geospatial/tabular/proprietary export, batch export, time to first map. |
+| **4. Integration** | Direct integrations, API, ISOBUS, OEM compatibility, hardware dependency, ADAPT. |
+| **5. Data governance** | Ownership, portability, deletion, sharing, Ag Data Transparent, storage location, security. |
+| **6. Access** | Multi-user, roles, offline, mobile, storage quotas. |
+| **7. Pricing** | Model, free tier, trials, educational access, contracts, cost to leave, standardized cost. |
+| **8. Usability** | Onboarding, documentation, training, support channels, languages. |
+| **9. Critical assessment** | Strongest/weakest capability, best/worst suited for, differentiator, recommendation, AI verification counts. |
+| **10. Evidence & submit** | Source types used, doc URLs, hands-on notes, total hours; then **Submit to GitHub**. |
+
+Every substantive answer includes an **evidence tag** (e.g. hands-on verified, documentation, third-party) and optional source URL. Some sections have an **AI hallucination check** if AI was used to pre-fill.
+
+### Platforms (24)
+
+The platform list includes: John Deere Operations Center, CNH AFS Connect, Ag Leader SMS Advanced, PTx Trimble FarmENGAGE, AGCO Fuse, Climate FieldView, Cropwise, TELUS Agriculture, Farmers Edge, GeoPard, Agworld, AgExpert, Sentera FieldAgent, Pix4Dfields, EOSDA Crop Monitoring, DroneDeploy, Traction Ag, Figured, Priva Connext, GrowDirector, TELUS Animal Record Management, AgriWebb, Farmbrite, farmOS. Choose one per evaluation.
+
+### Saving and continuing
+
+- **Auto-save:** Progress is saved in your browser as you go. Return on the same device/browser to continue.
+- **Download draft:** In section 10 you can download the current draft as a JSON file (backup or move to another device).
+- **Load draft:** Upload a previously downloaded draft to restore it and keep editing.
 
 ---
 
 ## Licensing & attribution
 
-- **Code and design:** [MIT License](LICENSE)  
-  © Olds College — Werklund School of Agriculture Technology
-
-- **Evaluation data** (e.g. JSON in `data/evaluations/` and aggregated outputs): **CC BY-NC-SA 4.0** (attribution, non-commercial, share-alike). Evaluations are for educational use; they are not an endorsement of any platform.
-
----
-
-## Tags / topics
-
-**agriculture** · **precision-ag** · **agtech** · **education** · **olds-college** · **evaluation-form** · **react** · **vite** · **typescript** · **github-pages**
+- **Code:** [MIT License](LICENSE) — © Olds College, Werklund School of Agriculture Technology.
+- **Evaluation data:** CC BY-NC-SA 4.0. Evaluations are for educational use and are not an endorsement of any platform.
 
 ---
 

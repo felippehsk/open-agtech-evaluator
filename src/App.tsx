@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { HashRouter, Routes, Route, Outlet } from 'react-router-dom'
 import { FormStateProvider, useFormState } from '@/context/FormStateContext'
+import { ThemeProvider } from '@/context/ThemeContext'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { PATModal } from '@/components/PATModal'
@@ -15,7 +16,7 @@ function Layout() {
   const { setEvaluator } = useFormState()
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-50 dark:bg-slate-900">
+    <div className="flex min-h-screen flex-col bg-slate-100 dark:bg-slate-900">
       <Header
         onSignIn={() => setPatOpen(true)}
         signedInAs={signedInUser}
@@ -38,8 +39,9 @@ function Layout() {
 
 export default function App() {
   return (
-    <FormStateProvider>
-      <HashRouter
+    <ThemeProvider>
+      <FormStateProvider>
+        <HashRouter
         future={{
           v7_startTransition: true,
           v7_relativeSplatPath: true,
@@ -54,5 +56,6 @@ export default function App() {
         </Routes>
       </HashRouter>
     </FormStateProvider>
+    </ThemeProvider>
   )
 }
