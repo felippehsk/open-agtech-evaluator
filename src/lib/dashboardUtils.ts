@@ -56,8 +56,8 @@ export function getPriceBadge(e: Evaluation): PriceBadge {
   const freeTier = getSectionString(e, 'pricing', 'free_tier_available').toLowerCase()
   if (models.some((m) => m.toLowerCase().includes('free') && !m.toLowerCase().includes('freemium')) || freeTier === 'yes') return 'FREE'
   if (models.some((m) => m.toLowerCase().includes('freemium')) || freeTier.includes('partial')) return 'FREEMIUM'
-  if (models.some((m) => /per-acre|per-head|flat subscription|per-seat/i.test(m)))) return '$'
-  if (models.some((m) => /custom|enterprise/i.test(m)))) return '$$$'
+  if (models.some((m) => /per-acre|per-head|flat subscription|per-seat/i.test(m))) return '$'
+  if (models.some((m) => /custom|enterprise/i.test(m))) return '$$$'
   return null
 }
 
