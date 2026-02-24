@@ -4,7 +4,7 @@
   <img src="icon.png" alt="Open AgTech Evaluator logo" width="120" />
 </p>
 
-**Open AgTech Evaluator** is a web app for **Olds College** (Alberta, Canada) course **AGT3510**. Students evaluate off-the-shelf precision agriculture software. The app runs on **GitHub Pages**: fill the evaluation form, sign in with GitHub, and submit evaluations to this repository. The dashboard shows all evaluations and lets you compare platforms.
+**Open AgTech Evaluator** is a web app for **Olds College of Agriculture & Technology** (Alberta, Canada) course **AGT3510 - Integrating Precision Farming II**. Students evaluate off-the-shelf precision agriculture software. The app runs on **GitHub Pages**: fill the evaluation form, sign in with GitHub, and submit evaluations to this repository. The dashboard shows all evaluations and lets you compare platforms.
 
 **Live dashboard:** [https://felippehsk.github.io/open-agtech-evaluator/](https://felippehsk.github.io/open-agtech-evaluator/)
 
@@ -29,7 +29,7 @@ To **submit** an evaluation, you must sign in using a GitHub **Personal Access T
 
 ---
 
-## Evaluation protocol & guidelines (for students)
+## Evaluation protocol & guidelines
 
 A **downloadable protocol document** explains how to fill out the form, how to use generative AI to draft answers (then verify and enter them), and includes **all form questions** and a **ready-to-use prompt** for Gen AI.
 
