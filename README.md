@@ -27,7 +27,7 @@ To **submit** an evaluation, you must sign in using a GitHub **Personal Access T
 
 ---
 
-## Evaluation protocol & guidelines (for students)
+## Evaluation protocol & guidelines
 
 A **downloadable protocol document** explains how to fill out the form, how to use generative AI to draft answers (then verify and enter them), and includes **all form questions** and a **ready-to-use prompt** for Gen AI.
 
