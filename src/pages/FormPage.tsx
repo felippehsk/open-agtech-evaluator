@@ -7,6 +7,7 @@ import { SectionIdentity } from '@/components/form/SectionIdentity'
 import { SectionFromConfig } from '@/components/form/SectionFromConfig'
 import { SectionAssessment } from '@/components/form/SectionAssessment'
 import { SectionEvidence } from '@/components/form/SectionEvidence'
+import { InfoTip } from '@/components/shared/InfoTip'
 
 const SECTION_TITLES_BASE: Record<string, string> = {
   identity: 'Platform identity',
@@ -80,7 +81,10 @@ export function FormPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
-        <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Platform evaluation form</h1>
+        <h1 className="flex items-center gap-2 text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">
+          Platform evaluation form
+          <InfoTip text="One evaluation per platform. For each answer, choose an evidence tag (how you verified it) and add a source URL when possible. Your progress is saved in this browser; use section 10 to submit to the course repository." placement="bottom" />
+        </h1>
         <Link to="/" className="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm transition hover:bg-slate-50 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">
           ← Dashboard
         </Link>
@@ -90,11 +94,11 @@ export function FormPage() {
         <p className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-600 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-300 dark:shadow-soft-dark">
           Your progress is saved automatically on this browser. Use <strong>Download draft</strong> (in Evidence & submit) to backup or move to another device; use <strong>Load draft</strong> to restore.
         </p>
-        <p className="text-sm text-slate-600 dark:text-slate-400">
+        <p className="flex flex-wrap items-center gap-1.5 text-sm text-slate-600 dark:text-slate-400">
           <Link to="/protocol" className="font-medium text-primary hover:underline">
             Evaluation protocol & Gen AI prompt
           </Link>
-          {' '}
+          <InfoTip text="Step-by-step instructions, the full question list, and a copy-paste prompt for ChatGPT/Claude to draft answers. You must verify every answer before entering it here." placement="bottom" />
           — guidelines, all questions, and a prompt to use with ChatGPT/Claude to draft answers before you verify and fill the form.
         </p>
       </div>

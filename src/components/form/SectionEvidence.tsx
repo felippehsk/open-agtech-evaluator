@@ -6,6 +6,7 @@ import { commitEvaluation } from '@/lib/github'
 import { buildEvaluation } from '@/lib/buildEvaluation'
 import { SOURCE_TYPES_USED } from '@/lib/fieldConfig'
 import { cn } from '@/lib/utils'
+import { InfoTip } from '@/components/shared/InfoTip'
 
 const DRAFT_STORAGE_KEY = 'agt3510_evaluation_draft'
 
@@ -127,7 +128,10 @@ export function SectionEvidence() {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Evidence log & submit</h3>
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
+        Evidence log & submit
+        <InfoTip text="List the source types you used and sign in with GitHub (PAT) to submit. Your evaluation will be saved to the course repository; the evaluator name comes from your GitHub account." placement="bottom" />
+      </h3>
       <p className="text-sm text-slate-600 dark:text-slate-400">
         Confirm your evaluator name (GitHub username), total hours, and sources. Then submit to save this evaluation to the repository.
       </p>

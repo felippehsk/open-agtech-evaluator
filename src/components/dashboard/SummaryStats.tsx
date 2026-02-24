@@ -1,6 +1,6 @@
 import type { Evaluation } from '@/lib/schema'
 import { getEvidenceQuality, oneEvaluationPerPlatform } from '@/lib/dashboardUtils'
-import { InfoTip } from './InfoTip'
+import { InfoTip } from '@/components/shared/InfoTip'
 
 interface SummaryStatsProps {
   evaluations: Evaluation[]
@@ -49,15 +49,15 @@ export function SummaryStats({ evaluations, className = '' }: SummaryStatsProps)
   ]
 
   return (
-    <div className={`sticky top-0 z-10 flex flex-wrap gap-3 border-b border-slate-200 bg-slate-50/95 py-4 backdrop-blur dark:border-slate-700 dark:bg-slate-900/95 ${className}`}>
+    <div className={`sticky top-0 z-10 flex flex-wrap gap-3 overflow-visible border-b border-slate-200 bg-slate-50/95 py-4 backdrop-blur dark:border-slate-700 dark:bg-slate-900/95 ${className}`}>
       {cards.map(({ label, value }) => (
         <div
           key={label}
-          className="rounded-xl border border-slate-200 bg-white px-4 py-2.5 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark"
+          className="overflow-visible rounded-xl border border-slate-200 bg-white px-4 py-2.5 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark"
         >
           <p className="flex items-center gap-1.5 text-xs font-medium text-slate-500 dark:text-slate-400">
             {label}
-            <InfoTip text={STAT_TOOLTIPS[label] ?? ''} />
+            <InfoTip text={STAT_TOOLTIPS[label] ?? ''} placement="bottom" />
           </p>
           <p className="text-lg font-semibold text-slate-900 dark:text-slate-100">{value}</p>
         </div>

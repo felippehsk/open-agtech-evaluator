@@ -1,6 +1,7 @@
 import type { EvidenceTag, FieldResponse } from '@/lib/schema'
 import type { FieldConfig } from '@/lib/fieldConfig'
 import { EvidenceTagSelect } from './EvidenceTagSelect'
+import { InfoTip } from './InfoTip'
 import { cn } from '@/lib/utils'
 
 interface FieldWithEvidenceProps {
@@ -185,7 +186,10 @@ export function FieldWithEvidence({ config, sectionKey, value, onChange, disable
       )}
 
       <div className="mt-2 flex flex-wrap items-center gap-3">
-        <EvidenceTagSelect value={value.evidence_tag} onChange={updateTag} disabled={disabled} />
+        <span className="flex items-center gap-1.5">
+          <EvidenceTagSelect value={value.evidence_tag} onChange={updateTag} disabled={disabled} />
+          <InfoTip text="How did you verify this answer? Hands-on = you tested it; Documentation = official docs; Vendor-claimed = only marketing; Unknown = could not confirm." placement="top" />
+        </span>
         <input
           type="url"
           value={value.source_url ?? ''}
