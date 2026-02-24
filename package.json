@@ -2,7 +2,7 @@
   "name": "open-agtech-evaluator",
   "private": true,
   "version": "0.0.1",
-  "description": "AGT3510 platform evaluation form and dashboard — Olds College",
+  "description": "Open AgTech Evaluator — platform evaluation form and dashboard for Olds College (AGT3510)",
   "keywords": [
     "agriculture",
     "precision-ag",

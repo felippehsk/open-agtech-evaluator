@@ -4,7 +4,7 @@
   <img src="icon.png" alt="Open AgTech Evaluator logo" width="120" />
 </p>
 
-Web app for **Olds College** (Alberta, Canada) course **AGT3510** — students evaluate off-the-shelf precision agriculture software. The app runs on **GitHub Pages**: fill the evaluation form, sign in with GitHub, and submit evaluations to this repository. The dashboard shows all evaluations and lets you compare platforms.
+**Open AgTech Evaluator** is a web app for **Olds College** (Alberta, Canada) course **AGT3510**. Students evaluate off-the-shelf precision agriculture software. The app runs on **GitHub Pages**: fill the evaluation form, sign in with GitHub, and submit evaluations to this repository. The dashboard shows all evaluations and lets you compare platforms.
 
 **Live dashboard:** [https://felippehsk.github.io/open-agtech-evaluator/](https://felippehsk.github.io/open-agtech-evaluator/)
 
@@ -18,7 +18,7 @@ To **submit** an evaluation, you must sign in using a GitHub **Personal Access T
 
 1. On GitHub: click your profile picture → **Settings** → **Developer settings** (left sidebar) → **Personal access tokens** → **Tokens (classic)**.
 2. Click **Generate new token (classic)**.
-3. Give it a name (e.g. `AGT3510 Evaluator`), choose an expiration, and under **Scopes** check **`repo`** (full control of private repositories). For a public repo, **`public_repo`** is enough.
+3. Give it a name (e.g. `Open AgTech Evaluator`), choose an expiration, and under **Scopes** check **`repo`** (full control of private repositories). For a public repo, **`public_repo`** is enough.
 4. Click **Generate token**, then **copy the token** (it starts with `ghp_`). You won’t see it again.
 5. In the evaluator app, click **Sign in**, paste the token, and click **Sign in**. The token is kept only in your browser (session) and is sent to GitHub only when you submit.
 

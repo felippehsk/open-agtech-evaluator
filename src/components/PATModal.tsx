@@ -70,7 +70,7 @@ export function PATModal({ open, onClose, onSuccess }: PATModalProps) {
           <ol className="mt-2 list-decimal space-y-1 pl-4 text-xs text-slate-600 dark:text-slate-400">
             <li>On GitHub: click your profile picture → <strong>Settings</strong> → <strong>Developer settings</strong> (left sidebar) → <strong>Personal access tokens</strong> → <strong>Tokens (classic)</strong>.</li>
             <li>Click <strong>Generate new token (classic)</strong>.</li>
-            <li>Give it a name (e.g. “AGT3510 Evaluator”), choose an expiration, and under <strong>Scopes</strong> check <strong><code>repo</code></strong> (for a public repo, <code>public_repo</code> is enough).</li>
+            <li>Give it a name (e.g. “Open AgTech Evaluator”), choose an expiration, and under <strong>Scopes</strong> check <strong><code>repo</code></strong> (for a public repo, <code>public_repo</code> is enough).</li>
             <li>Click <strong>Generate token</strong>, then <strong>copy the token</strong> (it starts with <code>ghp_</code>). You won’t see it again.</li>
             <li>Paste the token below and click Sign in. The token is kept only in your browser for this session and is sent to GitHub only when you submit.</li>
           </ol>
