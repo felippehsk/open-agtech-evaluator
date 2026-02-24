@@ -6,6 +6,7 @@
   { "slug": "agco-fuse-precision-planting", "name": "AGCO Fuse / Precision Planting", "company": "AGCO Corporation", "category": "Large Machinery", "country": "United States" },
   { "slug": "climate-fieldview", "name": "Climate FieldView", "company": "Bayer Crop Science", "category": "Ag Input", "country": "United States" },
   { "slug": "cropwise", "name": "Cropwise", "company": "Syngenta", "category": "Ag Input", "country": "Switzerland" },
+  { "slug": "xarvio", "name": "Xarvio", "company": "BASF", "category": "Ag Input", "country": "Germany" },
   { "slug": "telus-agriculture", "name": "TELUS Agriculture", "company": "TELUS", "category": "Data-Driven Agronomic", "country": "Canada" },
   { "slug": "farmers-edge-farmcommand", "name": "Farmers Edge (FarmCommand)", "company": "Farmers Edge", "category": "Data-Driven Agronomic", "country": "Canada" },
   { "slug": "geopard-agriculture", "name": "GeoPard Agriculture", "company": "GeoPard", "category": "Data-Driven Agronomic", "country": "Netherlands" },

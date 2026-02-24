@@ -75,7 +75,7 @@ The platform list includes 24 predefined platforms (John Deere Operations Center
 ## Licensing & attribution
 
 - **Code:** [MIT License](LICENSE) — © Olds College of Agriculture & Technology.
-- **Evaluation data:** CC BY-NC-SA 4.0. Evaluations are for educational use and are not an endorsement of any platform.
+- **Evaluation data:** [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) (Attribution-NonCommercial-ShareAlike 4.0 International). See [LICENSE-EVALUATIONS](LICENSE-EVALUATIONS) in this repo. Evaluations are for educational use and are not an endorsement of any platform.
 
 ---
 

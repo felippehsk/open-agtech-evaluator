@@ -8,33 +8,16 @@ import {
   Legend,
   Tooltip,
 } from 'recharts'
-import { calculateSectionScore } from '@/lib/scoring'
 import type { Evaluation } from '@/lib/schema'
+import { getRadarScores } from '@/lib/dashboardUtils'
 
-const SECTION_LABELS: Record<string, string> = {
-  ingestion: 'Ingestion',
-  processing_2a: 'Spatial',
-  processing_2b: 'Yield',
-  export: 'Export',
-  integration: 'Integration',
-  governance: 'Governance',
-  access: 'Access',
-  pricing: 'Pricing',
-  usability: 'Usability',
-}
-
-const SECTION_KEYS = ['ingestion', 'processing_2a', 'processing_2b', 'export', 'integration', 'governance', 'access', 'pricing', 'usability'] as const
-
+/** 6 axes: Ingestion, Processing, Export, Integration, Governance, Usability (same as MiniRadar). */
 function evaluationToRadarPoints(e: Evaluation): { section: string; score: number; fullMark: number }[] {
-  return SECTION_KEYS.map((key) => {
-    const sec = e.sections?.[key]
-    const s = sec ? calculateSectionScore(sec) : { evidence_weighted_score: 0 }
-    return {
-      section: SECTION_LABELS[key] ?? key,
-      score: Math.round(s.evidence_weighted_score * 100),
-      fullMark: 100,
-    }
-  })
+  return getRadarScores(e).map(({ section, score }) => ({
+    section,
+    score,
+    fullMark: 100,
+  }))
 }
 
 export function ScoreRadar({
@@ -53,13 +36,12 @@ export function ScoreRadar({
     )
   }
 
-  const dataBySection = SECTION_KEYS.map((key) => {
-    const point: Record<string, string | number> = {
-      section: SECTION_LABELS[key] ?? key,
-    }
+  const radarSections = ['Ingestion', 'Processing', 'Export', 'Integration', 'Governance', 'Usability']
+  const dataBySection = radarSections.map((sectionName) => {
+    const point: Record<string, string | number> = { section: sectionName }
     selected.forEach((e) => {
       const pts = evaluationToRadarPoints(e)
-      const p = pts.find((x) => x.section === point.section)
+      const p = pts.find((x) => x.section === sectionName)
       point[e.meta.platform_name] = p?.score ?? 0
     })
     return point
