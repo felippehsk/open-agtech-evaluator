@@ -16,7 +16,7 @@ Each evaluation is a structured assessment of one precision-ag software platform
 | Step | What to do |
 |------|------------|
 | **1. Choose your platform** | Pick one platform from the class list (e.g. Ag Leader SMS Advanced, Climate FieldView, AgriWebb). |
-| **2. Download this document** | Save this file (or the “Prompt for generative AI” section) so you can copy the prompt. |
+| **2. Get the Gen AI prompt** | Open this document and go to **Section 7 (Prompt for generative AI)** below. Copy only the prompt block from that section — you do not need to give the AI the full document. |
 | **3. Run the Gen AI prompt** | Open your preferred generative AI tool (e.g. ChatGPT, Claude, Copilot). Paste the prompt from **Section 7** below and replace `[PLATFORM NAME]` with your platform. Run the prompt and save the AI’s response as a **draft**. |
 | **4. Treat the draft as a starting point** | The AI may be wrong or outdated. Do **not** copy answers into the form without checking. |
 | **5. Verify each answer** | For every question: find the information yourself using official documentation, a trial account, or a trusted third-party source. Note where you found it (URL or source type). |
@@ -171,7 +171,7 @@ Below is a concise list of every question on the form. Use it as a checklist whe
 
 ## 7. Prompt for generative AI
 
-**Instructions:** Copy the entire block below into your generative AI tool. Replace `[PLATFORM NAME]` with the exact name of the platform you are evaluating (e.g. “Ag Leader SMS Advanced” or “Climate FieldView”). The AI will produce a draft of answers. Use this draft only as a starting point; you must verify every answer and then enter the verified answers into the online form yourself, with the correct evidence tags and source URLs.
+**Instructions:** Copy only the prompt block below (the code block) into your generative AI tool. Do not paste the full protocol document. Replace `[PLATFORM NAME]` with the exact name of the platform you are evaluating (e.g. “Ag Leader SMS Advanced” or “Climate FieldView”). The AI will produce a draft of answers. Use this draft only as a starting point; you must verify every answer and then enter the verified answers into the online form yourself, with the correct evidence tags and source URLs.
 
 ---
 
