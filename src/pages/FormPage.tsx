@@ -85,9 +85,9 @@ export function FormPage() {
           Your progress is saved automatically on this browser. Use <strong>Download draft</strong> (in Evidence & submit) to backup or move to another device; use <strong>Load draft</strong> to restore.
         </p>
         <p className="text-sm text-slate-600 dark:text-slate-400">
-          <a href={`${import.meta.env.BASE_URL || '/'}AGT3510_Evaluation_Protocol.md`} target="_blank" rel="noopener noreferrer" className="font-medium text-primary hover:underline">
-            Download evaluation protocol & Gen AI prompt
-          </a>
+          <Link to="/protocol" className="font-medium text-primary hover:underline">
+            Evaluation protocol & Gen AI prompt
+          </Link>
           {' '}
           — guidelines, all questions, and a prompt to use with ChatGPT/Claude to draft answers before you verify and fill the form.
         </p>

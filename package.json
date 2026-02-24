@@ -3,7 +3,17 @@
   "private": true,
   "version": "0.0.1",
   "description": "AGT3510 platform evaluation form and dashboard — Olds College",
-  "keywords": ["agriculture", "precision-ag", "agtech", "education", "olds-college", "evaluation-form", "react", "vite", "typescript"],
+  "keywords": [
+    "agriculture",
+    "precision-ag",
+    "agtech",
+    "education",
+    "olds-college",
+    "evaluation-form",
+    "react",
+    "vite",
+    "typescript"
+  ],
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -14,14 +24,16 @@
   },
   "dependencies": {
     "@octokit/rest": "^21.0.2",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^2.5.4",
     "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "lucide-react": "^0.454.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-markdown": "^10.1.0",
     "react-router-dom": "^6.28.0",
-    "recharts": "^2.13.3"
+    "recharts": "^2.13.3",
+    "remark-gfm": "^4.0.1",
+    "tailwind-merge": "^2.5.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.12",

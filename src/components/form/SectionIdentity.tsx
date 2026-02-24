@@ -35,10 +35,13 @@ export function SectionIdentity() {
   const selectedPlatform = platforms.find((p) => p.slug === selectedSlug)
   const identityFields = getFieldsForSection('identity')
 
+  const isOther = selectedSlug === 'other'
+  const customPlatformName = (isOther && state.draft.meta?.platform_name) || ''
+
   function handlePlatformChange(slug: string) {
     const platform = platforms.find((p) => p.slug === slug)
-    dispatch({ type: 'SET_META', payload: { platform_slug: slug || undefined, platform_name: platform?.name } })
-    if (platform) {
+    dispatch({ type: 'SET_META', payload: { platform_slug: slug || undefined, platform_name: platform?.name ?? undefined } })
+    if (platform && platform.slug !== 'other') {
       dispatch({
         type: 'SET_IDENTITY',
         payload: {
@@ -48,7 +51,14 @@ export function SectionIdentity() {
       })
       setSectionField('identity', 'company_developer', { value: platform.company, evidence_tag: 'documentation_verified' })
       setSectionField('identity', 'country_of_origin', { value: platform.country, evidence_tag: 'documentation_verified' })
+    } else if (platform?.slug === 'other') {
+      setSectionField('identity', 'company_developer', { value: '', evidence_tag: 'unknown' })
+      setSectionField('identity', 'country_of_origin', { value: '', evidence_tag: 'unknown' })
     }
+  }
+
+  function handleOtherPlatformName(name: string) {
+    dispatch({ type: 'SET_META', payload: { platform_name: name || undefined } })
   }
 
   return (
@@ -70,10 +80,27 @@ export function SectionIdentity() {
             </option>
           ))}
         </select>
-        {selectedPlatform && (
+        {selectedPlatform && !isOther && (
           <p className="mt-1 text-xs text-slate-500">
             {selectedPlatform.category} • {selectedPlatform.country}
           </p>
+        )}
+        {isOther && (
+          <div className="mt-3 space-y-2">
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+              Specify platform name <span className="text-red-500">*</span>
+            </label>
+            <input
+              type="text"
+              value={customPlatformName}
+              onChange={(e) => handleOtherPlatformName(e.target.value)}
+              placeholder="e.g. Acme Farm Software"
+              className="w-full max-w-md rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100"
+            />
+            <p className="text-xs text-slate-500">
+              Company and country can be entered in the fields below.
+            </p>
+          </div>
         )}
       </div>
 

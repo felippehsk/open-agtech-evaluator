@@ -4,30 +4,6 @@ Web app for **Olds College** (Alberta, Canada) course **AGT3510** — students e
 
 ---
 
-## Running on GitHub Pages
-
-The site is built and deployed automatically when you push to `main`.
-
-### One-time setup (repo maintainer)
-
-1. In the repo go to **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions** (not “Deploy from a branch”).
-3. If your default branch is `master` instead of `main`, edit [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) and set `branches: [master]`.
-
-### Deploying
-
-- **Automatic:** Push or merge to `main` — the workflow builds and deploys.
-- **Manual:** **Actions** → **Deploy to GitHub Pages** → **Run workflow**.
-
-### Live URL
-
-After the first successful run:
-
-- **`https://<owner>.github.io/<repo-name>/`**  
-  Example: `https://OldsCollege.github.io/open-agtech-evaluator/`
-
----
-
 ## Sign in with GitHub (PAT)
 
 To **submit** an evaluation, you must sign in using a GitHub **Personal Access Token (PAT)**. The app does not store your password; it only uses the token to create or update the evaluation file in this repo.
@@ -66,7 +42,7 @@ Each evaluation is a structured assessment of one **platform** (one software pro
 
 | Section | What it captures |
 |--------|-------------------|
-| **Platform identity** | Platform name (from a fixed list), version evaluated, company, country, platform type, primary agricultural focus, website. |
+| **Platform identity** | Platform name (from list or “Other” with custom name), version evaluated, company, country, platform type, primary agricultural focus, website. |
 | **1. Data ingestion** | Supported file formats (shapefile, GeoTIFF, CSV, ISOXML, proprietary), yield monitor import, satellite/drone imagery, weather, telematics, unit system, ease of import. |
 | **2A. Spatial & temporal** | Spatial/temporal filtering, multi-layer overlay, coordinate system handling. |
 | **2B. Yield & agronomic** | Yield cleaning, calibration, vegetation indices, zones, VRA prescriptions, export formats, interpolation, scouting, profit/loss mapping. |
@@ -84,9 +60,9 @@ Each evaluation is a structured assessment of one **platform** (one software pro
 
 Every substantive answer includes an **evidence tag** (e.g. hands-on verified, documentation, third-party) and optional source URL. Some sections have an **AI hallucination check** if AI was used to pre-fill.
 
-### Platforms (24)
+### Platforms
 
-The platform list includes: John Deere Operations Center, CNH AFS Connect, Ag Leader SMS Advanced, PTx Trimble FarmENGAGE, AGCO Fuse, Climate FieldView, Cropwise, TELUS Agriculture, Farmers Edge, GeoPard, Agworld, AgExpert, Sentera FieldAgent, Pix4Dfields, EOSDA Crop Monitoring, DroneDeploy, Traction Ag, Figured, Priva Connext, GrowDirector, TELUS Animal Record Management, AgriWebb, Farmbrite, farmOS. Choose one per evaluation.
+The platform list includes 24 predefined platforms (John Deere Operations Center, CNH AFS Connect, Ag Leader SMS Advanced, and others) plus **Other (specify)** so you can add a platform not on the list. Custom platform names are stored in the evaluation and can be added to the official list later. The same applies to **Other (specify)** in dropdowns: your custom text is saved and can be incorporated into the option registry for future use.
 
 ### Saving and continuing
 
@@ -98,7 +74,7 @@ The platform list includes: John Deere Operations Center, CNH AFS Connect, Ag Le
 
 ## Licensing & attribution
 
-- **Code:** [MIT License](LICENSE) — © Olds College, Werklund School of Agriculture Technology.
+- **Code:** [MIT License](LICENSE) — © Olds College of Agriculture & Technology.
 - **Evaluation data:** CC BY-NC-SA 4.0. Evaluations are for educational use and are not an endorsement of any platform.
 
 ---

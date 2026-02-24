@@ -22,5 +22,6 @@
   { "slug": "telus-animal-record-management", "name": "TELUS Animal Record Management", "company": "TELUS Agriculture", "category": "Livestock", "country": "Canada" },
   { "slug": "agriwebb", "name": "AgriWebb", "company": "AgriWebb", "category": "Livestock", "country": "Australia" },
   { "slug": "farmbrite", "name": "Farmbrite", "company": "Farmbrite", "category": "Livestock", "country": "United States" },
-  { "slug": "farmos", "name": "farmOS", "company": "Community (open source)", "category": "Open-Source", "country": "United States" }
+  { "slug": "farmos", "name": "farmOS", "company": "Community (open source)", "category": "Open-Source", "country": "United States" },
+  { "slug": "other", "name": "Other (specify)", "company": "", "category": "Other", "country": "" }
 ]

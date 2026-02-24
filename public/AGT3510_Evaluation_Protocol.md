@@ -1,6 +1,6 @@
 # AGT3510 Evaluation Protocol & Guidelines
 
-**Olds College — Werklund School of Agriculture Technology**  
+**Olds College of Agriculture & Technology**  
 This document explains how to complete a platform evaluation: use generative AI to draft answers, then verify and enter them in the online form.
 
 ---

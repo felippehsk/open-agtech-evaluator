@@ -23,6 +23,7 @@ interface FieldWithEvidenceProps {
 }
 
 const RATING_OPTIONS = [1, 2, 3, 4, 5]
+const OTHER_SPECIFY = 'Other (specify)'
 
 export function FieldWithEvidence({ config, sectionKey, value, onChange, disabled }: FieldWithEvidenceProps) {
   const { key: fieldKey, label, type, options = [], placeholder, maxLength, ratingLabels } = config
@@ -30,6 +31,15 @@ export function FieldWithEvidence({ config, sectionKey, value, onChange, disable
   function updateValue(val: string | string[] | number | null) {
     onChange({ ...value, value: val })
   }
+
+  function updateNotes(notes: string) {
+    onChange({ ...value, notes: notes || undefined })
+  }
+
+  const showOtherSpecify =
+    (type === 'single_select' && strVal === OTHER_SPECIFY) ||
+    (type === 'multi_select' && arrVal.includes(OTHER_SPECIFY))
+  const otherNotes = value.notes ?? ''
 
   function updateTag(tag: EvidenceTag) {
     onChange({ ...value, evidence_tag: tag })
@@ -94,17 +104,29 @@ export function FieldWithEvidence({ config, sectionKey, value, onChange, disable
       )}
 
       {type === 'single_select' && (
-        <select
-          value={strVal}
-          onChange={(e) => updateValue(e.target.value || null)}
-          disabled={disabled}
-          className="w-full max-w-md rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100"
-        >
-          <option value="">Select…</option>
-          {options.map((opt) => (
-            <option key={opt} value={opt}>{opt}</option>
-          ))}
-        </select>
+        <>
+          <select
+            value={strVal}
+            onChange={(e) => updateValue(e.target.value || null)}
+            disabled={disabled}
+            className="w-full max-w-md rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100"
+          >
+            <option value="">Select…</option>
+            {options.map((opt) => (
+              <option key={opt} value={opt}>{opt}</option>
+            ))}
+          </select>
+          {showOtherSpecify && (
+            <input
+              type="text"
+              value={otherNotes}
+              onChange={(e) => updateNotes(e.target.value)}
+              placeholder="Please specify:"
+              disabled={disabled}
+              className="mt-2 w-full max-w-md rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100"
+            />
+          )}
+        </>
       )}
 
       {type === 'multi_select' && (
@@ -136,6 +158,16 @@ export function FieldWithEvidence({ config, sectionKey, value, onChange, disable
             )
           })}
         </div>
+      )}
+      {type === 'multi_select' && showOtherSpecify && (
+        <input
+          type="text"
+          value={otherNotes}
+          onChange={(e) => updateNotes(e.target.value)}
+          placeholder="Please specify:"
+          disabled={disabled}
+          className="mt-2 w-full max-w-md rounded border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-800 px-3 py-2 text-sm text-slate-900 dark:text-slate-100"
+        />
       )}
 
       {type === 'rating' && (

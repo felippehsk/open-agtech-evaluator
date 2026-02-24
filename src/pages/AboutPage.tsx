@@ -9,7 +9,7 @@ export function AboutPage() {
           visualizes and compares platforms. Evaluations are educational and not an endorsement.
         </p>
         <p className="mt-4 text-sm text-slate-500 dark:text-slate-400">
-          © Olds College — Werklund School of Agriculture Technology. Code: MIT. Data: CC BY-NC-SA 4.0.
+          © Olds College of Agriculture & Technology. Code: MIT. Data: CC BY-NC-SA 4.0.
         </p>
       </div>
     </div>

@@ -9,6 +9,8 @@ import { getStoredUsername } from '@/components/PATModal'
 import { DashboardPage } from '@/pages/DashboardPage'
 import { FormPage } from '@/pages/FormPage'
 import { AboutPage } from '@/pages/AboutPage'
+import { ProtocolPage } from '@/pages/ProtocolPage'
+import { EvaluationDetailPage } from '@/pages/EvaluationDetailPage'
 
 function Layout() {
   const [signedInUser, setSignedInUser] = useState<string | null>(() => getStoredUsername())
@@ -51,6 +53,8 @@ export default function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<DashboardPage />} />
             <Route path="form" element={<FormPage />} />
+            <Route path="protocol" element={<ProtocolPage />} />
+            <Route path="evaluation/:index" element={<EvaluationDetailPage />} />
             <Route path="about" element={<AboutPage />} />
           </Route>
         </Routes>
