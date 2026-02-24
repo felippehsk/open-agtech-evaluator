@@ -1,7 +1,17 @@
 /**
  * Form field definitions per section — options from AGT3510_Form_Options.md
+ * FieldConfig is defined here to avoid circular dependency with FieldWithEvidence.
  */
-import type { FieldConfig } from '@/components/shared/FieldWithEvidence'
+export type FieldType = 'text' | 'textarea' | 'single_select' | 'multi_select' | 'rating' | 'number' | 'url'
+export interface FieldConfig {
+  key: string
+  label: string
+  type: FieldType
+  options?: string[]
+  placeholder?: string
+  maxLength?: number
+  ratingLabels?: [string, string]
+}
 
 export const AI_CHECK_OPTIONS = [
   'AI was 100% correct for this section',

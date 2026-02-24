@@ -1,18 +1,10 @@
 import type { EvidenceTag, FieldResponse } from '@/lib/schema'
+import type { FieldConfig } from '@/lib/fieldConfig'
 import { EvidenceTagSelect } from './EvidenceTagSelect'
 import { cn } from '@/lib/utils'
 
-export type FieldType = 'text' | 'textarea' | 'single_select' | 'multi_select' | 'rating' | 'number' | 'url'
-
-export interface FieldConfig {
-  key: string
-  label: string
-  type: FieldType
-  options?: string[]
-  placeholder?: string
-  maxLength?: number
-  ratingLabels?: [string, string] // low, high
-}
+export type { FieldConfig } from '@/lib/fieldConfig'
+export type { FieldType } from '@/lib/fieldConfig'
 
 interface FieldWithEvidenceProps {
   config: FieldConfig

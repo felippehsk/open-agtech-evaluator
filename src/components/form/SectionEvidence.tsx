@@ -102,7 +102,9 @@ export function SectionEvidence() {
       setResult({ ok: false, message: 'Evaluator (GitHub username) is required. Sign in to set it.' })
       return
     }
-    if (!draft.meta?.platform_slug || !draft.identity?.version_module_evaluated) {
+    const versionValue = draft.sections?.identity?.version_module_evaluated?.value
+    const versionFilled = typeof versionValue === 'string' && versionValue.trim().length > 0
+    if (!draft.meta?.platform_slug || !versionFilled) {
       setResult({ ok: false, message: 'Complete Platform identity (platform and version) first.' })
       return
     }

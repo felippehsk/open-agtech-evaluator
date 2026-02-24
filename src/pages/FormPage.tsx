@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { SECTION_KEYS } from '@/lib/schema'
 import { useFormState } from '@/context/FormStateContext'
@@ -67,6 +67,12 @@ export function FormPage() {
   )
 
   const displayTitles = useMemo(() => buildDisplayTitles(orderedKeys), [orderedKeys])
+
+  // Keep step in bounds when orderedKeys shrinks (e.g. primary focus hides livestock/CEA)
+  useEffect(() => {
+    setStep((s) => Math.min(s, Math.max(0, orderedKeys.length - 1)))
+  }, [orderedKeys.length])
+
   const currentKey = orderedKeys[step] ?? orderedKeys[0]
   const canPrev = step > 0
   const canNext = step < orderedKeys.length - 1
