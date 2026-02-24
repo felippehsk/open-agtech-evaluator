@@ -25,8 +25,14 @@ export function SummaryStats({ evaluations, className = '' }: SummaryStatsProps)
   const evidencePercent = evidenceTotal > 0 ? Math.round((evidenceVerified / evidenceTotal) * 100) : 0
 
   const ai = getOverallAIAccuracy(evaluations)
-  const lastUpdated = evaluations.length
+  const lastUpdatedRaw = evaluations.length
     ? evaluations.reduce((max, e) => (e.meta.evaluation_date > max ? e.meta.evaluation_date : max), '')
+    : ''
+  const lastUpdated = lastUpdatedRaw
+    ? (() => {
+        const d = new Date(lastUpdatedRaw)
+        return Number.isNaN(d.getTime()) ? lastUpdatedRaw : d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
+      })()
     : '—'
 
   const cards = [

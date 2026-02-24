@@ -9,8 +9,6 @@ import { PlatformCard } from '@/components/dashboard/PlatformCard'
 import { ScoreRadar } from '@/components/dashboard/ScoreRadar'
 import { ComparisonMatrix } from '@/components/dashboard/ComparisonMatrix'
 import { PricingChart } from '@/components/dashboard/PricingChart'
-import { AIReliabilityPanel } from '@/components/dashboard/AIReliabilityPanel'
-
 const BASE = import.meta.env.BASE_URL || '/'
 
 function filtersReducer(state: DashboardFilters, action: { type: string; payload?: Partial<DashboardFilters> }): DashboardFilters {
@@ -136,9 +134,6 @@ export function DashboardPage() {
         </p>
       )}
 
-      <div className="mt-12">
-        <AIReliabilityPanel evaluations={evaluations} />
-      </div>
     </div>
   )
 }
