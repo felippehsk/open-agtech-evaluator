@@ -10,7 +10,7 @@ import {
   getHardwareDependency,
   searchMatchesEvaluation,
 } from '@/lib/dashboardUtils'
-import { InfoTip } from './InfoTip'
+import { InfoTip } from '@/components/shared/InfoTip'
 
 export interface DashboardFilters {
   search: string
@@ -227,7 +227,7 @@ export function FilterPanel({ evaluations, platforms, filters, onFiltersChange, 
         <label className="flex items-center gap-2">
           <span className="flex items-center gap-1 text-xs font-medium text-slate-500 dark:text-slate-400">
             Evidence ≥
-            <InfoTip text="Show only platforms where at least this percentage of answers are hands-on verified or documentation verified. Use this to focus on well-documented evaluations." />
+            <InfoTip text="Show only platforms where at least this percentage of answers are hands-on verified or documentation verified. Use this to focus on well-documented evaluations." placement="bottom" />
           </span>
           <input
             type="range"

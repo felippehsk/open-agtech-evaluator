@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useFormState } from '@/context/FormStateContext'
 import { getFieldsForSection } from '@/lib/fieldConfig'
 import { FieldWithEvidence } from '@/components/shared/FieldWithEvidence'
+import { InfoTip } from '@/components/shared/InfoTip'
 import type { FieldResponse } from '@/lib/schema'
 
 const DEFAULT_RESPONSE: FieldResponse = { value: null, evidence_tag: 'unknown' }
@@ -94,7 +95,10 @@ export function SectionIdentity() {
 
   return (
     <div className="space-y-6">
-      <h3 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Platform identity</h3>
+      <h3 className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
+        Platform identity
+        <InfoTip text="Select the software platform you are evaluating. For listed platforms, company and country are filled automatically. Choose “Other” to evaluate a platform not in the list." placement="bottom" />
+      </h3>
 
       <div>
         <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">Platform</label>

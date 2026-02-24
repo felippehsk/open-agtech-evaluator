@@ -9,7 +9,7 @@ import { PlatformCard } from '@/components/dashboard/PlatformCard'
 import { ScoreRadar } from '@/components/dashboard/ScoreRadar'
 import { ComparisonMatrix } from '@/components/dashboard/ComparisonMatrix'
 import { PricingChart } from '@/components/dashboard/PricingChart'
-import { InfoTip } from '@/components/dashboard/InfoTip'
+import { InfoTip } from '@/components/shared/InfoTip'
 
 const BASE = import.meta.env.BASE_URL || '/'
 

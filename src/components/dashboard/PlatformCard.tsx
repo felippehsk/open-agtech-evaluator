@@ -12,7 +12,7 @@ import {
   getBestSuitedFor,
 } from '@/lib/dashboardUtils'
 import { MiniRadar } from './MiniRadar'
-import { InfoTip } from './InfoTip'
+import { InfoTip } from '@/components/shared/InfoTip'
 
 interface PlatformCardProps {
   evaluation: Evaluation
