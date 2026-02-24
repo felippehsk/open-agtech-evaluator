@@ -10,6 +10,7 @@ import {
   getHardwareDependency,
   searchMatchesEvaluation,
 } from '@/lib/dashboardUtils'
+import { InfoTip } from './InfoTip'
 
 export interface DashboardFilters {
   search: string
@@ -224,7 +225,10 @@ export function FilterPanel({ evaluations, platforms, filters, onFiltersChange, 
           onToggle={(v) => update({ dataOwnership: toggleSet(filters.dataOwnership, v) })}
         />
         <label className="flex items-center gap-2">
-          <span className="text-xs font-medium text-slate-500 dark:text-slate-400">Evidence ≥</span>
+          <span className="flex items-center gap-1 text-xs font-medium text-slate-500 dark:text-slate-400">
+            Evidence ≥
+            <InfoTip text="Show only platforms where at least this percentage of answers are hands-on verified or documentation verified. Use this to focus on well-documented evaluations." />
+          </span>
           <input
             type="range"
             min={0}

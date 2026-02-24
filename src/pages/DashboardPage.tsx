@@ -9,6 +9,8 @@ import { PlatformCard } from '@/components/dashboard/PlatformCard'
 import { ScoreRadar } from '@/components/dashboard/ScoreRadar'
 import { ComparisonMatrix } from '@/components/dashboard/ComparisonMatrix'
 import { PricingChart } from '@/components/dashboard/PricingChart'
+import { InfoTip } from '@/components/dashboard/InfoTip'
+
 const BASE = import.meta.env.BASE_URL || '/'
 
 function filtersReducer(state: DashboardFilters, action: { type: string; payload?: Partial<DashboardFilters> }): DashboardFilters {
@@ -49,9 +51,7 @@ export function DashboardPage() {
     [platformCards, compareSelected]
   )
 
-  function handleCompareClick(ev: React.MouseEvent, platformName: string) {
-    ev.preventDefault()
-    ev.stopPropagation()
+  function handleCompareToggle(platformName: string) {
     setCompareSelected((prev) =>
       prev.includes(platformName) ? prev.filter((n) => n !== platformName) : [...prev, platformName]
     )
@@ -89,7 +89,10 @@ export function DashboardPage() {
 
       {compareSelected.length >= 2 && (
         <div className="mb-8 space-y-6">
-          <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Compare platforms</h2>
+          <h2 className="flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
+            Compare platforms
+            <InfoTip text="Side-by-side view of the selected evaluations: radar scores, feature matrix (with evidence indicators), and pricing. Coloured dots in the matrix show how each answer was verified (e.g. hands-on vs documentation)." />
+          </h2>
           <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft dark:border-slate-600 dark:bg-slate-800/80 dark:shadow-soft-dark">
             <ScoreRadar evaluations={compareEvaluations} selectedNames={compareSelected} />
           </div>
@@ -113,8 +116,9 @@ export function DashboardPage() {
         </div>
       )}
 
-      <h2 className="mb-4 text-lg font-semibold text-slate-900 dark:text-slate-100">
+      <h2 className="mb-4 flex items-center gap-2 text-lg font-semibold text-slate-900 dark:text-slate-100">
         Platforms {platformCards.length < evaluations.length && `(${platformCards.length} of ${evaluations.length} evaluations)`}
+        <InfoTip text="Each card is one platform’s evaluation (one evaluator, one submission). Hover a card to see who evaluated it and when. Check “Compare” on two or more cards to see a side-by-side feature and pricing comparison." />
       </h2>
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {platformCards.map((evaluation) => (
@@ -123,7 +127,7 @@ export function DashboardPage() {
             evaluation={evaluation}
             platforms={platforms}
             compareChecked={compareSelected.includes(evaluation.meta.platform_name)}
-            onCompareClick={(ev) => handleCompareClick(ev, evaluation.meta.platform_name)}
+            onCompareToggle={handleCompareToggle}
           />
         ))}
       </div>
