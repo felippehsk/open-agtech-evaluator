@@ -15,7 +15,7 @@ export function Header({ onSignIn, signedInAs }: HeaderProps) {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100">
           <img src={`${import.meta.env.BASE_URL}icon.png?v=${__LOGO_BUILD_ID__}`} alt="" className="h-8 w-8 rounded-full object-contain" aria-hidden />
-          AGT3510 Platform Evaluator
+          Open AgTech Evaluator
         </Link>
         <nav className="flex items-center gap-1">
           <Link to="/" className="rounded-md px-3 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-slate-100">
