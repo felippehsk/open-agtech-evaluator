@@ -14,7 +14,7 @@ export function Header({ onSignIn, signedInAs }: HeaderProps) {
     <header className="border-b border-slate-200 bg-white shadow-sm dark:border-slate-700 dark:bg-slate-800/95 dark:shadow-none">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2 text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100">
-          <img src={`${import.meta.env.BASE_URL}icon.png`} alt="" className="h-8 w-8 rounded-full object-contain" aria-hidden />
+          <img src={`${import.meta.env.BASE_URL}icon.png?v=${__LOGO_BUILD_ID__}`} alt="" className="h-8 w-8 rounded-full object-contain" aria-hidden />
           AGT3510 Platform Evaluator
         </Link>
         <nav className="flex items-center gap-1">

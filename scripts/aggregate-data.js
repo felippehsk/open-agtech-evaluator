@@ -62,4 +62,12 @@ for (const name of REGISTRIES) {
   }
 }
 
+// Single source of truth: icon at repo root. Copy to public/ so the app and favicon work.
+const ROOT_ICON = path.join(ROOT, 'icon.png');
+const PUBLIC_ICON = path.join(ROOT, 'public', 'icon.png');
+if (fs.existsSync(ROOT_ICON)) {
+  fs.copyFileSync(ROOT_ICON, PUBLIC_ICON);
+  console.log('[aggregate-data] Copied icon.png (root) → public/icon.png');
+}
+
 console.log(`[aggregate-data] Aggregated ${allEvaluations.length} evaluations → public/api/all_evaluations.json`);
