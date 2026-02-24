@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/rest'
 import type { Evaluation } from '@/lib/schema'
 
-const REPO_OWNER = import.meta.env.VITE_GITHUB_REPO_OWNER ?? 'OldsCollege'
+const REPO_OWNER = import.meta.env.VITE_GITHUB_REPO_OWNER ?? 'felippehsk'
 const REPO_NAME = import.meta.env.VITE_GITHUB_REPO_NAME ?? 'open-agtech-evaluator'
 
 export async function validateToken(pat: string): Promise<{ ok: boolean; login?: string; error?: string }> {
