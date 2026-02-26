@@ -1,0 +1,570 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "platform_slug": "ag-leader-sms-advanced",
+    "platform_name": "Ag Leader SMS Advanced",
+    "evaluator": "OhagensOC",
+    "evaluation_date": "2026-02-26",
+    "last_verified_date": "2026-02-26",
+    "cohort": "AGT3510",
+    "total_hours_spent": 3
+  },
+  "identity": {
+    "version_module_evaluated": "SMS Advanced - 25.50",
+    "company_developer": "Ag Leader Technology",
+    "country_of_origin": "United States",
+    "year_founded": "2004",
+    "platform_type": [
+      "Desktop installed (Windows)"
+    ],
+    "primary_agricultural_focus": [
+      "Broadacre crops (grains, oilseeds, pulses)",
+      "Row crops (corn, soybeans, cotton)",
+      "Specialty crops (vegetables, fruit, horticulture)"
+    ],
+    "website_url": "https://www.agleader.com/sms-software/",
+    "last_updated_version": "v25.50 - 21/08/2025"
+  },
+  "sections": {
+    "identity": {
+      "company_developer": {
+        "value": "Ag Leader Technology",
+        "evidence_tag": "documentation_verified"
+      },
+      "country_of_origin": {
+        "value": "United States",
+        "evidence_tag": "documentation_verified"
+      },
+      "version_module_evaluated": {
+        "value": "SMS Advanced - 25.50",
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://portal.agleader.com/community/s/article/1370?language=en_US"
+      },
+      "year_founded": {
+        "value": "2004",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://portal.agleader.com/community/s/article/1370?language=en_US"
+      },
+      "platform_type": {
+        "value": [
+          "Desktop installed (Windows)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://portal.agleader.com/community/s/article/3529?language=en_US"
+      },
+      "primary_agricultural_focus": {
+        "value": [
+          "Broadacre crops (grains, oilseeds, pulses)",
+          "Row crops (corn, soybeans, cotton)",
+          "Specialty crops (vegetables, fruit, horticulture)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "website_url": {
+        "value": "https://www.agleader.com/sms-software/",
+        "evidence_tag": "hands_on_verified"
+      },
+      "last_updated_version": {
+        "value": "v25.50 - 21/08/2025",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://portal.agleader.com/community/s/article/1370?language=en_US"
+      }
+    },
+    "ingestion": {
+      "file_format_import_proprietary": {
+        "value": [
+          "Trimble / AgGPS (.agd, AgData, AgGPS folders)",
+          "John Deere GreenStar 3 (.rcd files)",
+          "John Deere GreenStar 4 / Gen4 (.jdl files)",
+          "Ag Leader (.agdata, .yld)",
+          "Precision Planting 20|20 (.2020 files)",
+          "Raven (Slingshot formats)",
+          "CLAAS (Telematics formats)",
+          "CNH / Case IH / New Holland (.cn1, .xml)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "yield_monitor_import": {
+        "value": [
+          "AGCO / Massey Ferguson / Fendt / Gleaner",
+          "Trimble (aftermarket)",
+          "John Deere (S-Series, X-Series, T-Series)",
+          "New Holland (CR, CX series)",
+          "Case IH (Axial-Flow series)",
+          "CLAAS (Lexion, Tucano)",
+          "Ag Leader (aftermarket, brand-agnostic)",
+          "Precision Planting (aftermarket)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "satellite_imagery": {
+        "value": [
+          "Via API connection to third-party",
+          "Via file upload (user provides imagery)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "drone_imagery": {
+        "value": [
+          "Not supported"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "weather_data": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "direct_telematics": {
+        "value": [
+          "Ag Leader"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "unit_system_handling": {
+        "value": "Fully supports Imperial, Metric, and Canadian mixed units seamlessly",
+        "evidence_tag": "hands_on_verified"
+      },
+      "data_format_limitations": {
+        "value": "SMS Advanced is one of the most broad interpreters around",
+        "evidence_tag": "hands_on_verified"
+      },
+      "file_format_import_open": {
+        "value": [
+          "Shapefile (.shp/.shx/.dbf/.prj)",
+          "KML / KMZ (.kml/.kmz)",
+          "ISOXML / ISOBUS (ISO 11783)",
+          "WKT (Well-Known Text)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "ease_of_import": {
+        "value": 5,
+        "evidence_tag": "hands_on_verified"
+      },
+      "ease_of_import_reason": {
+        "value": "it is the most robust importer I know of, also has automatic file searching and indexing",
+        "evidence_tag": "hands_on_verified"
+      }
+    },
+    "processing_2a": {
+      "spatial_filtering": {
+        "value": [
+          "Filter by field boundary",
+          "Filter by management zone",
+          "Filter by custom polygon (draw-on-map)",
+          "Spatial query (select features within / intersecting)",
+          "Filter by buffer zone (around a feature)"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "temporal_filtering": {
+        "value": [
+          "Filter by date range",
+          "Filter by crop year / season",
+          "Filter by operation type (planting, spraying, harvest)",
+          "Filter by specific machine pass"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "multi_layer_overlay": {
+        "value": [
+          "Yield + soil data overlay",
+          "Yield + elevation overlay",
+          "Transparency / opacity adjustment per layer",
+          "Split-screen comparison",
+          "Satellite imagery + yield overlay",
+          "Multi-year yield comparison (side-by-side or stacked)",
+          "Custom layer stacking (user selects layers)",
+          "As-applied + prescription comparison"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "coordinate_system_handling": {
+        "value": "Automatic (detects and transforms CRS)",
+        "evidence_tag": "hands_on_verified"
+      }
+    },
+    "processing_2b": {
+      "yield_data_cleaning": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "combine_calibration_adjustment": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "yield_map_generation": {
+        "value": "Yes",
+        "evidence_tag": "hands_on_verified"
+      },
+      "vegetation_index_calculation": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "management_zone_delineation": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "vra_prescription_map_creation": {
+        "value": [
+          "Seeding / planting rate prescriptions",
+          "Fertilizer rate prescriptions (N, P, K, S, micronutrients)",
+          "Custom / user-defined (e.g. manual editing as in QGIS)",
+          "Based on management zones",
+          "Crop protection product prescriptions",
+          "Lime application prescriptions"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "prescription_export_formats": {
+        "value": [
+          "Ag Leader format",
+          "Shapefile (.shp)",
+          "ISOXML / ISOBUS (ISO 11783)"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "on_farm_trial_analysis": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "profit_loss_map": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "crop_scouting_tools": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      }
+    },
+    "processing_2e_financial": {
+      "income_tracking": {
+        "value": "No",
+        "evidence_tag": "hands_on_verified"
+      },
+      "expense_tracking": {
+        "value": "Partial",
+        "evidence_tag": "unknown"
+      },
+      "cost_of_production": {
+        "value": "Yes — per acre/hectare",
+        "evidence_tag": "hands_on_verified"
+      },
+      "profitability_analysis": {
+        "value": "Unknown",
+        "evidence_tag": "unknown"
+      },
+      "cost_tracking_granularity": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "integration_accounting": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      }
+    },
+    "export": {
+      "export_geospatial": {
+        "value": [
+          "Shapefile (.shp)",
+          "KML / KMZ (.kml/.kmz)",
+          "ISOXML / ISOBUS (ISO 11783)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "export_tabular": {
+        "value": [
+          "CSV (.csv)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "export_proprietary": {
+        "value": [
+          "Ag Leader format"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "batch_export": {
+        "value": "Can batch-export entire farm (all fields, all layers, all years) in one operation",
+        "evidence_tag": "documentation_verified"
+      },
+      "time_to_first_map": {
+        "value": "Instant — map renders immediately upon data upload",
+        "evidence_tag": "hands_on_verified"
+      },
+      "report_generation": {
+        "value": [
+          "Yield analysis reports",
+          "Field summary reports",
+          "Custom report builder"
+        ],
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "integration": {
+      "direct_integrations": {
+        "value": [
+          "Ag Leader SMS / InCommand"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "api_availability": {
+        "value": "Private / internal API — exists but not publicly accessible",
+        "evidence_tag": "third_party_verified"
+      },
+      "isobus_compliance": {
+        "value": "Full compliance (import and export)",
+        "evidence_tag": "hands_on_verified"
+      },
+      "oem_equipment_compatibility": {
+        "value": [
+          "Ag Leader (aftermarket)"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "data_format_interoperability": {
+        "value": 3,
+        "evidence_tag": "hands_on_verified"
+      },
+      "hardware_dependency": {
+        "value": "Enhanced by proprietary hardware — manual uploads work, but automated data sync / telematics require specific hardware",
+        "evidence_tag": "hands_on_verified"
+      },
+      "adapt_support": {
+        "value": "Unknown",
+        "evidence_tag": "unknown"
+      }
+    },
+    "governance": {
+      "data_ownership_policy": {
+        "value": "User owns data, platform has license to use for service delivery",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_portability": {
+        "value": "Full export — all raw and processed data downloadable in standard formats",
+        "evidence_tag": "third_party_verified"
+      },
+      "data_deletion_policy": {
+        "value": "User can delete all data at any time (self-service)",
+        "evidence_tag": "third_party_verified"
+      },
+      "data_sharing_third_parties": {
+        "value": "Opt-in only — user must actively consent to sharing",
+        "evidence_tag": "third_party_verified"
+      },
+      "ag_data_transparent": {
+        "value": "Unknown",
+        "evidence_tag": "unknown",
+        "comment": "N/A because of AgFinity"
+      },
+      "privacy_policy_url": {
+        "value": "https://www.agleader.com/privacy-policy/",
+        "evidence_tag": "hands_on_verified"
+      },
+      "data_storage_location": {
+        "value": [
+          "On-premises / local (no cloud)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "security_measures": {
+        "value": [
+          "Encryption in transit (TLS/SSL)"
+        ],
+        "evidence_tag": "third_party_verified"
+      }
+    },
+    "access": {
+      "multi_user_access": {
+        "value": "Yes — specify how many",
+        "evidence_tag": "third_party_verified"
+      },
+      "offline_functionality": {
+        "value": "Full offline — all features available without internet",
+        "evidence_tag": "hands_on_verified"
+      },
+      "mobile_app_available": {
+        "value": [
+          "No mobile support"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "user_roles": {
+        "value": [
+          "Administrator / Owner",
+          "Operator / Field worker",
+          "View-only / Read-only"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "storage_quotas": {
+        "value": "Limited by plan tier (specify limits if known)",
+        "evidence_tag": "third_party_verified",
+        "comment": "6000 ac on basic -- 18 000 ac on advanced. stackable"
+      },
+      "sharing_advisors": {
+        "value": "Unknown",
+        "evidence_tag": "unknown"
+      }
+    },
+    "pricing": {
+      "pricing_model": {
+        "value": [
+          "One-time perpetual license",
+          "Flat subscription (annual)",
+          "Custom / enterprise pricing (contact sales)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "free_tier_available": {
+        "value": "No",
+        "evidence_tag": "hands_on_verified"
+      },
+      "free_tier_limitations": {
+        "value": [
+          "Limited features (specify which are locked)"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "trial_period": {
+        "value": "Yes — duration",
+        "evidence_tag": "third_party_verified",
+        "comment": "15 days"
+      },
+      "educational_pricing": {
+        "value": "Discounted educational pricing",
+        "evidence_tag": "vendor_claimed"
+      },
+      "contract_requirements": {
+        "value": "Annual contract",
+        "evidence_tag": "documentation_verified",
+        "comment": "maintenance fee"
+      },
+      "standardized_cost_broadacre_currency": {
+        "value": "USD",
+        "evidence_tag": "documentation_verified"
+      },
+      "standardized_cost_broadacre_annual": {
+        "value": 775,
+        "evidence_tag": "documentation_verified",
+        "comment": "2995 USD one time fee for advanced"
+      },
+      "standardized_cost_broadacre_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_currency": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_annual": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "cost_to_leave": {
+        "value": "Free — full data export, no penalty",
+        "evidence_tag": "third_party_verified"
+      }
+    },
+    "usability": {
+      "onboarding_setup": {
+        "value": 2,
+        "evidence_tag": "hands_on_verified"
+      },
+      "documentation_quality": {
+        "value": "Good — adequate documentation, covers main features",
+        "evidence_tag": "hands_on_verified"
+      },
+      "training_resources": {
+        "value": [
+          "Video tutorials (YouTube, embedded)",
+          "Written guides / knowledge base",
+          "Interactive tutorials / walkthroughs (in-app)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "customer_support_channels": {
+        "value": [
+          "Phone support",
+          "Email support"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "support_languages": {
+        "value": [
+          "English"
+        ],
+        "evidence_tag": "third_party_verified"
+      }
+    }
+  },
+  "ai_checks": {
+    "ingestion": "ai_not_used",
+    "processing_2a": "ai_not_used",
+    "export": "ai_100_correct",
+    "processing_2b": "ai_not_used",
+    "integration": "ai_minor_errors"
+  },
+  "assessment": {
+    "strongest_capability": "Data ingestion / format compatibility",
+    "strongest_capability_justification": "Is the most robust data ingest and output program I have ever used",
+    "weakest_capability": "Pricing / accessibility",
+    "weakest_capability_justification": "SMS Advanced costs as much as a small car, because they can.",
+    "best_suited_for": [
+      "Large farms (> 5,000 acres / > 2,000 ha)",
+      "Medium farms (500–5,000 acres / 200–2,000 ha)",
+      "Small farms (< 500 acres / < 200 ha)",
+      "Corporate / multi-farm operations",
+      "Agronomists / crop advisors / consultants",
+      "Advanced precision ag users",
+      "Precision ag beginners",
+      "Researchers / academic users",
+      "Students / educational use"
+    ],
+    "worst_suited_for": "anything livestock",
+    "unique_differentiator": "ONe of One program",
+    "recommendation": "Conditionally — good for specific use cases (explain in notes)",
+    "ai_claims_total": 0,
+    "ai_claims_correct": 0,
+    "ai_claims_incorrect": 0,
+    "ai_claims_unverifiable": 0,
+    "ai_notable_error": ""
+  },
+  "evidence_log": {
+    "source_types_used": [
+      "Official platform documentation / help center",
+      "Vendor website / marketing materials",
+      "Platform trial or demo account (hands-on)",
+      "Reddit / forum discussions",
+      "AI-generated (specify tool used)",
+      "Peer evaluator (from class)"
+    ],
+    "official_doc_urls": [],
+    "third_party_urls": [],
+    "hands_on_notes": "I ran some personal farm data through it and exported it."
+  }
+}
