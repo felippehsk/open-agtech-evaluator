@@ -78,6 +78,37 @@ The platform list includes 24 predefined platforms (John Deere Operations Center
 
 ---
 
+## Dashboard data: pulling evaluations from GitHub
+
+The dashboard reads **all evaluations** from `public/api/all_evaluations.json`. You can fill that file in two ways:
+
+### 1. Local / mock data (default)
+
+Evaluations in **`data/evaluations/`** (e.g. `data/evaluations/john-deere-ops-center/eval-2026-username.json`) are aggregated at **build** or **dev** time into `public/api/all_evaluations.json`.
+
+- **`npm run dev`** or **`npm run build`** → runs the aggregate script → uses whatever is in `data/evaluations/`.
+- Use this when developing with local or mock JSON files.
+
+### 2. Live data from GitHub
+
+To show **real student submissions** (from the repo’s `data/evaluations/` on GitHub), pull from the GitHub API and then build or run the app:
+
+- **Fetch once:**  
+  `npm run fetch-evals`  
+  This fetches all evaluation JSON files from the repo (via GitHub API), validates them, and writes `public/api/all_evaluations.json`. Optional env: **`GITHUB_TOKEN`** for higher rate limit; **`GITHUB_REPO_OWNER`** / **`GITHUB_REPO_NAME`** to point at another repo.
+
+- **Dev with GitHub data:**  
+  `npm run dev:github`  
+  Runs fetch-evals, then copies registries (e.g. `platforms.json`) and icon, then starts Vite. The dashboard and evaluation detail pages use the fetched evaluations.
+
+- **Build for deploy with GitHub data:**  
+  `npm run build:github`  
+  Same as above but runs `vite build` so the built site uses the latest evaluations from GitHub.
+
+After running **fetch-evals** or **dev:github** / **build:github**, the dashboard and comparison views use real data; no mock data is used for evaluations (registries and icon still come from local `data/registries/` and repo root).
+
+---
+
 ## Licensing & attribution
 
 - **Code:** [MIT License](LICENSE) — © Olds College of Agriculture & Technology.
