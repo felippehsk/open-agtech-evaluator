@@ -1,0 +1,633 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "platform_slug": "climate-fieldview",
+    "platform_name": "Climate FieldView",
+    "evaluator": "kjreyda-stack",
+    "evaluation_date": "2026-02-26",
+    "last_verified_date": "2026-02-26",
+    "cohort": "AGT3510",
+    "total_hours_spent": 4
+  },
+  "identity": {
+    "version_module_evaluated": "Climate FieldView Basic/Plus Feb 2026",
+    "company_developer": "Bayer Crop Science",
+    "country_of_origin": "United States",
+    "year_founded": "2015",
+    "platform_type": [
+      "Web-based (browser)",
+      "Mobile app — iOS",
+      "Mobile app — Android"
+    ],
+    "primary_agricultural_focus": [
+      "Broadacre crops (grains, oilseeds, pulses)",
+      "Row crops (corn, soybeans, cotton)"
+    ],
+    "website_url": "https://climate.com/en-us.html",
+    "last_updated_version": "Continuous Current as of Feb 2026"
+  },
+  "sections": {
+    "identity": {
+      "company_developer": {
+        "value": "Bayer Crop Science",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://climate.com/en-us.html"
+      },
+      "country_of_origin": {
+        "value": "United States",
+        "evidence_tag": "documentation_verified"
+      },
+      "version_module_evaluated": {
+        "value": "Climate FieldView Basic/Plus Feb 2026",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://climate.com/en-us/pricing.html"
+      },
+      "year_founded": {
+        "value": "2015",
+        "evidence_tag": "documentation_verified"
+      },
+      "platform_type": {
+        "value": [
+          "Web-based (browser)",
+          "Mobile app — iOS",
+          "Mobile app — Android"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "primary_agricultural_focus": {
+        "value": [
+          "Broadacre crops (grains, oilseeds, pulses)",
+          "Row crops (corn, soybeans, cotton)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "website_url": {
+        "value": "https://climate.com/en-us.html",
+        "evidence_tag": "documentation_verified"
+      },
+      "last_updated_version": {
+        "value": "Continuous Current as of Feb 2026",
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "ingestion": {
+      "file_format_import_open": {
+        "value": [
+          "Shapefile (.shp/.shx/.dbf/.prj)",
+          "GeoTIFF (.tif/.tiff)",
+          "KML / KMZ (.kml/.kmz)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "file_format_import_proprietary": {
+        "value": [
+          "John Deere GreenStar 3 (.rcd files)",
+          "John Deere GreenStar 4 / Gen4 (.jdl files)",
+          "CNH / Case IH / New Holland (.cn1, .xml)",
+          "Ag Leader (.agdata, .yld)",
+          "CLAAS (Telematics formats)",
+          "Raven (Slingshot formats)",
+          "Precision Planting 20|20 (.2020 files)",
+          "Trimble / AgGPS (.agd, AgData, AgGPS folders)",
+          "AGCO / FieldStar (.agf, .fdd)",
+          "Topcon / Sokkia",
+          "John Deere .dat files"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://support.climate.com/kt#/kA02A000000DjvOSAS/en_US"
+      },
+      "yield_monitor_import": {
+        "value": [
+          "John Deere (S-Series, X-Series, T-Series)",
+          "Case IH (Axial-Flow series)",
+          "New Holland (CR, CX series)",
+          "AGCO / Massey Ferguson / Fendt / Gleaner",
+          "CLAAS (Lexion, Tucano)",
+          "Ag Leader (aftermarket, brand-agnostic)",
+          "Trimble (aftermarket)",
+          "Precision Planting (aftermarket)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://support.climate.com/kt#/kA02A000000DjvOSAS/en_US"
+      },
+      "satellite_imagery": {
+        "value": [
+          "Built-in — Sentinel-2 (ESA, 10m, 5-day revisit)",
+          "Via file upload (user provides imagery)",
+          "Via API connection to third-party"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "drone_imagery": {
+        "value": [
+          "Orthomosaics (GeoTIFF)",
+          "NDVI / index maps (pre-processed)",
+          "DJI native formats"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "weather_data": {
+        "value": [
+          "Built-in — historical weather data"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "direct_telematics": {
+        "value": [
+          "John Deere (JDLink / MTG)",
+          "CNH Industrial (AFS Connect)",
+          "CLAAS (Telematics)",
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "ease_of_import": {
+        "value": 4,
+        "evidence_tag": "hands_on_verified"
+      },
+      "unit_system_handling": {
+        "value": "Fully supports Imperial, Metric, and Canadian mixed units seamlessly",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_format_limitations": {
+        "value": "Requires Zip files that don't always process through the software, had multiple errors during testing",
+        "evidence_tag": "hands_on_verified"
+      }
+    },
+    "processing_2a": {
+      "spatial_filtering": {
+        "value": [
+          "Filter by field boundary",
+          "Filter by custom polygon (draw-on-map)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "temporal_filtering": {
+        "value": [
+          "Filter by crop year / season",
+          "Filter by date range",
+          "Filter by operation type (planting, spraying, harvest)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://support.climate.com/kt#/kA04z000000PRbmCAG/en_US"
+      },
+      "multi_layer_overlay": {
+        "value": [
+          "Yield + soil data overlay",
+          "Yield + elevation overlay",
+          "Satellite imagery + yield overlay",
+          "As-applied + prescription comparison",
+          "Multi-year yield comparison (side-by-side or stacked)",
+          "Split-screen comparison"
+        ],
+        "evidence_tag": "vendor_claimed"
+      },
+      "coordinate_system_handling": {
+        "value": "Automatic (detects and transforms CRS)",
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "processing_2b": {
+      "yield_data_cleaning": {
+        "value": [
+          "Start/stop pass delay removal (ramp-up/ramp-down)",
+          "Automated cleaning pipeline (one-click)",
+          "User-configurable cleaning parameters"
+        ],
+        "evidence_tag": "vendor_claimed"
+      },
+      "combine_calibration_adjustment": {
+        "value": [
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "yield_map_generation": {
+        "value": "Yes",
+        "evidence_tag": "documentation_verified"
+      },
+      "vegetation_index_calculation": {
+        "value": [
+          "NDVI (Normalized Difference Vegetation Index)",
+          "Custom / user-defined indices"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "management_zone_delineation": {
+        "value": [
+          "Manual zone drawing",
+          "Multi-layer input (yield + soil + elevation)",
+          "AI/ML-based zone delineation"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "vra_prescription_map_creation": {
+        "value": [
+          "Seeding / planting rate prescriptions",
+          "Fertilizer rate prescriptions (N, P, K, S, micronutrients)",
+          "Crop protection product prescriptions",
+          "Based on management zones"
+        ],
+        "evidence_tag": "vendor_claimed"
+      },
+      "prescription_export_formats": {
+        "value": [
+          "Shapefile (.shp)",
+          "John Deere format (GS3 / Gen4 compatible)",
+          "CNH / Case IH / New Holland format",
+          "Ag Leader format",
+          "Trimble format (AgGPS / AgData)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "interpolation_methods": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "on_farm_trial_analysis": {
+        "value": [
+          "A/B strip comparison",
+          "Statistical significance testing"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "profit_loss_map": {
+        "value": [
+          "Input cost entry (per-acre / per-hectare)",
+          "Spatial profit/loss mapping",
+          "Revenue calculation from yield × price",
+          "Automated ROI on VRA"
+        ],
+        "evidence_tag": "vendor_claimed"
+      },
+      "crop_scouting_tools": {
+        "value": [
+          "Geo-referenced observation points",
+          "Photo capture and attachment",
+          "Weed mapping",
+          "Growth stage recording",
+          "Scouting report generation"
+        ],
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "processing_2e_financial": {
+      "income_tracking": {
+        "value": "Partial",
+        "evidence_tag": "vendor_claimed",
+        "comment": "Capable of analyzing ROI through the data stored"
+      },
+      "expense_tracking": {
+        "value": "Partial",
+        "evidence_tag": "vendor_claimed",
+        "comment": "Capable of analyzing input expenses"
+      },
+      "cost_of_production": {
+        "value": "Yes — per acre/hectare",
+        "evidence_tag": "documentation_verified"
+      },
+      "profitability_analysis": {
+        "value": "Partial",
+        "evidence_tag": "vendor_claimed"
+      },
+      "cost_tracking_granularity": {
+        "value": [
+          "Per field / paddock",
+          "Per crop / enterprise"
+        ],
+        "evidence_tag": "documentation_verified",
+        "comment": "Able to track inputs in a field"
+      },
+      "integration_accounting": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "export": {
+      "export_geospatial": {
+        "value": [
+          "Shapefile (.shp)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "export_tabular": {
+        "value": [
+          "CSV (.csv)",
+          "PDF reports (.pdf)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "export_proprietary": {
+        "value": [
+          "John Deere (GS3 / Gen4 compatible)",
+          "CNH / Case IH / New Holland format",
+          "Ag Leader format",
+          "Trimble format (AgGPS / AgData)",
+          "API for programmatic data export"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "batch_export": {
+        "value": "Can batch-export entire farm (all fields, all layers, all years) in one operation",
+        "evidence_tag": "documentation_verified"
+      },
+      "time_to_first_map": {
+        "value": "Instant — map renders immediately upon data upload",
+        "evidence_tag": "vendor_claimed"
+      },
+      "report_generation": {
+        "value": [
+          "Field summary reports",
+          "Yield analysis reports",
+          "Profitability reports"
+        ],
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "integration": {
+      "direct_integrations": {
+        "value": [
+          "John Deere Operations Center",
+          "CNH AFS Connect / PLM Connect",
+          "Ag Leader SMS / InCommand",
+          "Trimble Ag Software / FarmENGAGE",
+          "Precision Planting 20|20",
+          "Leaf API (data connector)"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "api_availability": {
+        "value": "Partner / developer API — documented, requires agreement",
+        "evidence_tag": "documentation_verified",
+        "comment": "CLAAS API connections"
+      },
+      "isobus_compliance": {
+        "value": "Partial compliance (import only OR export only)",
+        "evidence_tag": "documentation_verified"
+      },
+      "oem_equipment_compatibility": {
+        "value": [
+          "Brand-agnostic (any ISOBUS-compliant equipment)"
+        ],
+        "evidence_tag": "vendor_claimed"
+      },
+      "data_format_interoperability": {
+        "value": 4,
+        "evidence_tag": "third_party_verified"
+      },
+      "hardware_dependency": {
+        "value": "Enhanced by proprietary hardware — manual uploads work, but automated data sync / telematics require specific hardware",
+        "evidence_tag": "third_party_verified"
+      },
+      "adapt_support": {
+        "value": "Yes — full ADAPT support (imports and exports via ADAPT plugins)",
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "governance": {
+      "data_ownership_policy": {
+        "value": "User owns data, platform has license to use for service delivery",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_portability": {
+        "value": "Full export — all raw and processed data downloadable in standard formats",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_deletion_policy": {
+        "value": "Deletion by request only (contact support)",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_sharing_third_parties": {
+        "value": "Opt-in only — user must actively consent to sharing",
+        "evidence_tag": "documentation_verified"
+      },
+      "ag_data_transparent": {
+        "value": "Yes — currently certified (provide certification year)",
+        "evidence_tag": "documentation_verified"
+      },
+      "privacy_policy_url": {
+        "value": "https://climate.com/legal/privacy-policy",
+        "evidence_tag": "hands_on_verified"
+      },
+      "data_storage_location": {
+        "value": [
+          "United States (AWS / Azure / GCP — specify if known)",
+          "Multiple regions (geo-replicated)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "comment": "Data stored in US and multiple other regions"
+      },
+      "security_measures": {
+        "value": [
+          "Encryption in transit (TLS/SSL)",
+          "SOC 2 Type II certified",
+          "ISO 27001 certified",
+          "GDPR compliant",
+          "PIPEDA compliant (Canada)"
+        ],
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "access": {
+      "multi_user_access": {
+        "value": "Yes — specify how many",
+        "evidence_tag": "unknown",
+        "comment": "Unlimited"
+      },
+      "user_roles": {
+        "value": [
+          "Administrator / Owner",
+          "View-only / Read-only"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "sharing_advisors": {
+        "value": "Yes",
+        "evidence_tag": "documentation_verified"
+      },
+      "offline_functionality": {
+        "value": "Full offline — all features available without internet",
+        "evidence_tag": "unknown",
+        "comment": "Offline using iPad App"
+      },
+      "mobile_app_available": {
+        "value": [
+          "iOS (iPhone/iPad)",
+          "Android (phone/tablet)",
+          "Mobile-responsive web (no dedicated app)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "storage_quotas": {
+        "value": "Unlimited (no stated limits)",
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "pricing": {
+      "pricing_model": {
+        "value": [
+          "Flat subscription (monthly)",
+          "Flat subscription (annual)",
+          "Hardware-bundled (included with equipment purchase)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "free_tier_available": {
+        "value": "Yes",
+        "evidence_tag": "hands_on_verified"
+      },
+      "free_tier_limitations": {
+        "value": [
+          "Limited features (specify which are locked)"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "comment": "Limited to basic scouting and weather, subscription required for active equipment mapping"
+      },
+      "trial_period": {
+        "value": "Yes — duration",
+        "evidence_tag": "hands_on_verified",
+        "comment": "Often a 1 year trial"
+      },
+      "educational_pricing": {
+        "value": "No educational program",
+        "evidence_tag": "documentation_verified"
+      },
+      "contract_requirements": {
+        "value": "Annual contract",
+        "evidence_tag": "documentation_verified"
+      },
+      "standardized_cost_broadacre_currency": {
+        "value": "CAD",
+        "evidence_tag": "hands_on_verified"
+      },
+      "standardized_cost_broadacre_annual": {
+        "value": 650,
+        "evidence_tag": "hands_on_verified"
+      },
+      "standardized_cost_broadacre_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable",
+        "comment": "Yearly cost "
+      },
+      "standardized_cost_livestock_currency": {
+        "value": "CAD",
+        "evidence_tag": "not_applicable",
+        "comment": "not cattle related out of scope"
+      },
+      "standardized_cost_livestock_annual": {
+        "value": null,
+        "evidence_tag": "not_applicable",
+        "comment": "not cattle related out of scope"
+      },
+      "standardized_cost_livestock_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable",
+        "comment": "not cattle related out of scope"
+      },
+      "cost_to_leave": {
+        "value": "Free — full data export, no penalty",
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "usability": {
+      "onboarding_setup": {
+        "value": 4,
+        "evidence_tag": "hands_on_verified"
+      },
+      "documentation_quality": {
+        "value": "Good — adequate documentation, covers main features",
+        "evidence_tag": "third_party_verified"
+      },
+      "training_resources": {
+        "value": [
+          "Video tutorials (YouTube, embedded)",
+          "Webinars (live or recorded)",
+          "Written guides / knowledge base",
+          "Community forum / user group"
+        ],
+        "evidence_tag": "vendor_claimed"
+      },
+      "customer_support_channels": {
+        "value": [
+          "Phone support",
+          "Email support",
+          "Live chat (in-app or website)",
+          "Dealer network (local support)",
+          "Social media support"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "support_languages": {
+        "value": [
+          "English",
+          "French",
+          "Spanish",
+          "Portuguese",
+          "German",
+          "Ukrainian",
+          "Dutch",
+          "Mandarin / Chinese"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "update_frequency": {
+        "value": "Monthly App Updates",
+        "evidence_tag": "vendor_claimed"
+      }
+    }
+  },
+  "ai_checks": {
+    "ingestion": "ai_minor_errors",
+    "processing_2a": "ai_minor_errors",
+    "processing_2b": "ai_minor_errors",
+    "export": "ai_minor_errors",
+    "integration": "ai_minor_errors"
+  },
+  "assessment": {
+    "strongest_capability": "Ease of use / user experience",
+    "strongest_capability_justification": "Simple website and app  can be used on almost any device",
+    "weakest_capability": "Financial analysis / profitability mapping",
+    "weakest_capability_justification": "Not very many financial tools involved in the app very limited in that area",
+    "best_suited_for": [
+      "Small farms (< 500 acres / < 200 ha)",
+      "Medium farms (500–5,000 acres / 200–2,000 ha)",
+      "Large farms (> 5,000 acres / > 2,000 ha)",
+      "Corporate / multi-farm operations",
+      "Agronomists / crop advisors / consultants",
+      "Agricultural retailers / input suppliers",
+      "Precision ag beginners",
+      "Advanced precision ag users"
+    ],
+    "worst_suited_for": "live stock producers very limited uses towards them primarily targets grain",
+    "unique_differentiator": "real time Bluetooth mapping from their FieldView drive to the iPad",
+    "recommendation": "Conditionally — good for specific use cases (explain in notes)",
+    "ai_claims_total": 100,
+    "ai_claims_correct": 80,
+    "ai_claims_incorrect": 20,
+    "ai_claims_unverifiable": 5,
+    "ai_notable_error": "Struggled a lot with the pricing section other than  that just small errors when it came to  file types and some capabilities"
+  },
+  "evidence_log": {
+    "source_types_used": [
+      "Official platform documentation / help center",
+      "Platform trial or demo account (hands-on)",
+      "Vendor website / marketing materials",
+      "Independent blog or review (e.g., PrecisionAg, AgFunder)",
+      "Dealer or sales representative conversation"
+    ],
+    "official_doc_urls": [
+      "https://climate.com/static/field-view/#/field-selection-web?client-id=943688https://orders.climate.com/otc2017#/72d0228f-1735-4283-9e2e-f9ba07f06d15/product-selection/whole-farmhttps://www.google.com/aclk?sa=L&pf=1&ai=DChsSEwjH87u93veSAxURBq0GHdbnF78YACICCAEQABoCcHY&co=1&ase=2&gclid=CjwKCAiA-__MBhAKEiwASBmsBGTaKabOMwF8lKxvb5NJdQBcOTxkX4BzNYKSoat_-6ITC50VyZH8DBoCHyoQAvD_BwE&cid=CAASWuRoA67GPpZgvLgO0yn7_vxk-NTPrCgdFKOPQsq6D9iNmpIQ4SurgXGev73T4Wc6Hb3bxsEnvuCS30EjBg0kP7dCEPhLTctKr_zmEzE3XTKBDkyD9UUFt5AzAw&cce=2&category=acrcp_v1_32&sig=AOD64_1PSgotayGtcekEFsLbJkbuNW-XVA&q&nis=4&adurl=https://climate.com/en-ca.html?utm_source%3Dgoogle%26utm_medium%3Dcpc%26utm_campaign%3Dcfv_digital-farming_climatefieldview%26gad_source%3D1%26gad_campaignid%3D21369255096%26gbraid%3D0AAAAA92yxpt6NGvk3jl8r17Oj_KVzOEIv%26gclid%3DCjwKCAiA-__MBhAKEiwASBmsBGTaKabOMwF8lKxvb5NJdQBcOTxkX4BzNYKSoat_-6ITC50VyZH8DBoCHyoQAvD_BwE&ved=2ahUKEwiFmLK93veSAxUeJzQIHQmHLCcQ0Qx6BAgwEAE"
+    ],
+    "third_party_urls": [],
+    "section_source_urls": {
+      "processing_2e_financial": [
+        "https://support.climate.com/kt#/en_US"
+      ]
+    },
+    "hands_on_notes": "Tried uploading files and creating boundaries very limited testing in free tier"
+  }
+}
