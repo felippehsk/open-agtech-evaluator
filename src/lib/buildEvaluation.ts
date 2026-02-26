@@ -91,6 +91,9 @@ export function buildEvaluation(draft: DraftState, evaluatorUsername: string): E
     source_types_used: Array.isArray(draft.evidence_log?.source_types_used) ? draft.evidence_log.source_types_used : [],
     official_doc_urls: Array.isArray(draft.evidence_log?.official_doc_urls) ? draft.evidence_log.official_doc_urls : [],
     third_party_urls: Array.isArray(draft.evidence_log?.third_party_urls) ? draft.evidence_log.third_party_urls : [],
+    section_source_urls: draft.evidence_log?.section_source_urls && Object.keys(draft.evidence_log.section_source_urls).length > 0
+      ? draft.evidence_log.section_source_urls
+      : undefined,
     hands_on_notes: typeof draft.evidence_log?.hands_on_notes === 'string' ? draft.evidence_log.hands_on_notes : '',
   }
 
@@ -101,5 +104,9 @@ export function buildEvaluation(draft: DraftState, evaluatorUsername: string): E
     ai_checks,
     assessment,
     evidence_log,
+    section_plugins_available:
+      draft.section_plugins_available && Object.keys(draft.section_plugins_available).length > 0
+        ? draft.section_plugins_available
+        : undefined,
   }
 }

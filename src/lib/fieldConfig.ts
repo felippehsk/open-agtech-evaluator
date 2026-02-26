@@ -11,6 +11,8 @@ export interface FieldConfig {
   placeholder?: string
   maxLength?: number
   ratingLabels?: [string, string]
+  /** If true, show "Add custom option" with "Is this really necessary?" confirmation */
+  allowCustomOptions?: boolean
 }
 
 export const AI_CHECK_OPTIONS = [
@@ -24,16 +26,16 @@ export const AI_CHECK_OPTIONS = [
 
 const COUNTRY_OPTIONS = ['United States', 'Canada', 'Netherlands', 'Australia', 'New Zealand', 'Israel', 'Germany', 'Brazil', 'Switzerland', 'United Kingdom', 'Ukraine', 'Other (specify)']
 
-const PLATFORM_TYPE_OPTIONS = ['Web-based (browser)', 'Desktop installed (Windows)', 'Desktop installed (Mac)', 'Mobile app — iOS', 'Mobile app — Android', 'Hybrid (web + mobile)', 'API-only (no GUI)', 'Plugin/extension for other software']
+const PLATFORM_TYPE_OPTIONS = ['Web-based (browser)', 'Desktop installed (Windows)', 'Desktop installed (Mac)', 'Desktop installed (Linux)', 'Mobile app — iOS', 'Mobile app — Android', 'Hybrid (web + mobile)', 'API-only (no GUI)', 'Plugin/extension for other software']
 
 const PRIMARY_FOCUS_OPTIONS = ['Broadacre crops (grains, oilseeds, pulses)', 'Row crops (corn, soybeans, cotton)', 'Specialty crops (vegetables, fruit, horticulture)', 'Livestock — Beef', 'Livestock — Dairy', 'Livestock — Sheep/Goat', 'Livestock — Swine', 'Livestock — Poultry', 'Greenhouse / Controlled Environment Agriculture (CEA)', 'Mixed / Whole-farm', 'Sector-agnostic (any agriculture)']
 
 // Section 1: Ingestion
-const FILE_IMPORT_OPEN = ['Shapefile (.shp/.shx/.dbf/.prj)', 'GeoJSON (.geojson)', 'GeoTIFF (.tif/.tiff)', 'KML / KMZ (.kml/.kmz)', 'GeoPackage (.gpkg)', 'CSV with coordinates (.csv)', 'ISOXML / ISOBUS (ISO 11783)', 'WKT (Well-Known Text)']
+const FILE_IMPORT_OPEN = ['Shapefile (.shp/.shx/.dbf/.prj)', 'GeoJSON (.geojson)', 'GeoTIFF (.tif/.tiff)', 'KML / KMZ (.kml/.kmz)', 'GeoPackage (.gpkg)', 'ESRI File Geodatabase (.gdb)', 'ESRI formats (e.g. ArcGIS)', 'CAD (DWG/DXF)', 'CSV with coordinates (.csv)', 'ISOXML / ISOBUS (ISO 11783)', 'WKT (Well-Known Text)']
 const FILE_IMPORT_PROPRIETARY = ['John Deere GreenStar 3 (.rcd files)', 'John Deere GreenStar 4 / Gen4 (.jdl files)', 'John Deere .dat files', 'CNH / Case IH / New Holland (.cn1, .xml)', 'AGCO / FieldStar (.agf, .fdd)', 'Ag Leader (.agdata, .yld)', 'Trimble / AgGPS (.agd, AgData, AgGPS folders)', 'Precision Planting 20|20 (.2020 files)', 'Raven (Slingshot formats)', 'CLAAS (Telematics formats)', 'Topcon / Sokkia', 'Müller Elektronik', 'Not supported']
 const YIELD_MONITOR_IMPORT = ['John Deere (S-Series, X-Series, T-Series)', 'Case IH (Axial-Flow series)', 'New Holland (CR, CX series)', 'AGCO / Massey Ferguson / Fendt / Gleaner', 'CLAAS (Lexion, Tucano)', 'Ag Leader (aftermarket, brand-agnostic)', 'Trimble (aftermarket)', 'Precision Planting (aftermarket)', 'Loup Electronics (aftermarket)', 'Not supported', 'Unknown']
 const SATELLITE_IMAGERY = ['Built-in — Sentinel-2 (ESA, 10m, 5-day revisit)', 'Built-in — Landsat 8/9 (NASA/USGS, 30m, 16-day revisit)', 'Built-in — Planet (3-5m, daily)', 'Built-in — MODIS (250m-1km, daily)', 'Built-in — Other commercial (specify)', 'Via file upload (user provides imagery)', 'Via API connection to third-party', 'Not supported', 'Unknown']
-const DRONE_IMAGERY = ['Orthomosaics (GeoTIFF)', 'Digital Surface Models (DSM)', 'Digital Elevation Models (DEM)', 'NDVI / index maps (pre-processed)', 'Raw multispectral images', 'RGB imagery', 'Thermal imagery', 'DJI native formats', 'Not supported', 'Unknown']
+const DRONE_IMAGERY = ['Orthomosaics (GeoTIFF)', 'Digital Surface Models (DSM)', 'Digital Elevation Models (DEM)', 'LIDAR / point clouds', 'NDVI / index maps (pre-processed)', 'Raw multispectral images', 'RGB imagery', 'Thermal imagery', 'DJI native formats', 'Not supported', 'Unknown']
 const WEATHER_DATA = ['Built-in — automated weather feeds (specify source)', 'Built-in — historical weather data', 'Connected field weather station (specify brands)', 'Manual entry', 'Via API (specify)', 'Davis Instruments stations', 'DTN weather integration', 'Environment and Climate Change Canada (ECCC)', 'Not supported', 'Unknown']
 const TELEMATICS = ['John Deere (JDLink / MTG)', 'CNH Industrial (AFS Connect)', 'AGCO (Fuse Connected Services)', 'CLAAS (Telematics)', 'Trimble (Connected Farm)', 'Raven (Slingshot)', 'Topcon', 'Ag Leader', 'Mixed fleet / brand-agnostic telematics', 'Not supported', 'Unknown']
 const UNIT_SYSTEM = ['Fully supports Imperial, Metric, and Canadian mixed units seamlessly', 'Supports Imperial and Metric but user must choose one system globally', 'Imperial only (US-centric)', 'Metric only', 'Unknown']
@@ -49,7 +51,7 @@ const YIELD_CLEANING = ['Start/stop pass delay removal (ramp-up/ramp-down)', 'Gr
 const COMBINE_CALIBRATION = ['Multi-combine normalization / pathwise calibration', 'Multi-day harvest normalization', 'Scale ticket reconciliation (adjust to known weights)', 'Operator / machine ID-based calibration', 'Visual striping / banding correction', 'Not available', 'Unknown']
 const VEG_INDICES = ['NDVI (Normalized Difference Vegetation Index)', 'NDRE (Normalized Difference Red Edge)', 'MSAVI / MSAVI2', 'SAVI', 'OSAVI', 'EVI', 'GNDVI', 'NDMI / NDWI', 'Custom / user-defined indices', 'Not available', 'Unknown']
 const ZONE_DELINEATION = ['K-means clustering', 'Manual zone drawing', 'Threshold-based (user-defined breakpoints)', 'Multi-layer input (yield + soil + elevation)', 'AI/ML-based zone delineation', 'Not available', 'Unknown']
-const VRA_PRESCRIPTION = ['Seeding / planting rate prescriptions', 'Fertilizer rate prescriptions (N, P, K, S, micronutrients)', 'Lime application prescriptions', 'Crop protection product prescriptions', 'Based on management zones', 'Based on grid sampling', 'Not available', 'Unknown']
+const VRA_PRESCRIPTION = ['Seeding / planting rate prescriptions', 'Fertilizer rate prescriptions (N, P, K, S, micronutrients)', 'Lime application prescriptions', 'Crop protection product prescriptions', 'Based on management zones', 'Based on grid sampling', 'Custom / user-defined (e.g. manual editing as in QGIS)', 'Not available', 'Unknown']
 const PRESCRIPTION_EXPORT = ['ISOXML / ISOBUS (ISO 11783)', 'Shapefile (.shp)', 'John Deere format (GS3 / Gen4 compatible)', 'CNH / Case IH / New Holland format', 'AGCO format', 'Ag Leader format', 'Trimble format (AgGPS / AgData)', 'CSV', 'GeoJSON', 'Not available', 'Unknown']
 const INTERPOLATION = ['Inverse Distance Weighting (IDW)', 'Ordinary Kriging', 'Nearest Neighbor', 'Spline / Thin Plate Spline', 'Not available']
 const CROP_SCOUTING = ['Geo-referenced observation points', 'Photo capture and attachment', 'Pest / disease identification (manual)', 'Pest / disease identification (AI-assisted)', 'Weed mapping', 'Growth stage recording', 'Scouting report generation', 'Not available', 'Unknown']
@@ -68,7 +70,7 @@ const COST_GRANULARITY = ['Per farm / whole operation', 'Per field / paddock', '
 const ACCOUNTING_INTEGRATION = ['QuickBooks (Online or Desktop)', 'Xero', 'Sage', 'FreshBooks', 'AgExpert Accounting (FCC)', 'CSV export for manual import', 'API for custom accounting integration', 'Not available', 'Unknown']
 
 // Section 3 Export
-const EXPORT_GEOSPATIAL = ['Shapefile (.shp)', 'GeoJSON (.geojson)', 'GeoTIFF (.tif)', 'KML / KMZ (.kml/.kmz)', 'ISOXML / ISOBUS (ISO 11783)', 'GeoPackage (.gpkg)']
+const EXPORT_GEOSPATIAL = ['Shapefile (.shp)', 'GeoJSON (.geojson)', 'GeoTIFF (.tif)', 'KML / KMZ (.kml/.kmz)', 'ISOXML / ISOBUS (ISO 11783)', 'GeoPackage (.gpkg)', 'ESRI File Geodatabase (.gdb)', 'ESRI formats (e.g. for ArcGIS)', 'CAD (DWG/DXF)']
 const EXPORT_TABULAR = ['CSV (.csv)', 'Excel (.xlsx)', 'PDF reports (.pdf)', 'JSON']
 const EXPORT_PROPRIETARY = ['John Deere (GS3 / Gen4 compatible)', 'CNH / Case IH / New Holland format', 'AGCO format', 'Ag Leader format', 'Trimble format (AgGPS / AgData)', 'Raven format', 'Raw data download (complete, original format)', 'API for programmatic data export', 'Bulk export (all fields / all data at once)', 'Print-ready maps (high resolution)', 'Not available']
 const BATCH_EXPORT = ['Can batch-export entire farm (all fields, all layers, all years) in one operation', 'Must export field-by-field (one field at a time)', 'Must export layer-by-layer within each field', 'Export via API only (requires programming)', 'No batch export capability', 'Unknown']
@@ -121,6 +123,9 @@ const RECOMMENDATION_OPTIONS = ['Yes — strong recommendation for the right ope
 // Section 10 Evidence — exported for SectionEvidence UI
 export const SOURCE_TYPES_USED = ['Official platform documentation / help center', 'Platform trial or demo account (hands-on)', 'Vendor website / marketing materials', 'YouTube tutorials or demo videos', 'Academic papers / peer-reviewed research', 'Extension service publications (university)', 'Independent blog or review (e.g., PrecisionAg, AgFunder)', 'Reddit / forum discussions', 'Dealer or sales representative conversation', 'AI-generated (specify tool used)', 'Peer evaluator (from class)']
 
+/** Section keys that show "Possible using plugins or extensions" checkbox */
+export const SECTIONS_WITH_PLUGINS_CHECKBOX = ['ingestion', 'export', 'integration', 'processing_2a', 'processing_2b'] as const
+
 function fc(key: string, label: string, type: FieldConfig['type'], options?: string[], extra?: Partial<FieldConfig>): FieldConfig {
   return { key, label, type, options, ...extra }
 }
@@ -131,20 +136,21 @@ export const SECTION_FIELDS: Record<string, FieldConfig[]> = {
     fc('company_developer', 'Company / developer', 'text'),
     fc('country_of_origin', 'Country of origin', 'single_select', COUNTRY_OPTIONS),
     fc('year_founded', 'Year founded / launched', 'text', undefined, { placeholder: 'e.g. 1992' }),
-    fc('platform_type', 'Platform type', 'multi_select', PLATFORM_TYPE_OPTIONS),
-    fc('primary_agricultural_focus', 'Primary agricultural focus', 'multi_select', PRIMARY_FOCUS_OPTIONS),
+    fc('platform_type', 'Platform type', 'multi_select', PLATFORM_TYPE_OPTIONS, { allowCustomOptions: true }),
+    fc('primary_agricultural_focus', 'Primary agricultural focus', 'multi_select', PRIMARY_FOCUS_OPTIONS, { allowCustomOptions: true }),
     fc('website_url', 'Website URL', 'url'),
     fc('last_updated_version', 'Last updated / version', 'text', undefined, { placeholder: 'e.g. v22.10 — Feb 2026' }),
   ],
   ingestion: [
-    fc('file_format_import_open', 'Open / standard geospatial formats (import)', 'multi_select', FILE_IMPORT_OPEN),
-    fc('file_format_import_proprietary', 'Proprietary machine data formats (import)', 'multi_select', FILE_IMPORT_PROPRIETARY),
-    fc('yield_monitor_import', 'Yield monitor data import — supported brands', 'multi_select', YIELD_MONITOR_IMPORT),
-    fc('satellite_imagery', 'Satellite imagery integration', 'multi_select', SATELLITE_IMAGERY),
-    fc('drone_imagery', 'Drone / UAV imagery import', 'multi_select', DRONE_IMAGERY),
-    fc('weather_data', 'Weather data integration', 'multi_select', WEATHER_DATA),
-    fc('direct_telematics', 'Direct machine / telematics connection', 'multi_select', TELEMATICS),
+    fc('file_format_import_open', 'Open / standard geospatial formats (import)', 'multi_select', FILE_IMPORT_OPEN, { allowCustomOptions: true }),
+    fc('file_format_import_proprietary', 'Proprietary machine data formats (import)', 'multi_select', FILE_IMPORT_PROPRIETARY, { allowCustomOptions: true }),
+    fc('yield_monitor_import', 'Yield monitor data import — supported brands', 'multi_select', YIELD_MONITOR_IMPORT, { allowCustomOptions: true }),
+    fc('satellite_imagery', 'Satellite imagery integration', 'multi_select', SATELLITE_IMAGERY, { allowCustomOptions: true }),
+    fc('drone_imagery', 'Drone / UAV imagery import', 'multi_select', DRONE_IMAGERY, { allowCustomOptions: true }),
+    fc('weather_data', 'Weather data integration', 'multi_select', WEATHER_DATA, { allowCustomOptions: true }),
+    fc('direct_telematics', 'Direct machine / telematics connection', 'multi_select', TELEMATICS, { allowCustomOptions: true }),
     fc('ease_of_import', 'Ease of import (subjective)', 'rating', undefined, { ratingLabels: ['Very difficult', 'Very easy'] }),
+    fc('ease_of_import_reason', 'Reason for ease of import rating (optional — because it is subjective)', 'textarea', undefined, { placeholder: 'Briefly explain why you gave this rating', maxLength: 400 }),
     fc('unit_system_handling', 'Unit system handling', 'single_select', UNIT_SYSTEM),
     fc('data_format_limitations', 'Data format limitations or issues noted', 'textarea', undefined, { maxLength: 500 }),
   ],
@@ -158,10 +164,11 @@ export const SECTION_FIELDS: Record<string, FieldConfig[]> = {
     fc('yield_data_cleaning', 'Yield data cleaning capabilities', 'multi_select', YIELD_CLEANING),
     fc('combine_calibration_adjustment', 'Combine calibration adjustment', 'multi_select', COMBINE_CALIBRATION),
     fc('yield_map_generation', 'Yield map generation', 'single_select', ['Yes', 'No', 'Partial']),
-    fc('vegetation_index_calculation', 'Vegetation index calculation', 'multi_select', VEG_INDICES),
-    fc('management_zone_delineation', 'Management zone delineation', 'multi_select', ZONE_DELINEATION),
-    fc('vra_prescription_map_creation', 'VRA prescription map creation', 'multi_select', VRA_PRESCRIPTION),
-    fc('prescription_export_formats', 'Prescription export formats', 'multi_select', PRESCRIPTION_EXPORT),
+    fc('yield_map_generation_notes', 'Yield map generation — notes or justification (e.g. why Partial)', 'textarea', undefined, { placeholder: 'Optional: justify Partial or add details', maxLength: 300 }),
+    fc('vegetation_index_calculation', 'Vegetation index calculation', 'multi_select', VEG_INDICES, { allowCustomOptions: true }),
+    fc('management_zone_delineation', 'Management zone delineation', 'multi_select', ZONE_DELINEATION, { allowCustomOptions: true }),
+    fc('vra_prescription_map_creation', 'VRA prescription map creation', 'multi_select', VRA_PRESCRIPTION, { allowCustomOptions: true }),
+    fc('prescription_export_formats', 'Prescription export formats', 'multi_select', PRESCRIPTION_EXPORT, { allowCustomOptions: true }),
     fc('interpolation_methods', 'Interpolation methods available', 'multi_select', INTERPOLATION),
     fc('on_farm_trial_analysis', 'On-farm trial / strip trial analysis', 'multi_select', ['A/B strip comparison', 'Randomized plot comparison', 'Statistical significance testing', 'Economic analysis of trial results', 'Not available', 'Unknown']),
     fc('profit_loss_map', 'Profit / loss map generation & agronomic-financial link', 'multi_select', PROFIT_LOSS),
@@ -192,15 +199,15 @@ export const SECTION_FIELDS: Record<string, FieldConfig[]> = {
     fc('integration_accounting', 'Integration with accounting software', 'multi_select', ACCOUNTING_INTEGRATION),
   ],
   export: [
-    fc('export_geospatial', 'Data export — geospatial formats', 'multi_select', EXPORT_GEOSPATIAL),
-    fc('export_tabular', 'Data export — tabular/report formats', 'multi_select', EXPORT_TABULAR),
-    fc('export_proprietary', 'Data export — proprietary / other', 'multi_select', EXPORT_PROPRIETARY),
+    fc('export_geospatial', 'Data export — geospatial formats', 'multi_select', EXPORT_GEOSPATIAL, { allowCustomOptions: true }),
+    fc('export_tabular', 'Data export — tabular/report formats', 'multi_select', EXPORT_TABULAR, { allowCustomOptions: true }),
+    fc('export_proprietary', 'Data export — proprietary / other', 'multi_select', EXPORT_PROPRIETARY, { allowCustomOptions: true }),
     fc('batch_export', 'Batch export capability', 'single_select', BATCH_EXPORT),
     fc('time_to_first_map', 'Time to first map (time to value)', 'single_select', TIME_TO_MAP),
     fc('report_generation', 'Report generation', 'multi_select', ['Field summary reports', 'Yield analysis reports', 'Profitability reports', 'Custom report builder', 'Not available', 'Unknown']),
   ],
   integration: [
-    fc('direct_integrations', 'Direct platform integrations', 'multi_select', DIRECT_INTEGRATIONS),
+    fc('direct_integrations', 'Direct platform integrations', 'multi_select', DIRECT_INTEGRATIONS, { allowCustomOptions: true }),
     fc('api_availability', 'API availability', 'single_select', API_AVAILABILITY),
     fc('isobus_compliance', 'ISOBUS / ISO 11783 compliance', 'single_select', ISOBUS_COMPLIANCE),
     fc('oem_equipment_compatibility', 'OEM equipment compatibility', 'multi_select', OEM_EQUIPMENT),
