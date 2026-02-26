@@ -1,0 +1,807 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "platform_slug": "dronedeploy",
+    "platform_name": "DroneDeploy",
+    "evaluator": "maxwellolson-wq",
+    "evaluation_date": "2026-02-26",
+    "last_verified_date": "2026-02-26",
+    "cohort": "AGT3510",
+    "total_hours_spent": 3.5
+  },
+  "identity": {
+    "version_module_evaluated": "2026 DroneDeploy Aerial Pro",
+    "company_developer": "DroneDeploy",
+    "country_of_origin": "United States",
+    "year_founded": "2013",
+    "platform_type": [
+      "Mobile app — Android",
+      "Mobile app — iOS",
+      "Hybrid (web + mobile)",
+      "Web-based (browser)"
+    ],
+    "primary_agricultural_focus": [
+      "Broadacre crops (grains, oilseeds, pulses)",
+      "Row crops (corn, soybeans, cotton)",
+      "Specialty crops (vegetables, fruit, horticulture)",
+      "Mixed / Whole-farm"
+    ],
+    "website_url": "https://www.dronedeploy.com/",
+    "last_updated_version": "February 20, 2026"
+  },
+  "sections": {
+    "identity": {
+      "primary_agricultural_focus": {
+        "value": [
+          "Broadacre crops (grains, oilseeds, pulses)",
+          "Row crops (corn, soybeans, cotton)",
+          "Specialty crops (vegetables, fruit, horticulture)",
+          "Mixed / Whole-farm"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "company_developer": {
+        "value": "DroneDeploy",
+        "evidence_tag": "documentation_verified"
+      },
+      "country_of_origin": {
+        "value": "United States",
+        "evidence_tag": "documentation_verified"
+      },
+      "version_module_evaluated": {
+        "value": "2026 DroneDeploy Aerial Pro",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/solutions/agriculture"
+      },
+      "year_founded": {
+        "value": "2013",
+        "evidence_tag": "unknown"
+      },
+      "platform_type": {
+        "value": [
+          "Mobile app — Android",
+          "Mobile app — iOS",
+          "Hybrid (web + mobile)",
+          "Web-based (browser)"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "website_url": {
+        "value": "https://www.dronedeploy.com/",
+        "evidence_tag": "hands_on_verified"
+      },
+      "last_updated_version": {
+        "value": "February 20, 2026",
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://www.dronedeploy.com/legal/master-services-agreement"
+      }
+    },
+    "ingestion": {
+      "file_format_import_open": {
+        "value": [
+          "GeoTIFF (.tif/.tiff)",
+          "GeoPackage (.gpkg)",
+          "Shapefile (.shp/.shx/.dbf/.prj)",
+          "GeoJSON (.geojson)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964642-Exporting-Your-Data"
+      },
+      "yield_monitor_import": {
+        "value": [
+          "Not supported"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "file_format_import_proprietary": {
+        "value": [
+          "John Deere .dat files"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "satellite_imagery": {
+        "value": [
+          "Not supported"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "drone_imagery": {
+        "value": [
+          "Raw multispectral images",
+          "NDVI / index maps (pre-processed)",
+          "Digital Elevation Models (DEM)",
+          "Orthomosaics (GeoTIFF)",
+          "Digital Surface Models (DSM)",
+          "RGB imagery",
+          "Thermal imagery",
+          "DJI native formats"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/5942721454103-Data-Processing-with-DroneDeploy"
+      },
+      "weather_data": {
+        "value": [
+          "Manual entry"
+        ],
+        "evidence_tag": "third_party_verified"
+      },
+      "unit_system_handling": {
+        "value": "Fully supports Imperial, Metric, and Canadian mixed units seamlessly",
+        "evidence_tag": "documentation_verified"
+      },
+      "direct_telematics": {
+        "value": [
+          "John Deere (JDLink / MTG)",
+          "CNH Industrial (AFS Connect)",
+          "Mixed fleet / brand-agnostic telematics"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.suasnews.com/2017/04/dronedeploys-drone-data-platform-now-integrated-john-deere-api/#:~:text=DroneDeploy%2C%20the%20leading%20drone%20data,informed%20decisions%20throughout%20the%20year.%E2%80%9D"
+      }
+    },
+    "processing_2a": {
+      "spatial_filtering": {
+        "value": [
+          "Filter by field boundary",
+          "Filter by custom polygon (draw-on-map)",
+          "Filter by management zone",
+          "Filter by buffer zone (around a feature)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964142-Zone-Management#:~:text=The%20Grid%20option%20geographically%20groups,slider%20dots%20on%20the%20histogram."
+      },
+      "temporal_filtering": {
+        "value": [
+          "Filter by date range",
+          "Filter by crop year / season",
+          "Filter by growth stage (phenological)",
+          "Time-series slider / animation"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "multi_layer_overlay": {
+        "value": [
+          "Transparency / opacity adjustment per layer",
+          "Yield + soil data overlay",
+          "Yield + elevation overlay",
+          "Satellite imagery + yield overlay",
+          "As-applied + prescription comparison",
+          "Multi-year yield comparison (side-by-side or stacked)",
+          "Custom layer stacking (user selects layers)",
+          "Split-screen comparison"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/4409693902871-Uploading-Managing-Levels",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/4409693902871-Uploading-Managing-Levels"
+        ]
+      },
+      "coordinate_system_handling": {
+        "value": "Automatic (detects and transforms CRS)",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/4415183176087-Exterior-Overlays",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/4415183176087-Exterior-Overlays"
+        ]
+      }
+    },
+    "processing_2c_livestock": {
+      "individual_animal_records": {
+        "value": "No",
+        "evidence_tag": "documentation_verified"
+      },
+      "rfid_eid_integration": {
+        "value": [
+          "Not supported"
+        ],
+        "evidence_tag": "not_applicable"
+      },
+      "breeding_genetics_tracking": {
+        "value": "Not applicable",
+        "evidence_tag": "not_applicable"
+      },
+      "health_treatment_records": {
+        "value": "Not applicable",
+        "evidence_tag": "not_applicable"
+      },
+      "grazing_management": {
+        "value": "Partial",
+        "evidence_tag": "documentation_verified"
+      },
+      "weight_growth_tracking": {
+        "value": "Not applicable",
+        "evidence_tag": "not_applicable"
+      },
+      "traceability_birth_to_harvest": {
+        "value": [
+          "Grazing / paddock management"
+        ],
+        "evidence_tag": "documentation_verified"
+      }
+    },
+    "pricing": {
+      "pricing_model": {
+        "value": [
+          "Per-seat / per-user pricing",
+          "Flat subscription (annual)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/pricing"
+      },
+      "free_tier_available": {
+        "value": "No",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/pricing"
+      },
+      "free_tier_limitations": {
+        "value": [
+          "No free tier available"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/pricing"
+      },
+      "trial_period": {
+        "value": "Yes — duration",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/pricing"
+      },
+      "educational_pricing": {
+        "value": "Discounted educational pricing",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/pricing"
+      },
+      "standardized_cost_broadacre_currency": {
+        "value": "USD",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/pricing#:~:text=DroneDeploy%20offers%20a%20variety%20of%20plans:%20*,analysis%20*%20Live%20map%20for%20crop%20scouting"
+      },
+      "standardized_cost_broadacre_annual": {
+        "value": 2000,
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/pricing#:~:text=DroneDeploy%20offers%20a%20variety%20of%20plans:%20*,analysis%20*%20Live%20map%20for%20crop%20scouting"
+      },
+      "standardized_cost_broadacre_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_currency": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_annual": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "contract_requirements": {
+        "value": "Month-to-month",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/legal/master-services-agreement",
+        "source_urls": [
+          "https://www.dronedeploy.com/legal/master-services-agreement"
+        ]
+      },
+      "cost_to_leave": {
+        "value": "Data retained for limited period after cancellation (specify)",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/legal/master-services-agreement/",
+        "source_urls": [
+          "https://www.dronedeploy.com/legal/master-services-agreement/"
+        ],
+        "comment": "No cancellation fee, data is retained for 30 days for customer to export or download"
+      }
+    },
+    "processing_2b": {
+      "yield_data_cleaning": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "combine_calibration_adjustment": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "not_applicable"
+      },
+      "yield_map_generation": {
+        "value": "No",
+        "evidence_tag": "not_applicable"
+      },
+      "vegetation_index_calculation": {
+        "value": [
+          "NDVI (Normalized Difference Vegetation Index)",
+          "NDRE (Normalized Difference Red Edge)",
+          "MSAVI / MSAVI2",
+          "SAVI",
+          "OSAVI",
+          "EVI",
+          "GNDVI",
+          "NDMI / NDWI"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004860841-Understanding-Vegetation-Indices",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004860841-Understanding-Vegetation-Indices"
+        ]
+      },
+      "yield_map_generation_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "management_zone_delineation": {
+        "value": [
+          "Manual zone drawing",
+          "Threshold-based (user-defined breakpoints)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964142-Zone-Management",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004964142-Zone-Management"
+        ]
+      },
+      "vra_prescription_map_creation": {
+        "value": [
+          "Seeding / planting rate prescriptions",
+          "Fertilizer rate prescriptions (N, P, K, S, micronutrients)",
+          "Lime application prescriptions",
+          "Crop protection product prescriptions",
+          "Based on management zones",
+          "Based on grid sampling",
+          "Custom / user-defined (e.g. manual editing as in QGIS)"
+        ],
+        "evidence_tag": "unknown",
+        "source_url": "https://www.dronedeploy.com/blog/how-to-use-dronedeploy-during-the-growing-season#:~:text=Lastly%2C%20these%20plant%20health%20maps,exact%20measurements%20that%20are%20affected.",
+        "source_urls": [
+          "https://www.dronedeploy.com/blog/how-to-use-dronedeploy-during-the-growing-season#:~:text=Lastly%2C%20these%20plant%20health%20maps,exact%20measurements%20that%20are%20affected."
+        ]
+      },
+      "prescription_export_formats": {
+        "value": [
+          "Shapefile (.shp)",
+          "GeoJSON",
+          "CSV"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats"
+        ]
+      },
+      "interpolation_methods": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "on_farm_trial_analysis": {
+        "value": [
+          "A/B strip comparison"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "profit_loss_map": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "not_applicable"
+      },
+      "crop_scouting_tools": {
+        "value": [
+          "Geo-referenced observation points",
+          "Photo capture and attachment",
+          "Pest / disease identification (manual)",
+          "Scouting report generation",
+          "Growth stage recording",
+          "Weed mapping"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/blog/how-to-use-dronedeploy-during-the-growing-season",
+        "source_urls": [
+          "https://www.dronedeploy.com/blog/how-to-use-dronedeploy-during-the-growing-season"
+        ]
+      }
+    },
+    "processing_2d_cea": {
+      "climate_control_monitoring": {
+        "value": [
+          "Not supported"
+        ],
+        "evidence_tag": "not_applicable"
+      },
+      "irrigation_fertigation": {
+        "value": "Not applicable",
+        "evidence_tag": "not_applicable"
+      },
+      "crop_growth_stage_tracking": {
+        "value": "Not applicable",
+        "evidence_tag": "not_applicable"
+      },
+      "labor_task_management": {
+        "value": "Not applicable",
+        "evidence_tag": "not_applicable"
+      },
+      "production_planning": {
+        "value": "Not applicable",
+        "evidence_tag": "not_applicable"
+      }
+    },
+    "processing_2e_financial": {
+      "income_tracking": {
+        "value": "No",
+        "evidence_tag": "not_applicable"
+      },
+      "expense_tracking": {
+        "value": "No",
+        "evidence_tag": "not_applicable"
+      },
+      "cost_of_production": {
+        "value": "No",
+        "evidence_tag": "not_applicable"
+      },
+      "profitability_analysis": {
+        "value": "No",
+        "evidence_tag": "not_applicable"
+      },
+      "cost_tracking_granularity": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "not_applicable"
+      },
+      "integration_accounting": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "not_applicable"
+      }
+    },
+    "export": {
+      "export_geospatial": {
+        "value": [
+          "Shapefile (.shp)",
+          "GeoJSON (.geojson)",
+          "GeoTIFF (.tif)",
+          "KML / KMZ (.kml/.kmz)",
+          "ESRI formats (e.g. for ArcGIS)",
+          "CAD (DWG/DXF)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats"
+        ],
+        "comment": ".gpkg and ISOXML/ISOBUS are not explicitly listed however both are easily converted and used in other standard formats with integrations of DroneDeploy such as Climate Field View"
+      },
+      "export_tabular": {
+        "value": [
+          "CSV (.csv)",
+          "PDF reports (.pdf)",
+          "JSON"
+        ],
+        "evidence_tag": "unknown",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats"
+        ],
+        "comment": "Excel formats not directly supported but easily convertible"
+      },
+      "export_proprietary": {
+        "value": [
+          "John Deere (GS3 / Gen4 compatible)",
+          "CNH / Case IH / New Holland format",
+          "AGCO format",
+          "Ag Leader format",
+          "Trimble format (AgGPS / AgData)",
+          "Raw data download (complete, original format)",
+          "API for programmatic data export",
+          "Bulk export (all fields / all data at once)",
+          "Print-ready maps (high resolution)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats"
+        ]
+      },
+      "batch_export": {
+        "value": "Must export field-by-field (one field at a time)",
+        "evidence_tag": "documentation_verified"
+      },
+      "time_to_first_map": {
+        "value": "Unknown",
+        "evidence_tag": "unknown"
+      },
+      "report_generation": {
+        "value": [
+          "Field summary reports",
+          "Yield analysis reports",
+          "Custom report builder"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://wingtra.com/best-photogrammetry-software/dronedeploy/?srsltid=AfmBOopZiLDN_6a3aWoor5xfB2L7n46rTs1Zmr2N4JQXV1UGJlBpmatp",
+        "source_urls": [
+          "https://wingtra.com/best-photogrammetry-software/dronedeploy/?srsltid=AfmBOopZiLDN_6a3aWoor5xfB2L7n46rTs1Zmr2N4JQXV1UGJlBpmatp"
+        ]
+      }
+    },
+    "integration": {
+      "direct_integrations": {
+        "value": [
+          "John Deere Operations Center",
+          "Climate FieldView (Bayer)",
+          "CNH AFS Connect / PLM Connect",
+          "Cropwise (Syngenta)",
+          "AgGateway ADAPT framework",
+          "AGCO Fuse",
+          "Farmers Edge"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "api_availability": {
+        "value": "Partner / developer API — documented, requires agreement",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/27659888106391-DroneDeploy-API-Getting-Started",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/27659888106391-DroneDeploy-API-Getting-Started"
+        ]
+      },
+      "isobus_compliance": {
+        "value": "Not compliant",
+        "evidence_tag": "documentation_verified"
+      },
+      "oem_equipment_compatibility": {
+        "value": [
+          "John Deere",
+          "Case IH",
+          "AGCO (Massey Ferguson, Fendt, Valtra, Challenger)",
+          "Ag Leader (aftermarket)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/blog/bowles-farm-agriculture#:~:text=Their%2012%2C000%20acre%20operation%20paired,Objectives%20of%20the%20Drone%20Project",
+        "source_urls": [
+          "https://www.dronedeploy.com/blog/bowles-farm-agriculture#:~:text=Their%2012%2C000%20acre%20operation%20paired,Objectives%20of%20the%20Drone%20Project"
+        ]
+      },
+      "data_format_interoperability": {
+        "value": 3,
+        "evidence_tag": "third_party_verified"
+      },
+      "hardware_dependency": {
+        "value": "Enhanced by proprietary hardware — manual uploads work, but automated data sync / telematics require specific hardware",
+        "evidence_tag": "vendor_claimed"
+      },
+      "adapt_support": {
+        "value": "No — does not support ADAPT",
+        "evidence_tag": "not_applicable"
+      }
+    },
+    "governance": {
+      "data_ownership_policy": {
+        "value": "User owns data, platform has license to use for service delivery",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/legal/gdpr-data-processing-agreement",
+        "source_urls": [
+          "https://www.dronedeploy.com/legal/gdpr-data-processing-agreement"
+        ]
+      },
+      "data_portability": {
+        "value": "Full export — all raw and processed data downloadable in standard formats",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_deletion_policy": {
+        "value": "Deletion by request only (contact support)",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/legal/privacy",
+        "source_urls": [
+          "https://www.dronedeploy.com/legal/privacy"
+        ]
+      },
+      "data_sharing_third_parties": {
+        "value": "Opt-out — sharing is default, user can disable",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004862021-Data-Sharing",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004862021-Data-Sharing"
+        ]
+      },
+      "ag_data_transparent": {
+        "value": "Not certified",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.agdatatransparent.com/certified",
+        "source_urls": [
+          "https://www.agdatatransparent.com/certified"
+        ]
+      },
+      "privacy_policy_url": {
+        "value": "https://www.dronedeploy.com/legal/privacy",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_storage_location": {
+        "value": [
+          "United States (AWS / Azure / GCP — specify if known)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/27589292559383-Data-Residency-at-DroneDeploy",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/27589292559383-Data-Residency-at-DroneDeploy"
+        ]
+      },
+      "security_measures": {
+        "value": [
+          "Encryption at rest (AES-256 or equivalent)",
+          "Encryption in transit (TLS/SSL)",
+          "Multi-factor authentication (MFA)",
+          "SOC 2 Type II certified",
+          "ISO 27001 certified",
+          "Role-based access control (RBAC)",
+          "Audit logging",
+          "GDPR compliant",
+          "PIPEDA compliant (Canada)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/product/security",
+        "source_urls": [
+          "https://www.dronedeploy.com/product/security"
+        ]
+      }
+    },
+    "access": {
+      "multi_user_access": {
+        "value": "Yes — specify how many",
+        "evidence_tag": "documentation_verified",
+        "comment": "Depends on the subscription plan",
+        "source_url": "https://www.dronedeploy.com/legal/fair-usage",
+        "source_urls": [
+          "https://www.dronedeploy.com/legal/fair-usage"
+        ]
+      },
+      "user_roles": {
+        "value": [
+          "Administrator / Owner",
+          "Manager",
+          "Operator / Field worker",
+          "View-only / Read-only",
+          "Custom roles (user-defined)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004861281-Organization-Administration",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004861281-Organization-Administration"
+        ]
+      },
+      "sharing_advisors": {
+        "value": "Yes",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964442-Add-and-Manage-Members-in-Your-Organization",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/1500004964442-Add-and-Manage-Members-in-Your-Organization"
+        ]
+      },
+      "offline_functionality": {
+        "value": "Partial offline — some features work offline, sync when connected",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/26263580481943-Offline-Flight-Planning",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/26263580481943-Offline-Flight-Planning"
+        ]
+      },
+      "mobile_app_available": {
+        "value": [
+          "iOS (iPhone/iPad)",
+          "Mobile-responsive web (no dedicated app)"
+        ],
+        "evidence_tag": "unknown",
+        "source_url": "https://apps.apple.com/us/app/dronedeploy-flight-app/id971358101",
+        "source_urls": [
+          "https://apps.apple.com/us/app/dronedeploy-flight-app/id971358101"
+        ]
+      },
+      "storage_quotas": {
+        "value": "Limited by plan tier (specify limits if known)",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://www.dronedeploy.com/legal/fair-usage",
+        "source_urls": [
+          "https://www.dronedeploy.com/legal/fair-usage"
+        ],
+        "comment": "lowest - 1000 gigapixels/year, highest - 5000/year"
+      }
+    },
+    "usability": {
+      "documentation_quality": {
+        "value": "Limited — basic FAQ or sparse documentation",
+        "evidence_tag": "hands_on_verified"
+      },
+      "training_resources": {
+        "value": [
+          "Video tutorials (YouTube, embedded)",
+          "Webinars (live or recorded)",
+          "Written guides / knowledge base",
+          "In-person training (dealer or company-hosted)",
+          "Interactive tutorials / walkthroughs (in-app)",
+          "Certification programs"
+        ],
+        "evidence_tag": "vendor_claimed",
+        "source_url": "https://www.dronedeploy.com/",
+        "source_urls": [
+          "https://www.dronedeploy.com/"
+        ]
+      },
+      "customer_support_channels": {
+        "value": [
+          "Phone support",
+          "Email support",
+          "Live chat (in-app or website)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/22699383779991-Contact-Support",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/22699383779991-Contact-Support"
+        ]
+      },
+      "support_languages": {
+        "value": [
+          "English",
+          "Spanish"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://help.dronedeploy.com/hc/en-us/articles/10974763021335-Support-at-DroneDeploy",
+        "source_urls": [
+          "https://help.dronedeploy.com/hc/en-us/articles/10974763021335-Support-at-DroneDeploy"
+        ]
+      },
+      "update_frequency": {
+        "value": "Generally product updates are quarterly",
+        "evidence_tag": "third_party_verified"
+      }
+    }
+  },
+  "ai_checks": {
+    "ingestion": "ai_minor_errors",
+    "processing_2b": "ai_100_correct",
+    "export": "ai_minor_errors",
+    "integration": "ai_significant_errors",
+    "processing_2a": "ai_minor_errors"
+  },
+  "assessment": {
+    "strongest_capability": "Other (specify)",
+    "strongest_capability_justification": "Best used ariel for crop analysis, for both vegetative index (NDVI), physical monitoring (lidar), and basic photo imagery. The data collection is entirely dependent on which sensors the drone has.",
+    "weakest_capability": "Yield data cleaning and processing",
+    "weakest_capability_justification": "Seems to lack native capabilities to process data such as the kringing or other delineation methods, would make the system much more capable.",
+    "best_suited_for": [
+      "Agronomists / crop advisors / consultants",
+      "Advanced precision ag users",
+      "Researchers / academic users",
+      "Students / educational use",
+      "Large farms (> 5,000 acres / > 2,000 ha)",
+      "Corporate / multi-farm operations"
+    ],
+    "worst_suited_for": "Small farms and retailers, really no value for the cost. As well livestock I just cant see the value for those operations.",
+    "unique_differentiator": "It seems to have many industry standard integrations as well as being able to transfer data through open source platforms, making it fairly open and capable.",
+    "recommendation": "Neutral — acceptable but not outstanding",
+    "ai_claims_total": 0,
+    "ai_claims_correct": 0,
+    "ai_claims_incorrect": 0,
+    "ai_claims_unverifiable": 0,
+    "ai_notable_error": "It sometimes seems to assume something is true just because there isn't a source that explicitly says otherwise. Example being integration, it seems to hallucinate companies that do integrate just because there is nothing that says they don't."
+  },
+  "evidence_log": {
+    "source_types_used": [
+      "Official platform documentation / help center",
+      "Vendor website / marketing materials",
+      "Independent blog or review (e.g., PrecisionAg, AgFunder)",
+      "Reddit / forum discussions",
+      "YouTube tutorials or demo videos",
+      "AI-generated (specify tool used)"
+    ],
+    "official_doc_urls": [],
+    "third_party_urls": [],
+    "hands_on_notes": "I was not able to try the platform as there is no free option, as well you need a real company to try the free trial that needs a payment method. As such there was no hands on testing performed."
+  },
+  "section_plugins_available": {
+    "export": false
+  }
+}
