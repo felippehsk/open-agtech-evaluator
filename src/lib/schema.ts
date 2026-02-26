@@ -23,7 +23,11 @@ export interface FieldResponse {
   value: string | string[] | number | boolean | null
   evidence_tag: EvidenceTag
   source_url?: string
+  /** Optional second source URL (multiple links per field) */
+  source_urls?: string[]
   notes?: string
+  /** Optional comment to improve form and research (separate from "Other (specify)" notes) */
+  comment?: string
 }
 
 export interface EvaluationMeta {
@@ -68,6 +72,8 @@ export interface EvidenceLog {
   source_types_used: string[]
   official_doc_urls: string[]
   third_party_urls: string[]
+  /** Per-section source URLs (e.g. one list per tab) */
+  section_source_urls?: Record<string, string[]>
   hands_on_notes: string
 }
 
@@ -84,6 +90,8 @@ export interface Evaluation {
   }
   assessment: EvaluationAssessment
   evidence_log: EvidenceLog
+  /** Section keys where "Possible using plugins or extensions" was checked */
+  section_plugins_available?: Record<string, boolean>
 }
 
 /** Section keys used in the form (for navigation and conditional logic) */

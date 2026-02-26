@@ -77,6 +77,7 @@ export function SectionEvidence() {
           ai_checks: { ...(parsed.ai_checks ?? {}) },
           assessment: { ...EMPTY_DRAFT.assessment, ...(parsed.assessment ?? {}) },
           evidence_log: { ...EMPTY_DRAFT.evidence_log, ...(parsed.evidence_log ?? {}) },
+          section_plugins_available: { ...(parsed.section_plugins_available ?? {}) },
         }
         dispatch({ type: 'LOAD_DRAFT', payload: merged })
         try {

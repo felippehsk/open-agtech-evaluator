@@ -38,6 +38,8 @@ export interface DraftState {
   }
   assessment: Record<string, string | string[] | number>
   evidence_log: Partial<EvidenceLog>
+  /** Sections where "Possible using plugins or extensions" is checked */
+  section_plugins_available?: Record<string, boolean>
 }
 
 const initialDraft: DraftState = {
@@ -56,6 +58,7 @@ type FormAction =
   | { type: 'SET_AI_CHECK'; section: string; value: string }
   | { type: 'SET_ASSESSMENT'; payload: Record<string, string | string[] | number> }
   | { type: 'SET_EVIDENCE_LOG'; payload: Partial<EvidenceLog> }
+  | { type: 'SET_SECTION_PLUGINS'; sectionKey: string; value: boolean }
   | { type: 'SET_EVALUATOR'; payload: string }
   | { type: 'LOAD_DRAFT'; payload: DraftState }
   | { type: 'RESET' }
@@ -80,8 +83,20 @@ function formReducer(state: { draft: DraftState }, action: FormAction): { draft:
     }
     case 'SET_ASSESSMENT':
       return { draft: { ...state.draft, assessment: { ...(state.draft.assessment ?? {}), ...action.payload } } }
-    case 'SET_EVIDENCE_LOG':
-      return { draft: { ...state.draft, evidence_log: { ...(state.draft.evidence_log ?? {}), ...action.payload } } }
+    case 'SET_EVIDENCE_LOG': {
+      const nextEvidence = { ...(state.draft.evidence_log ?? {}), ...action.payload }
+      if (action.payload.section_source_urls !== undefined) {
+        nextEvidence.section_source_urls = { ...(state.draft.evidence_log?.section_source_urls ?? {}), ...action.payload.section_source_urls }
+      }
+      return { draft: { ...state.draft, evidence_log: nextEvidence } }
+    }
+    case 'SET_SECTION_PLUGINS':
+      return {
+        draft: {
+          ...state.draft,
+          section_plugins_available: { ...(state.draft.section_plugins_available ?? {}), [action.sectionKey]: action.value },
+        },
+      }
     case 'SET_EVALUATOR':
       return { draft: { ...state.draft, meta: { ...(state.draft.meta ?? {}), evaluator: action.payload } } }
     case 'LOAD_DRAFT':
