@@ -18,9 +18,12 @@
   "type": "module",
   "scripts": {
     "dev": "node scripts/aggregate-data.js && vite",
+    "dev:github": "node scripts/fetch-evaluations-from-github.js && node scripts/aggregate-data.js --skip-evals && vite",
     "build": "node scripts/aggregate-data.js && vite build",
+    "build:github": "node scripts/fetch-evaluations-from-github.js && node scripts/aggregate-data.js --skip-evals && vite build",
     "preview": "vite preview",
-    "aggregate": "node scripts/aggregate-data.js"
+    "aggregate": "node scripts/aggregate-data.js",
+    "fetch-evals": "node scripts/fetch-evaluations-from-github.js"
   },
   "dependencies": {
     "@octokit/rest": "^21.0.2",

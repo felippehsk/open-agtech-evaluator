@@ -727,6 +727,2154 @@
   {
     "meta": {
       "schema_version": "1.0",
+      "platform_slug": "climate-fieldview",
+      "platform_name": "Climate FieldView",
+      "evaluator": "kjreyda-stack",
+      "evaluation_date": "2026-02-26",
+      "last_verified_date": "2026-02-26",
+      "cohort": "AGT3510",
+      "total_hours_spent": 4
+    },
+    "identity": {
+      "version_module_evaluated": "Climate FieldView Basic/Plus Feb 2026",
+      "company_developer": "Bayer Crop Science",
+      "country_of_origin": "United States",
+      "year_founded": "2015",
+      "platform_type": [
+        "Web-based (browser)",
+        "Mobile app — iOS",
+        "Mobile app — Android"
+      ],
+      "primary_agricultural_focus": [
+        "Broadacre crops (grains, oilseeds, pulses)",
+        "Row crops (corn, soybeans, cotton)"
+      ],
+      "website_url": "https://climate.com/en-us.html",
+      "last_updated_version": "Continuous Current as of Feb 2026"
+    },
+    "sections": {
+      "identity": {
+        "company_developer": {
+          "value": "Bayer Crop Science",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://climate.com/en-us.html"
+        },
+        "country_of_origin": {
+          "value": "United States",
+          "evidence_tag": "documentation_verified"
+        },
+        "version_module_evaluated": {
+          "value": "Climate FieldView Basic/Plus Feb 2026",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://climate.com/en-us/pricing.html"
+        },
+        "year_founded": {
+          "value": "2015",
+          "evidence_tag": "documentation_verified"
+        },
+        "platform_type": {
+          "value": [
+            "Web-based (browser)",
+            "Mobile app — iOS",
+            "Mobile app — Android"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "primary_agricultural_focus": {
+          "value": [
+            "Broadacre crops (grains, oilseeds, pulses)",
+            "Row crops (corn, soybeans, cotton)"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "website_url": {
+          "value": "https://climate.com/en-us.html",
+          "evidence_tag": "documentation_verified"
+        },
+        "last_updated_version": {
+          "value": "Continuous Current as of Feb 2026",
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "ingestion": {
+        "file_format_import_open": {
+          "value": [
+            "Shapefile (.shp/.shx/.dbf/.prj)",
+            "GeoTIFF (.tif/.tiff)",
+            "KML / KMZ (.kml/.kmz)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "file_format_import_proprietary": {
+          "value": [
+            "John Deere GreenStar 3 (.rcd files)",
+            "John Deere GreenStar 4 / Gen4 (.jdl files)",
+            "CNH / Case IH / New Holland (.cn1, .xml)",
+            "Ag Leader (.agdata, .yld)",
+            "CLAAS (Telematics formats)",
+            "Raven (Slingshot formats)",
+            "Precision Planting 20|20 (.2020 files)",
+            "Trimble / AgGPS (.agd, AgData, AgGPS folders)",
+            "AGCO / FieldStar (.agf, .fdd)",
+            "Topcon / Sokkia",
+            "John Deere .dat files"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://support.climate.com/kt#/kA02A000000DjvOSAS/en_US"
+        },
+        "yield_monitor_import": {
+          "value": [
+            "John Deere (S-Series, X-Series, T-Series)",
+            "Case IH (Axial-Flow series)",
+            "New Holland (CR, CX series)",
+            "AGCO / Massey Ferguson / Fendt / Gleaner",
+            "CLAAS (Lexion, Tucano)",
+            "Ag Leader (aftermarket, brand-agnostic)",
+            "Trimble (aftermarket)",
+            "Precision Planting (aftermarket)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://support.climate.com/kt#/kA02A000000DjvOSAS/en_US"
+        },
+        "satellite_imagery": {
+          "value": [
+            "Built-in — Sentinel-2 (ESA, 10m, 5-day revisit)",
+            "Via file upload (user provides imagery)",
+            "Via API connection to third-party"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "drone_imagery": {
+          "value": [
+            "Orthomosaics (GeoTIFF)",
+            "NDVI / index maps (pre-processed)",
+            "DJI native formats"
+          ],
+          "evidence_tag": "third_party_verified"
+        },
+        "weather_data": {
+          "value": [
+            "Built-in — historical weather data"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "direct_telematics": {
+          "value": [
+            "John Deere (JDLink / MTG)",
+            "CNH Industrial (AFS Connect)",
+            "CLAAS (Telematics)",
+            "Unknown"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "ease_of_import": {
+          "value": 4,
+          "evidence_tag": "hands_on_verified"
+        },
+        "unit_system_handling": {
+          "value": "Fully supports Imperial, Metric, and Canadian mixed units seamlessly",
+          "evidence_tag": "documentation_verified"
+        },
+        "data_format_limitations": {
+          "value": "Requires Zip files that don't always process through the software, had multiple errors during testing",
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "processing_2a": {
+        "spatial_filtering": {
+          "value": [
+            "Filter by field boundary",
+            "Filter by custom polygon (draw-on-map)"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "temporal_filtering": {
+          "value": [
+            "Filter by crop year / season",
+            "Filter by date range",
+            "Filter by operation type (planting, spraying, harvest)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://support.climate.com/kt#/kA04z000000PRbmCAG/en_US"
+        },
+        "multi_layer_overlay": {
+          "value": [
+            "Yield + soil data overlay",
+            "Yield + elevation overlay",
+            "Satellite imagery + yield overlay",
+            "As-applied + prescription comparison",
+            "Multi-year yield comparison (side-by-side or stacked)",
+            "Split-screen comparison"
+          ],
+          "evidence_tag": "vendor_claimed"
+        },
+        "coordinate_system_handling": {
+          "value": "Automatic (detects and transforms CRS)",
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "processing_2b": {
+        "yield_data_cleaning": {
+          "value": [
+            "Start/stop pass delay removal (ramp-up/ramp-down)",
+            "Automated cleaning pipeline (one-click)",
+            "User-configurable cleaning parameters"
+          ],
+          "evidence_tag": "vendor_claimed"
+        },
+        "combine_calibration_adjustment": {
+          "value": [
+            "Unknown"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "yield_map_generation": {
+          "value": "Yes",
+          "evidence_tag": "documentation_verified"
+        },
+        "vegetation_index_calculation": {
+          "value": [
+            "NDVI (Normalized Difference Vegetation Index)",
+            "Custom / user-defined indices"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "management_zone_delineation": {
+          "value": [
+            "Manual zone drawing",
+            "Multi-layer input (yield + soil + elevation)",
+            "AI/ML-based zone delineation"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "vra_prescription_map_creation": {
+          "value": [
+            "Seeding / planting rate prescriptions",
+            "Fertilizer rate prescriptions (N, P, K, S, micronutrients)",
+            "Crop protection product prescriptions",
+            "Based on management zones"
+          ],
+          "evidence_tag": "vendor_claimed"
+        },
+        "prescription_export_formats": {
+          "value": [
+            "Shapefile (.shp)",
+            "John Deere format (GS3 / Gen4 compatible)",
+            "CNH / Case IH / New Holland format",
+            "Ag Leader format",
+            "Trimble format (AgGPS / AgData)"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "interpolation_methods": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "on_farm_trial_analysis": {
+          "value": [
+            "A/B strip comparison",
+            "Statistical significance testing"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "profit_loss_map": {
+          "value": [
+            "Input cost entry (per-acre / per-hectare)",
+            "Spatial profit/loss mapping",
+            "Revenue calculation from yield × price",
+            "Automated ROI on VRA"
+          ],
+          "evidence_tag": "vendor_claimed"
+        },
+        "crop_scouting_tools": {
+          "value": [
+            "Geo-referenced observation points",
+            "Photo capture and attachment",
+            "Weed mapping",
+            "Growth stage recording",
+            "Scouting report generation"
+          ],
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "processing_2e_financial": {
+        "income_tracking": {
+          "value": "Partial",
+          "evidence_tag": "vendor_claimed",
+          "comment": "Capable of analyzing ROI through the data stored"
+        },
+        "expense_tracking": {
+          "value": "Partial",
+          "evidence_tag": "vendor_claimed",
+          "comment": "Capable of analyzing input expenses"
+        },
+        "cost_of_production": {
+          "value": "Yes — per acre/hectare",
+          "evidence_tag": "documentation_verified"
+        },
+        "profitability_analysis": {
+          "value": "Partial",
+          "evidence_tag": "vendor_claimed"
+        },
+        "cost_tracking_granularity": {
+          "value": [
+            "Per field / paddock",
+            "Per crop / enterprise"
+          ],
+          "evidence_tag": "documentation_verified",
+          "comment": "Able to track inputs in a field"
+        },
+        "integration_accounting": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "export": {
+        "export_geospatial": {
+          "value": [
+            "Shapefile (.shp)"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "export_tabular": {
+          "value": [
+            "CSV (.csv)",
+            "PDF reports (.pdf)"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "export_proprietary": {
+          "value": [
+            "John Deere (GS3 / Gen4 compatible)",
+            "CNH / Case IH / New Holland format",
+            "Ag Leader format",
+            "Trimble format (AgGPS / AgData)",
+            "API for programmatic data export"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "batch_export": {
+          "value": "Can batch-export entire farm (all fields, all layers, all years) in one operation",
+          "evidence_tag": "documentation_verified"
+        },
+        "time_to_first_map": {
+          "value": "Instant — map renders immediately upon data upload",
+          "evidence_tag": "vendor_claimed"
+        },
+        "report_generation": {
+          "value": [
+            "Field summary reports",
+            "Yield analysis reports",
+            "Profitability reports"
+          ],
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "integration": {
+        "direct_integrations": {
+          "value": [
+            "John Deere Operations Center",
+            "CNH AFS Connect / PLM Connect",
+            "Ag Leader SMS / InCommand",
+            "Trimble Ag Software / FarmENGAGE",
+            "Precision Planting 20|20",
+            "Leaf API (data connector)"
+          ],
+          "evidence_tag": "third_party_verified"
+        },
+        "api_availability": {
+          "value": "Partner / developer API — documented, requires agreement",
+          "evidence_tag": "documentation_verified",
+          "comment": "CLAAS API connections"
+        },
+        "isobus_compliance": {
+          "value": "Partial compliance (import only OR export only)",
+          "evidence_tag": "documentation_verified"
+        },
+        "oem_equipment_compatibility": {
+          "value": [
+            "Brand-agnostic (any ISOBUS-compliant equipment)"
+          ],
+          "evidence_tag": "vendor_claimed"
+        },
+        "data_format_interoperability": {
+          "value": 4,
+          "evidence_tag": "third_party_verified"
+        },
+        "hardware_dependency": {
+          "value": "Enhanced by proprietary hardware — manual uploads work, but automated data sync / telematics require specific hardware",
+          "evidence_tag": "third_party_verified"
+        },
+        "adapt_support": {
+          "value": "Yes — full ADAPT support (imports and exports via ADAPT plugins)",
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "governance": {
+        "data_ownership_policy": {
+          "value": "User owns data, platform has license to use for service delivery",
+          "evidence_tag": "documentation_verified"
+        },
+        "data_portability": {
+          "value": "Full export — all raw and processed data downloadable in standard formats",
+          "evidence_tag": "documentation_verified"
+        },
+        "data_deletion_policy": {
+          "value": "Deletion by request only (contact support)",
+          "evidence_tag": "documentation_verified"
+        },
+        "data_sharing_third_parties": {
+          "value": "Opt-in only — user must actively consent to sharing",
+          "evidence_tag": "documentation_verified"
+        },
+        "ag_data_transparent": {
+          "value": "Yes — currently certified (provide certification year)",
+          "evidence_tag": "documentation_verified"
+        },
+        "privacy_policy_url": {
+          "value": "https://climate.com/legal/privacy-policy",
+          "evidence_tag": "hands_on_verified"
+        },
+        "data_storage_location": {
+          "value": [
+            "United States (AWS / Azure / GCP — specify if known)",
+            "Multiple regions (geo-replicated)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "comment": "Data stored in US and multiple other regions"
+        },
+        "security_measures": {
+          "value": [
+            "Encryption in transit (TLS/SSL)",
+            "SOC 2 Type II certified",
+            "ISO 27001 certified",
+            "GDPR compliant",
+            "PIPEDA compliant (Canada)"
+          ],
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "access": {
+        "multi_user_access": {
+          "value": "Yes — specify how many",
+          "evidence_tag": "unknown",
+          "comment": "Unlimited"
+        },
+        "user_roles": {
+          "value": [
+            "Administrator / Owner",
+            "View-only / Read-only"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "sharing_advisors": {
+          "value": "Yes",
+          "evidence_tag": "documentation_verified"
+        },
+        "offline_functionality": {
+          "value": "Full offline — all features available without internet",
+          "evidence_tag": "unknown",
+          "comment": "Offline using iPad App"
+        },
+        "mobile_app_available": {
+          "value": [
+            "iOS (iPhone/iPad)",
+            "Android (phone/tablet)",
+            "Mobile-responsive web (no dedicated app)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "storage_quotas": {
+          "value": "Unlimited (no stated limits)",
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "pricing": {
+        "pricing_model": {
+          "value": [
+            "Flat subscription (monthly)",
+            "Flat subscription (annual)",
+            "Hardware-bundled (included with equipment purchase)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "free_tier_available": {
+          "value": "Yes",
+          "evidence_tag": "hands_on_verified"
+        },
+        "free_tier_limitations": {
+          "value": [
+            "Limited features (specify which are locked)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "Limited to basic scouting and weather, subscription required for active equipment mapping"
+        },
+        "trial_period": {
+          "value": "Yes — duration",
+          "evidence_tag": "hands_on_verified",
+          "comment": "Often a 1 year trial"
+        },
+        "educational_pricing": {
+          "value": "No educational program",
+          "evidence_tag": "documentation_verified"
+        },
+        "contract_requirements": {
+          "value": "Annual contract",
+          "evidence_tag": "documentation_verified"
+        },
+        "standardized_cost_broadacre_currency": {
+          "value": "CAD",
+          "evidence_tag": "hands_on_verified"
+        },
+        "standardized_cost_broadacre_annual": {
+          "value": 650,
+          "evidence_tag": "hands_on_verified"
+        },
+        "standardized_cost_broadacre_notes": {
+          "value": null,
+          "evidence_tag": "not_applicable",
+          "comment": "Yearly cost "
+        },
+        "standardized_cost_livestock_currency": {
+          "value": "CAD",
+          "evidence_tag": "not_applicable",
+          "comment": "not cattle related out of scope"
+        },
+        "standardized_cost_livestock_annual": {
+          "value": null,
+          "evidence_tag": "not_applicable",
+          "comment": "not cattle related out of scope"
+        },
+        "standardized_cost_livestock_notes": {
+          "value": null,
+          "evidence_tag": "not_applicable",
+          "comment": "not cattle related out of scope"
+        },
+        "cost_to_leave": {
+          "value": "Free — full data export, no penalty",
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "usability": {
+        "onboarding_setup": {
+          "value": 4,
+          "evidence_tag": "hands_on_verified"
+        },
+        "documentation_quality": {
+          "value": "Good — adequate documentation, covers main features",
+          "evidence_tag": "third_party_verified"
+        },
+        "training_resources": {
+          "value": [
+            "Video tutorials (YouTube, embedded)",
+            "Webinars (live or recorded)",
+            "Written guides / knowledge base",
+            "Community forum / user group"
+          ],
+          "evidence_tag": "vendor_claimed"
+        },
+        "customer_support_channels": {
+          "value": [
+            "Phone support",
+            "Email support",
+            "Live chat (in-app or website)",
+            "Dealer network (local support)",
+            "Social media support"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "support_languages": {
+          "value": [
+            "English",
+            "French",
+            "Spanish",
+            "Portuguese",
+            "German",
+            "Ukrainian",
+            "Dutch",
+            "Mandarin / Chinese"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "update_frequency": {
+          "value": "Monthly App Updates",
+          "evidence_tag": "vendor_claimed"
+        }
+      }
+    },
+    "ai_checks": {
+      "ingestion": "ai_minor_errors",
+      "processing_2a": "ai_minor_errors",
+      "processing_2b": "ai_minor_errors",
+      "export": "ai_minor_errors",
+      "integration": "ai_minor_errors"
+    },
+    "assessment": {
+      "strongest_capability": "Ease of use / user experience",
+      "strongest_capability_justification": "Simple website and app  can be used on almost any device",
+      "weakest_capability": "Financial analysis / profitability mapping",
+      "weakest_capability_justification": "Not very many financial tools involved in the app very limited in that area",
+      "best_suited_for": [
+        "Small farms (< 500 acres / < 200 ha)",
+        "Medium farms (500–5,000 acres / 200–2,000 ha)",
+        "Large farms (> 5,000 acres / > 2,000 ha)",
+        "Corporate / multi-farm operations",
+        "Agronomists / crop advisors / consultants",
+        "Agricultural retailers / input suppliers",
+        "Precision ag beginners",
+        "Advanced precision ag users"
+      ],
+      "worst_suited_for": "live stock producers very limited uses towards them primarily targets grain",
+      "unique_differentiator": "real time Bluetooth mapping from their FieldView drive to the iPad",
+      "recommendation": "Conditionally — good for specific use cases (explain in notes)",
+      "ai_claims_total": 100,
+      "ai_claims_correct": 80,
+      "ai_claims_incorrect": 20,
+      "ai_claims_unverifiable": 5,
+      "ai_notable_error": "Struggled a lot with the pricing section other than  that just small errors when it came to  file types and some capabilities"
+    },
+    "evidence_log": {
+      "source_types_used": [
+        "Official platform documentation / help center",
+        "Platform trial or demo account (hands-on)",
+        "Vendor website / marketing materials",
+        "Independent blog or review (e.g., PrecisionAg, AgFunder)",
+        "Dealer or sales representative conversation"
+      ],
+      "official_doc_urls": [
+        "https://climate.com/static/field-view/#/field-selection-web?client-id=943688https://orders.climate.com/otc2017#/72d0228f-1735-4283-9e2e-f9ba07f06d15/product-selection/whole-farmhttps://www.google.com/aclk?sa=L&pf=1&ai=DChsSEwjH87u93veSAxURBq0GHdbnF78YACICCAEQABoCcHY&co=1&ase=2&gclid=CjwKCAiA-__MBhAKEiwASBmsBGTaKabOMwF8lKxvb5NJdQBcOTxkX4BzNYKSoat_-6ITC50VyZH8DBoCHyoQAvD_BwE&cid=CAASWuRoA67GPpZgvLgO0yn7_vxk-NTPrCgdFKOPQsq6D9iNmpIQ4SurgXGev73T4Wc6Hb3bxsEnvuCS30EjBg0kP7dCEPhLTctKr_zmEzE3XTKBDkyD9UUFt5AzAw&cce=2&category=acrcp_v1_32&sig=AOD64_1PSgotayGtcekEFsLbJkbuNW-XVA&q&nis=4&adurl=https://climate.com/en-ca.html?utm_source%3Dgoogle%26utm_medium%3Dcpc%26utm_campaign%3Dcfv_digital-farming_climatefieldview%26gad_source%3D1%26gad_campaignid%3D21369255096%26gbraid%3D0AAAAA92yxpt6NGvk3jl8r17Oj_KVzOEIv%26gclid%3DCjwKCAiA-__MBhAKEiwASBmsBGTaKabOMwF8lKxvb5NJdQBcOTxkX4BzNYKSoat_-6ITC50VyZH8DBoCHyoQAvD_BwE&ved=2ahUKEwiFmLK93veSAxUeJzQIHQmHLCcQ0Qx6BAgwEAE"
+      ],
+      "third_party_urls": [],
+      "section_source_urls": {
+        "processing_2e_financial": [
+          "https://support.climate.com/kt#/en_US"
+        ]
+      },
+      "hands_on_notes": "Tried uploading files and creating boundaries very limited testing in free tier"
+    }
+  },
+  {
+    "meta": {
+      "schema_version": "1.0",
+      "platform_slug": "dronedeploy",
+      "platform_name": "DroneDeploy",
+      "evaluator": "maxwellolson-wq",
+      "evaluation_date": "2026-02-26",
+      "last_verified_date": "2026-02-26",
+      "cohort": "AGT3510",
+      "total_hours_spent": 3.5
+    },
+    "identity": {
+      "version_module_evaluated": "2026 DroneDeploy Aerial Pro",
+      "company_developer": "DroneDeploy",
+      "country_of_origin": "United States",
+      "year_founded": "2013",
+      "platform_type": [
+        "Mobile app — Android",
+        "Mobile app — iOS",
+        "Hybrid (web + mobile)",
+        "Web-based (browser)"
+      ],
+      "primary_agricultural_focus": [
+        "Broadacre crops (grains, oilseeds, pulses)",
+        "Row crops (corn, soybeans, cotton)",
+        "Specialty crops (vegetables, fruit, horticulture)",
+        "Mixed / Whole-farm"
+      ],
+      "website_url": "https://www.dronedeploy.com/",
+      "last_updated_version": "February 20, 2026"
+    },
+    "sections": {
+      "identity": {
+        "primary_agricultural_focus": {
+          "value": [
+            "Broadacre crops (grains, oilseeds, pulses)",
+            "Row crops (corn, soybeans, cotton)",
+            "Specialty crops (vegetables, fruit, horticulture)",
+            "Mixed / Whole-farm"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "company_developer": {
+          "value": "DroneDeploy",
+          "evidence_tag": "documentation_verified"
+        },
+        "country_of_origin": {
+          "value": "United States",
+          "evidence_tag": "documentation_verified"
+        },
+        "version_module_evaluated": {
+          "value": "2026 DroneDeploy Aerial Pro",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/solutions/agriculture"
+        },
+        "year_founded": {
+          "value": "2013",
+          "evidence_tag": "unknown"
+        },
+        "platform_type": {
+          "value": [
+            "Mobile app — Android",
+            "Mobile app — iOS",
+            "Hybrid (web + mobile)",
+            "Web-based (browser)"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "website_url": {
+          "value": "https://www.dronedeploy.com/",
+          "evidence_tag": "hands_on_verified"
+        },
+        "last_updated_version": {
+          "value": "February 20, 2026",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://www.dronedeploy.com/legal/master-services-agreement"
+        }
+      },
+      "ingestion": {
+        "file_format_import_open": {
+          "value": [
+            "GeoTIFF (.tif/.tiff)",
+            "GeoPackage (.gpkg)",
+            "Shapefile (.shp/.shx/.dbf/.prj)",
+            "GeoJSON (.geojson)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964642-Exporting-Your-Data"
+        },
+        "yield_monitor_import": {
+          "value": [
+            "Not supported"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "file_format_import_proprietary": {
+          "value": [
+            "John Deere .dat files"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "satellite_imagery": {
+          "value": [
+            "Not supported"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "drone_imagery": {
+          "value": [
+            "Raw multispectral images",
+            "NDVI / index maps (pre-processed)",
+            "Digital Elevation Models (DEM)",
+            "Orthomosaics (GeoTIFF)",
+            "Digital Surface Models (DSM)",
+            "RGB imagery",
+            "Thermal imagery",
+            "DJI native formats"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/5942721454103-Data-Processing-with-DroneDeploy"
+        },
+        "weather_data": {
+          "value": [
+            "Manual entry"
+          ],
+          "evidence_tag": "third_party_verified"
+        },
+        "unit_system_handling": {
+          "value": "Fully supports Imperial, Metric, and Canadian mixed units seamlessly",
+          "evidence_tag": "documentation_verified"
+        },
+        "direct_telematics": {
+          "value": [
+            "John Deere (JDLink / MTG)",
+            "CNH Industrial (AFS Connect)",
+            "Mixed fleet / brand-agnostic telematics"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.suasnews.com/2017/04/dronedeploys-drone-data-platform-now-integrated-john-deere-api/#:~:text=DroneDeploy%2C%20the%20leading%20drone%20data,informed%20decisions%20throughout%20the%20year.%E2%80%9D"
+        }
+      },
+      "processing_2a": {
+        "spatial_filtering": {
+          "value": [
+            "Filter by field boundary",
+            "Filter by custom polygon (draw-on-map)",
+            "Filter by management zone",
+            "Filter by buffer zone (around a feature)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964142-Zone-Management#:~:text=The%20Grid%20option%20geographically%20groups,slider%20dots%20on%20the%20histogram."
+        },
+        "temporal_filtering": {
+          "value": [
+            "Filter by date range",
+            "Filter by crop year / season",
+            "Filter by growth stage (phenological)",
+            "Time-series slider / animation"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "multi_layer_overlay": {
+          "value": [
+            "Transparency / opacity adjustment per layer",
+            "Yield + soil data overlay",
+            "Yield + elevation overlay",
+            "Satellite imagery + yield overlay",
+            "As-applied + prescription comparison",
+            "Multi-year yield comparison (side-by-side or stacked)",
+            "Custom layer stacking (user selects layers)",
+            "Split-screen comparison"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/4409693902871-Uploading-Managing-Levels",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/4409693902871-Uploading-Managing-Levels"
+          ]
+        },
+        "coordinate_system_handling": {
+          "value": "Automatic (detects and transforms CRS)",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/4415183176087-Exterior-Overlays",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/4415183176087-Exterior-Overlays"
+          ]
+        }
+      },
+      "processing_2c_livestock": {
+        "individual_animal_records": {
+          "value": "No",
+          "evidence_tag": "documentation_verified"
+        },
+        "rfid_eid_integration": {
+          "value": [
+            "Not supported"
+          ],
+          "evidence_tag": "not_applicable"
+        },
+        "breeding_genetics_tracking": {
+          "value": "Not applicable",
+          "evidence_tag": "not_applicable"
+        },
+        "health_treatment_records": {
+          "value": "Not applicable",
+          "evidence_tag": "not_applicable"
+        },
+        "grazing_management": {
+          "value": "Partial",
+          "evidence_tag": "documentation_verified"
+        },
+        "weight_growth_tracking": {
+          "value": "Not applicable",
+          "evidence_tag": "not_applicable"
+        },
+        "traceability_birth_to_harvest": {
+          "value": [
+            "Grazing / paddock management"
+          ],
+          "evidence_tag": "documentation_verified"
+        }
+      },
+      "pricing": {
+        "pricing_model": {
+          "value": [
+            "Per-seat / per-user pricing",
+            "Flat subscription (annual)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/pricing"
+        },
+        "free_tier_available": {
+          "value": "No",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/pricing"
+        },
+        "free_tier_limitations": {
+          "value": [
+            "No free tier available"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/pricing"
+        },
+        "trial_period": {
+          "value": "Yes — duration",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/pricing"
+        },
+        "educational_pricing": {
+          "value": "Discounted educational pricing",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/pricing"
+        },
+        "standardized_cost_broadacre_currency": {
+          "value": "USD",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/pricing#:~:text=DroneDeploy%20offers%20a%20variety%20of%20plans:%20*,analysis%20*%20Live%20map%20for%20crop%20scouting"
+        },
+        "standardized_cost_broadacre_annual": {
+          "value": 2000,
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/pricing#:~:text=DroneDeploy%20offers%20a%20variety%20of%20plans:%20*,analysis%20*%20Live%20map%20for%20crop%20scouting"
+        },
+        "standardized_cost_broadacre_notes": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_livestock_currency": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_livestock_annual": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_livestock_notes": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "contract_requirements": {
+          "value": "Month-to-month",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/legal/master-services-agreement",
+          "source_urls": [
+            "https://www.dronedeploy.com/legal/master-services-agreement"
+          ]
+        },
+        "cost_to_leave": {
+          "value": "Data retained for limited period after cancellation (specify)",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/legal/master-services-agreement/",
+          "source_urls": [
+            "https://www.dronedeploy.com/legal/master-services-agreement/"
+          ],
+          "comment": "No cancellation fee, data is retained for 30 days for customer to export or download"
+        }
+      },
+      "processing_2b": {
+        "yield_data_cleaning": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "combine_calibration_adjustment": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "not_applicable"
+        },
+        "yield_map_generation": {
+          "value": "No",
+          "evidence_tag": "not_applicable"
+        },
+        "vegetation_index_calculation": {
+          "value": [
+            "NDVI (Normalized Difference Vegetation Index)",
+            "NDRE (Normalized Difference Red Edge)",
+            "MSAVI / MSAVI2",
+            "SAVI",
+            "OSAVI",
+            "EVI",
+            "GNDVI",
+            "NDMI / NDWI"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004860841-Understanding-Vegetation-Indices",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004860841-Understanding-Vegetation-Indices"
+          ]
+        },
+        "yield_map_generation_notes": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "management_zone_delineation": {
+          "value": [
+            "Manual zone drawing",
+            "Threshold-based (user-defined breakpoints)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964142-Zone-Management",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004964142-Zone-Management"
+          ]
+        },
+        "vra_prescription_map_creation": {
+          "value": [
+            "Seeding / planting rate prescriptions",
+            "Fertilizer rate prescriptions (N, P, K, S, micronutrients)",
+            "Lime application prescriptions",
+            "Crop protection product prescriptions",
+            "Based on management zones",
+            "Based on grid sampling",
+            "Custom / user-defined (e.g. manual editing as in QGIS)"
+          ],
+          "evidence_tag": "unknown",
+          "source_url": "https://www.dronedeploy.com/blog/how-to-use-dronedeploy-during-the-growing-season#:~:text=Lastly%2C%20these%20plant%20health%20maps,exact%20measurements%20that%20are%20affected.",
+          "source_urls": [
+            "https://www.dronedeploy.com/blog/how-to-use-dronedeploy-during-the-growing-season#:~:text=Lastly%2C%20these%20plant%20health%20maps,exact%20measurements%20that%20are%20affected."
+          ]
+        },
+        "prescription_export_formats": {
+          "value": [
+            "Shapefile (.shp)",
+            "GeoJSON",
+            "CSV"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats"
+          ]
+        },
+        "interpolation_methods": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "on_farm_trial_analysis": {
+          "value": [
+            "A/B strip comparison"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "profit_loss_map": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "not_applicable"
+        },
+        "crop_scouting_tools": {
+          "value": [
+            "Geo-referenced observation points",
+            "Photo capture and attachment",
+            "Pest / disease identification (manual)",
+            "Scouting report generation",
+            "Growth stage recording",
+            "Weed mapping"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/blog/how-to-use-dronedeploy-during-the-growing-season",
+          "source_urls": [
+            "https://www.dronedeploy.com/blog/how-to-use-dronedeploy-during-the-growing-season"
+          ]
+        }
+      },
+      "processing_2d_cea": {
+        "climate_control_monitoring": {
+          "value": [
+            "Not supported"
+          ],
+          "evidence_tag": "not_applicable"
+        },
+        "irrigation_fertigation": {
+          "value": "Not applicable",
+          "evidence_tag": "not_applicable"
+        },
+        "crop_growth_stage_tracking": {
+          "value": "Not applicable",
+          "evidence_tag": "not_applicable"
+        },
+        "labor_task_management": {
+          "value": "Not applicable",
+          "evidence_tag": "not_applicable"
+        },
+        "production_planning": {
+          "value": "Not applicable",
+          "evidence_tag": "not_applicable"
+        }
+      },
+      "processing_2e_financial": {
+        "income_tracking": {
+          "value": "No",
+          "evidence_tag": "not_applicable"
+        },
+        "expense_tracking": {
+          "value": "No",
+          "evidence_tag": "not_applicable"
+        },
+        "cost_of_production": {
+          "value": "No",
+          "evidence_tag": "not_applicable"
+        },
+        "profitability_analysis": {
+          "value": "No",
+          "evidence_tag": "not_applicable"
+        },
+        "cost_tracking_granularity": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "not_applicable"
+        },
+        "integration_accounting": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "not_applicable"
+        }
+      },
+      "export": {
+        "export_geospatial": {
+          "value": [
+            "Shapefile (.shp)",
+            "GeoJSON (.geojson)",
+            "GeoTIFF (.tif)",
+            "KML / KMZ (.kml/.kmz)",
+            "ESRI formats (e.g. for ArcGIS)",
+            "CAD (DWG/DXF)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats"
+          ],
+          "comment": ".gpkg and ISOXML/ISOBUS are not explicitly listed however both are easily converted and used in other standard formats with integrations of DroneDeploy such as Climate Field View"
+        },
+        "export_tabular": {
+          "value": [
+            "CSV (.csv)",
+            "PDF reports (.pdf)",
+            "JSON"
+          ],
+          "evidence_tag": "unknown",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats"
+          ],
+          "comment": "Excel formats not directly supported but easily convertible"
+        },
+        "export_proprietary": {
+          "value": [
+            "John Deere (GS3 / Gen4 compatible)",
+            "CNH / Case IH / New Holland format",
+            "AGCO format",
+            "Ag Leader format",
+            "Trimble format (AgGPS / AgData)",
+            "Raw data download (complete, original format)",
+            "API for programmatic data export",
+            "Bulk export (all fields / all data at once)",
+            "Print-ready maps (high resolution)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004964622-Data-Export-Formats"
+          ]
+        },
+        "batch_export": {
+          "value": "Must export field-by-field (one field at a time)",
+          "evidence_tag": "documentation_verified"
+        },
+        "time_to_first_map": {
+          "value": "Unknown",
+          "evidence_tag": "unknown"
+        },
+        "report_generation": {
+          "value": [
+            "Field summary reports",
+            "Yield analysis reports",
+            "Custom report builder"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://wingtra.com/best-photogrammetry-software/dronedeploy/?srsltid=AfmBOopZiLDN_6a3aWoor5xfB2L7n46rTs1Zmr2N4JQXV1UGJlBpmatp",
+          "source_urls": [
+            "https://wingtra.com/best-photogrammetry-software/dronedeploy/?srsltid=AfmBOopZiLDN_6a3aWoor5xfB2L7n46rTs1Zmr2N4JQXV1UGJlBpmatp"
+          ]
+        }
+      },
+      "integration": {
+        "direct_integrations": {
+          "value": [
+            "John Deere Operations Center",
+            "Climate FieldView (Bayer)",
+            "CNH AFS Connect / PLM Connect",
+            "Cropwise (Syngenta)",
+            "AgGateway ADAPT framework",
+            "AGCO Fuse",
+            "Farmers Edge"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "api_availability": {
+          "value": "Partner / developer API — documented, requires agreement",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/27659888106391-DroneDeploy-API-Getting-Started",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/27659888106391-DroneDeploy-API-Getting-Started"
+          ]
+        },
+        "isobus_compliance": {
+          "value": "Not compliant",
+          "evidence_tag": "documentation_verified"
+        },
+        "oem_equipment_compatibility": {
+          "value": [
+            "John Deere",
+            "Case IH",
+            "AGCO (Massey Ferguson, Fendt, Valtra, Challenger)",
+            "Ag Leader (aftermarket)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/blog/bowles-farm-agriculture#:~:text=Their%2012%2C000%20acre%20operation%20paired,Objectives%20of%20the%20Drone%20Project",
+          "source_urls": [
+            "https://www.dronedeploy.com/blog/bowles-farm-agriculture#:~:text=Their%2012%2C000%20acre%20operation%20paired,Objectives%20of%20the%20Drone%20Project"
+          ]
+        },
+        "data_format_interoperability": {
+          "value": 3,
+          "evidence_tag": "third_party_verified"
+        },
+        "hardware_dependency": {
+          "value": "Enhanced by proprietary hardware — manual uploads work, but automated data sync / telematics require specific hardware",
+          "evidence_tag": "vendor_claimed"
+        },
+        "adapt_support": {
+          "value": "No — does not support ADAPT",
+          "evidence_tag": "not_applicable"
+        }
+      },
+      "governance": {
+        "data_ownership_policy": {
+          "value": "User owns data, platform has license to use for service delivery",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/legal/gdpr-data-processing-agreement",
+          "source_urls": [
+            "https://www.dronedeploy.com/legal/gdpr-data-processing-agreement"
+          ]
+        },
+        "data_portability": {
+          "value": "Full export — all raw and processed data downloadable in standard formats",
+          "evidence_tag": "documentation_verified"
+        },
+        "data_deletion_policy": {
+          "value": "Deletion by request only (contact support)",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/legal/privacy",
+          "source_urls": [
+            "https://www.dronedeploy.com/legal/privacy"
+          ]
+        },
+        "data_sharing_third_parties": {
+          "value": "Opt-out — sharing is default, user can disable",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004862021-Data-Sharing",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004862021-Data-Sharing"
+          ]
+        },
+        "ag_data_transparent": {
+          "value": "Not certified",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.agdatatransparent.com/certified",
+          "source_urls": [
+            "https://www.agdatatransparent.com/certified"
+          ]
+        },
+        "privacy_policy_url": {
+          "value": "https://www.dronedeploy.com/legal/privacy",
+          "evidence_tag": "documentation_verified"
+        },
+        "data_storage_location": {
+          "value": [
+            "United States (AWS / Azure / GCP — specify if known)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/27589292559383-Data-Residency-at-DroneDeploy",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/27589292559383-Data-Residency-at-DroneDeploy"
+          ]
+        },
+        "security_measures": {
+          "value": [
+            "Encryption at rest (AES-256 or equivalent)",
+            "Encryption in transit (TLS/SSL)",
+            "Multi-factor authentication (MFA)",
+            "SOC 2 Type II certified",
+            "ISO 27001 certified",
+            "Role-based access control (RBAC)",
+            "Audit logging",
+            "GDPR compliant",
+            "PIPEDA compliant (Canada)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/product/security",
+          "source_urls": [
+            "https://www.dronedeploy.com/product/security"
+          ]
+        }
+      },
+      "access": {
+        "multi_user_access": {
+          "value": "Yes — specify how many",
+          "evidence_tag": "documentation_verified",
+          "comment": "Depends on the subscription plan",
+          "source_url": "https://www.dronedeploy.com/legal/fair-usage",
+          "source_urls": [
+            "https://www.dronedeploy.com/legal/fair-usage"
+          ]
+        },
+        "user_roles": {
+          "value": [
+            "Administrator / Owner",
+            "Manager",
+            "Operator / Field worker",
+            "View-only / Read-only",
+            "Custom roles (user-defined)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004861281-Organization-Administration",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004861281-Organization-Administration"
+          ]
+        },
+        "sharing_advisors": {
+          "value": "Yes",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/1500004964442-Add-and-Manage-Members-in-Your-Organization",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/1500004964442-Add-and-Manage-Members-in-Your-Organization"
+          ]
+        },
+        "offline_functionality": {
+          "value": "Partial offline — some features work offline, sync when connected",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/26263580481943-Offline-Flight-Planning",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/26263580481943-Offline-Flight-Planning"
+          ]
+        },
+        "mobile_app_available": {
+          "value": [
+            "iOS (iPhone/iPad)",
+            "Mobile-responsive web (no dedicated app)"
+          ],
+          "evidence_tag": "unknown",
+          "source_url": "https://apps.apple.com/us/app/dronedeploy-flight-app/id971358101",
+          "source_urls": [
+            "https://apps.apple.com/us/app/dronedeploy-flight-app/id971358101"
+          ]
+        },
+        "storage_quotas": {
+          "value": "Limited by plan tier (specify limits if known)",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://www.dronedeploy.com/legal/fair-usage",
+          "source_urls": [
+            "https://www.dronedeploy.com/legal/fair-usage"
+          ],
+          "comment": "lowest - 1000 gigapixels/year, highest - 5000/year"
+        }
+      },
+      "usability": {
+        "documentation_quality": {
+          "value": "Limited — basic FAQ or sparse documentation",
+          "evidence_tag": "hands_on_verified"
+        },
+        "training_resources": {
+          "value": [
+            "Video tutorials (YouTube, embedded)",
+            "Webinars (live or recorded)",
+            "Written guides / knowledge base",
+            "In-person training (dealer or company-hosted)",
+            "Interactive tutorials / walkthroughs (in-app)",
+            "Certification programs"
+          ],
+          "evidence_tag": "vendor_claimed",
+          "source_url": "https://www.dronedeploy.com/",
+          "source_urls": [
+            "https://www.dronedeploy.com/"
+          ]
+        },
+        "customer_support_channels": {
+          "value": [
+            "Phone support",
+            "Email support",
+            "Live chat (in-app or website)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/22699383779991-Contact-Support",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/22699383779991-Contact-Support"
+          ]
+        },
+        "support_languages": {
+          "value": [
+            "English",
+            "Spanish"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://help.dronedeploy.com/hc/en-us/articles/10974763021335-Support-at-DroneDeploy",
+          "source_urls": [
+            "https://help.dronedeploy.com/hc/en-us/articles/10974763021335-Support-at-DroneDeploy"
+          ]
+        },
+        "update_frequency": {
+          "value": "Generally product updates are quarterly",
+          "evidence_tag": "third_party_verified"
+        }
+      }
+    },
+    "ai_checks": {
+      "ingestion": "ai_minor_errors",
+      "processing_2b": "ai_100_correct",
+      "export": "ai_minor_errors",
+      "integration": "ai_significant_errors",
+      "processing_2a": "ai_minor_errors"
+    },
+    "assessment": {
+      "strongest_capability": "Other (specify)",
+      "strongest_capability_justification": "Best used ariel for crop analysis, for both vegetative index (NDVI), physical monitoring (lidar), and basic photo imagery. The data collection is entirely dependent on which sensors the drone has.",
+      "weakest_capability": "Yield data cleaning and processing",
+      "weakest_capability_justification": "Seems to lack native capabilities to process data such as the kringing or other delineation methods, would make the system much more capable.",
+      "best_suited_for": [
+        "Agronomists / crop advisors / consultants",
+        "Advanced precision ag users",
+        "Researchers / academic users",
+        "Students / educational use",
+        "Large farms (> 5,000 acres / > 2,000 ha)",
+        "Corporate / multi-farm operations"
+      ],
+      "worst_suited_for": "Small farms and retailers, really no value for the cost. As well livestock I just cant see the value for those operations.",
+      "unique_differentiator": "It seems to have many industry standard integrations as well as being able to transfer data through open source platforms, making it fairly open and capable.",
+      "recommendation": "Neutral — acceptable but not outstanding",
+      "ai_claims_total": 0,
+      "ai_claims_correct": 0,
+      "ai_claims_incorrect": 0,
+      "ai_claims_unverifiable": 0,
+      "ai_notable_error": "It sometimes seems to assume something is true just because there isn't a source that explicitly says otherwise. Example being integration, it seems to hallucinate companies that do integrate just because there is nothing that says they don't."
+    },
+    "evidence_log": {
+      "source_types_used": [
+        "Official platform documentation / help center",
+        "Vendor website / marketing materials",
+        "Independent blog or review (e.g., PrecisionAg, AgFunder)",
+        "Reddit / forum discussions",
+        "YouTube tutorials or demo videos",
+        "AI-generated (specify tool used)"
+      ],
+      "official_doc_urls": [],
+      "third_party_urls": [],
+      "hands_on_notes": "I was not able to try the platform as there is no free option, as well you need a real company to try the free trial that needs a payment method. As such there was no hands on testing performed."
+    },
+    "section_plugins_available": {
+      "export": false
+    }
+  },
+  {
+    "meta": {
+      "schema_version": "1.0",
+      "platform_slug": "geopard-agriculture",
+      "platform_name": "GeoPard Agriculture",
+      "evaluator": "conork-28",
+      "evaluation_date": "2026-02-26",
+      "last_verified_date": "2026-02-26",
+      "cohort": "AGT3510",
+      "total_hours_spent": 4
+    },
+    "identity": {
+      "version_module_evaluated": "Web platform (free 30-day trial tier, evaluated Feb 2026)",
+      "company_developer": "FlyPard Analytics GmbH",
+      "country_of_origin": "Germany",
+      "year_founded": "2019",
+      "platform_type": [
+        "Hybrid (web + mobile)",
+        "Web-based (browser)",
+        "Mobile app — Android",
+        "Mobile app — iOS",
+        "API-only (no GUI)",
+        "Plugin/extension for other software"
+      ],
+      "primary_agricultural_focus": [
+        "Broadacre crops (grains, oilseeds, pulses)",
+        "Row crops (corn, soybeans, cotton)",
+        "Specialty crops (vegetables, fruit, horticulture)"
+      ],
+      "website_url": "https://geopard.tech/",
+      "last_updated_version": "Jan 2026"
+    },
+    "sections": {
+      "identity": {
+        "company_developer": {
+          "value": "FlyPard Analytics GmbH",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://geopard.tech/policy/"
+        },
+        "country_of_origin": {
+          "value": "Germany",
+          "evidence_tag": "third_party_verified",
+          "source_url": "https://pitchbook.com/profiles/company/493943-32#overview"
+        },
+        "version_module_evaluated": {
+          "value": "Web platform (free 30-day trial tier, evaluated Feb 2026)",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://geopard.tech/pricing/"
+        },
+        "year_founded": {
+          "value": "2019",
+          "evidence_tag": "third_party_verified",
+          "source_url": "https://pitchbook.com/profiles/company/493943-32#overview"
+        },
+        "platform_type": {
+          "value": [
+            "Hybrid (web + mobile)",
+            "Web-based (browser)",
+            "Mobile app — Android",
+            "Mobile app — iOS",
+            "API-only (no GUI)",
+            "Plugin/extension for other software"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://geopard.tech/api/",
+          "source_urls": [
+            "https://geopard.tech/api/",
+            "https://geopard.tech/johndeere/https://geopard.tech/api/"
+          ]
+        },
+        "primary_agricultural_focus": {
+          "value": [
+            "Broadacre crops (grains, oilseeds, pulses)",
+            "Row crops (corn, soybeans, cotton)",
+            "Specialty crops (vegetables, fruit, horticulture)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://app.geopard.tech/fields"
+        },
+        "website_url": {
+          "value": "https://geopard.tech/",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://geopard.tech/#tab-plan-and-prescribe"
+        },
+        "last_updated_version": {
+          "value": "Jan 2026",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/changelog-and-product-releases/release-notes/release-web-and-mobile-january-2026-farm-view-soil-lab-csv-excel-import-zones-dynamic-editing"
+        }
+      },
+      "ingestion": {
+        "file_format_import_open": {
+          "value": [
+            "Shapefile (.shp/.shx/.dbf/.prj)",
+            "CSV with coordinates (.csv)",
+            "ISOXML / ISOBUS (ISO 11783)",
+            "KML / KMZ (.kml/.kmz)",
+            "GeoJSON (.geojson)",
+            "GeoTIFF (.tif/.tiff)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "file_format_import_proprietary": {
+          "value": [
+            "John Deere GreenStar 4 / Gen4 (.jdl files)",
+            "John Deere .dat files",
+            "CNH / Case IH / New Holland (.cn1, .xml)",
+            "AGCO / FieldStar (.agf, .fdd)",
+            "Precision Planting 20|20 (.2020 files)",
+            "John Deere GreenStar 3 (.rcd files)",
+            "Ag Leader (.agdata, .yld)",
+            "Trimble / AgGPS (.agd, AgData, AgGPS folders)",
+            "Raven (Slingshot formats)",
+            "Topcon / Sokkia",
+            "CLAAS (Telematics formats)",
+            "Müller Elektronik"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://geopard.tech/data-compatibility/",
+          "source_urls": [
+            "https://geopard.tech/data-compatibility/"
+          ]
+        },
+        "yield_monitor_import": {
+          "value": [
+            "John Deere (S-Series, X-Series, T-Series)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "Directly linked with John Deere Operations Center but any shapefiles can be imported"
+        },
+        "satellite_imagery": {
+          "value": [
+            "Built-in — Landsat 8/9 (NASA/USGS, 30m, 16-day revisit)",
+            "Built-in — Sentinel-2 (ESA, 10m, 5-day revisit)",
+            "Built-in — Planet (3-5m, daily)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "drone_imagery": {
+          "value": [
+            "Orthomosaics (GeoTIFF)",
+            "Raw multispectral images",
+            "NDVI / index maps (pre-processed)",
+            "LIDAR / point clouds"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "weather_data": {
+          "value": [
+            "Not supported"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "direct_telematics": {
+          "value": [
+            "John Deere (JDLink / MTG)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "ease_of_import": {
+          "value": 4,
+          "evidence_tag": "hands_on_verified"
+        },
+        "unit_system_handling": {
+          "value": "Supports Imperial and Metric but user must choose one system globally",
+          "evidence_tag": "hands_on_verified"
+        },
+        "ease_of_import_reason": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "data_format_limitations": {
+          "value": "Big focus on John Deere equipment, pretty good overall.",
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "processing_2a": {
+        "spatial_filtering": {
+          "value": [
+            "Filter by field boundary",
+            "Filter by management zone",
+            "Filter by custom polygon (draw-on-map)",
+            "Spatial query (select features within / intersecting)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "temporal_filtering": {
+          "value": [
+            "Filter by date range",
+            "Filter by crop year / season"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "multi_layer_overlay": {
+          "value": [
+            "Yield + soil data overlay",
+            "Yield + elevation overlay",
+            "Satellite imagery + yield overlay",
+            "As-applied + prescription comparison",
+            "Multi-year yield comparison (side-by-side or stacked)",
+            "Custom layer stacking (user selects layers)",
+            "Transparency / opacity adjustment per layer"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "coordinate_system_handling": {
+          "value": "Fixed CRS only (e.g., WGS84 only)",
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "processing_2b": {
+        "yield_data_cleaning": {
+          "value": [
+            "Start/stop pass delay removal (ramp-up/ramp-down)",
+            "Narrow swath / partial header width correction",
+            "Grain flow lag / time delay correction",
+            "Automated cleaning pipeline (one-click)",
+            "User-configurable cleaning parameters",
+            "Statistical outlier removal",
+            "GPS/GNSS signal quality filtering (HDOP, fix type)",
+            "Speed anomaly filtering (sudden speed changes)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/agronomy/yield-calibration-and-cleaning"
+        },
+        "combine_calibration_adjustment": {
+          "value": [
+            "Multi-combine normalization / pathwise calibration",
+            "Multi-day harvest normalization",
+            "Scale ticket reconciliation (adjust to known weights)",
+            "Operator / machine ID-based calibration",
+            "Visual striping / banding correction"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/agronomy/yield-calibration-and-cleaning"
+        },
+        "yield_map_generation": {
+          "value": "Yes",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/agronomy/yield-calibration-and-cleaning"
+        },
+        "vegetation_index_calculation": {
+          "value": [
+            "NDVI (Normalized Difference Vegetation Index)",
+            "SAVI",
+            "OSAVI",
+            "EVI",
+            "GNDVI",
+            "NDMI / NDWI"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "Also ReCl, LAI, WDRVI, GNDVI, GCI, RCI, Soil Brightness Index"
+        },
+        "management_zone_delineation": {
+          "value": [
+            "Threshold-based (user-defined breakpoints)",
+            "Multi-layer input (yield + soil + elevation)",
+            "AI/ML-based zone delineation",
+            "K-means clustering",
+            "Manual zone drawing"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "vra_prescription_map_creation": {
+          "value": [
+            "Seeding / planting rate prescriptions",
+            "Fertilizer rate prescriptions (N, P, K, S, micronutrients)",
+            "Lime application prescriptions",
+            "Crop protection product prescriptions",
+            "Based on management zones",
+            "Based on grid sampling"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "prescription_export_formats": {
+          "value": [
+            "Shapefile (.shp)",
+            "John Deere format (GS3 / Gen4 compatible)",
+            "ISOXML / ISOBUS (ISO 11783)",
+            "GeoJSON"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://geopard.tech/management-zones-vra-maps/"
+        },
+        "interpolation_methods": {
+          "value": [
+            "Inverse Distance Weighting (IDW)",
+            "Ordinary Kriging",
+            "Nearest Neighbor",
+            "Spline / Thin Plate Spline"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/changelog-and-product-releases/release-notes/release-web-may-2024-raw-view-for-satellite-images-export-of-zone-maps-as-workplan-to-the-john-deere"
+        },
+        "on_farm_trial_analysis": {
+          "value": [
+            "A/B strip comparison",
+            "Statistical significance testing",
+            "Randomized plot comparison"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/agronomy/field-trial-analytics"
+        },
+        "profit_loss_map": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "crop_scouting_tools": {
+          "value": [
+            "Geo-referenced observation points",
+            "Photo capture and attachment",
+            "Pest / disease identification (manual)",
+            "Growth stage recording",
+            "Weed mapping"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "yield_map_generation_notes": {
+          "value": "Easy creation of yield maps and cleaning of yield data",
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "processing_2e_financial": {
+        "income_tracking": {
+          "value": "No",
+          "evidence_tag": "hands_on_verified"
+        },
+        "expense_tracking": {
+          "value": "No",
+          "evidence_tag": "hands_on_verified"
+        },
+        "cost_of_production": {
+          "value": "No",
+          "evidence_tag": "hands_on_verified"
+        },
+        "profitability_analysis": {
+          "value": "No",
+          "evidence_tag": "hands_on_verified"
+        },
+        "cost_tracking_granularity": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "integration_accounting": {
+          "value": [],
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "export": {
+        "export_geospatial": {
+          "value": [
+            "Shapefile (.shp)",
+            "ISOXML / ISOBUS (ISO 11783)",
+            "GeoJSON (.geojson)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/product-tour-web-app/export-download"
+        },
+        "export_tabular": {
+          "value": [
+            "PDF reports (.pdf)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "export_proprietary": {
+          "value": [
+            "John Deere (GS3 / Gen4 compatible)",
+            "CNH / Case IH / New Holland format",
+            "Ag Leader format",
+            "Raven format",
+            "AGCO format",
+            "API for programmatic data export"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "batch_export": {
+          "value": "Must export layer-by-layer within each field",
+          "evidence_tag": "hands_on_verified"
+        },
+        "time_to_first_map": {
+          "value": "Under 5 minutes — brief processing, then results",
+          "evidence_tag": "hands_on_verified"
+        },
+        "report_generation": {
+          "value": [
+            "Field summary reports",
+            "Yield analysis reports",
+            "Custom report builder"
+          ],
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "integration": {
+        "direct_integrations": {
+          "value": [
+            "John Deere Operations Center",
+            "Climate FieldView (Bayer)",
+            "CNH AFS Connect / PLM Connect"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "api_availability": {
+          "value": "Public API — documented, open to third parties",
+          "evidence_tag": "hands_on_verified"
+        },
+        "isobus_compliance": {
+          "value": "Full compliance (import and export)",
+          "evidence_tag": "hands_on_verified"
+        },
+        "oem_equipment_compatibility": {
+          "value": [
+            "John Deere",
+            "Not applicable"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/agronomy/field-management-zones-productivity-zones-creation-process"
+        },
+        "data_format_interoperability": {
+          "value": 4,
+          "evidence_tag": "hands_on_verified"
+        },
+        "hardware_dependency": {
+          "value": "Fully software-independent — all core features work without proprietary hardware",
+          "evidence_tag": "hands_on_verified"
+        },
+        "adapt_support": {
+          "value": "Partial — uses ADAPT for some format conversions",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/changelog-and-product-releases/release-notes/release-web-october-2022-integration-with-aggateway-protocols-isoxml-support-and-more",
+          "comment": "It has noted adaption to AgGateway protocols, but fails to list exact format conversions or degree of support"
+        }
+      },
+      "governance": {
+        "data_ownership_policy": {
+          "value": "User owns all data (clearly stated in terms)",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://geopard.tech/terms/"
+        },
+        "data_portability": {
+          "value": "Full export — all raw and processed data downloadable in standard formats",
+          "evidence_tag": "hands_on_verified"
+        },
+        "data_deletion_policy": {
+          "value": "User can delete all data at any time (self-service)",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://geopard.tech/terms/",
+          "comment": "Data deleted with account deletion"
+        },
+        "data_sharing_third_parties": {
+          "value": "No sharing — data is never shared with third parties",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://geopard.tech/terms/"
+        },
+        "ag_data_transparent": {
+          "value": "Not certified",
+          "evidence_tag": "third_party_verified",
+          "source_url": "https://www.agdatatransparent.com/certified"
+        },
+        "privacy_policy_url": {
+          "value": "https://geopard.tech/policy/",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://geopard.tech/policy/"
+        },
+        "data_storage_location": {
+          "value": [
+            "United States (AWS / Azure / GCP — specify if known)",
+            "Multiple regions (geo-replicated)",
+            "European Union"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/policies/your-data-stays-yours-securely-managed-by-geopard"
+        },
+        "security_measures": {
+          "value": [
+            "GDPR compliant"
+          ],
+          "evidence_tag": "third_party_verified",
+          "source_url": "https://digital.originenterprises.com/geopard-and-origin-digital-announce-partnership-to-deliver-industry-leading-precision-agriculture-solutions/",
+          "comment": "GDPR compliant but other encryption or security measures are not described"
+        }
+      },
+      "access": {
+        "multi_user_access": {
+          "value": "Yes — specify how many",
+          "evidence_tag": "hands_on_verified",
+          "comment": "30-day trial allows one user. Other tiers allow one user but additional users for an additional fee"
+        },
+        "user_roles": {
+          "value": [
+            "Administrator / Owner",
+            "Operator / Field worker",
+            "View-only / Read-only",
+            "Manager"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/product-tour-web-app/organizations-and-roles",
+          "comment": "These rols available at higher tiers"
+        },
+        "sharing_advisors": {
+          "value": "Yes",
+          "evidence_tag": "hands_on_verified"
+        },
+        "offline_functionality": {
+          "value": "Partial offline — some features work offline, sync when connected",
+          "evidence_tag": "hands_on_verified"
+        },
+        "mobile_app_available": {
+          "value": [
+            "iOS (iPhone/iPad)",
+            "Android (phone/tablet)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "storage_quotas": {
+          "value": "Limited by plan tier (specify limits if known)",
+          "evidence_tag": "hands_on_verified",
+          "comment": "Free tier <100ha"
+        }
+      },
+      "pricing": {
+        "pricing_model": {
+          "value": [
+            "Flat subscription (annual)",
+            "Custom / enterprise pricing (contact sales)",
+            "Flat subscription (monthly)",
+            "Per-seat / per-user pricing",
+            "Per-acre / per-hectare pricing"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://geopard.tech/pricing/",
+          "comment": "Customers can pay annually on a per hectare/acre basis. Option to pay flat rate monthly for basic services with pay-as-you-go pricing for additional features"
+        },
+        "free_tier_available": {
+          "value": "Partial — describe",
+          "evidence_tag": "hands_on_verified",
+          "comment": "30-day free trial"
+        },
+        "free_tier_limitations": {
+          "value": [
+            "Limited acreage",
+            "Limited features (specify which are locked)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "No Planet Imagery"
+        },
+        "trial_period": {
+          "value": "Yes — duration",
+          "evidence_tag": "hands_on_verified",
+          "comment": "30 days"
+        },
+        "educational_pricing": {
+          "value": "Free educational accounts available",
+          "evidence_tag": "vendor_claimed",
+          "source_url": "https://geopard.tech/geopard-for-science-and-education/"
+        },
+        "contract_requirements": {
+          "value": "Annual contract",
+          "evidence_tag": "vendor_claimed",
+          "source_url": "https://geopard.tech/pricing/"
+        },
+        "standardized_cost_broadacre_currency": {
+          "value": "USD",
+          "evidence_tag": "vendor_claimed",
+          "source_url": "https://geopard.tech/pricing/"
+        },
+        "standardized_cost_broadacre_annual": {
+          "value": 1500,
+          "evidence_tag": "vendor_claimed",
+          "source_url": "https://geopard.tech/pricing/"
+        },
+        "standardized_cost_broadacre_notes": {
+          "value": "The following pricing strucure exists based on farm size:\n250 - 750\tac $0.8\n750 - 2.5Kac\t$0.72\n2.5K - 12.5Kac\t$0.64\n12.5K - 25Kac\t$0.56\n25K+ac\tContact Geopard for special offer",
+          "evidence_tag": "vendor_claimed",
+          "source_url": "https://geopard.tech/pricing/"
+        },
+        "standardized_cost_livestock_annual": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_livestock_notes": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "cost_to_leave": {
+          "value": "Free — full data export, no penalty",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://geopard.tech/policy/"
+        },
+        "standardized_cost_livestock_currency": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        }
+      },
+      "usability": {
+        "onboarding_setup": {
+          "value": 4,
+          "evidence_tag": "hands_on_verified"
+        },
+        "documentation_quality": {
+          "value": "Excellent — comprehensive knowledge base, searchable, regularly updated",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials"
+        },
+        "training_resources": {
+          "value": [
+            "Video tutorials (YouTube, embedded)",
+            "Written guides / knowledge base",
+            "Webinars (live or recorded)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/product-tour-web-app/getting-started"
+        },
+        "customer_support_channels": {
+          "value": [
+            "Email support",
+            "Support ticket system"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/introduction-to-geopard/geopard-platform-frequently-asked-questions-faq"
+        },
+        "support_languages": {
+          "value": [
+            "English",
+            "French",
+            "German",
+            "Spanish",
+            "Other (specify)",
+            "Portuguese",
+            "Dutch",
+            "Ukrainian",
+            "Russian",
+            "Hungarian",
+            "Slovenian",
+            "Bulgarian",
+            "Italian"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "update_frequency": {
+          "value": "Sporadic, ranging from monthly to every 5 months",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.geopard.tech/geopard-tutorials/changelog-and-product-releases/release-notes"
+        }
+      }
+    },
+    "ai_checks": {
+      "ingestion": "ai_significant_errors",
+      "processing_2a": "ai_minor_errors",
+      "processing_2b": "ai_significant_errors",
+      "export": "ai_minor_errors",
+      "integration": "ai_significant_errors"
+    },
+    "assessment": {
+      "strongest_capability": "Satellite imagery and vegetation index analysis",
+      "strongest_capability_justification": "Automated multi-year satellite analytics, 12+ vegetation indices, 3D topography, AI-based zone delineation, and API-first architecture make it a best-in-class analytics engine.",
+      "weakest_capability": "Financial analysis / profitability mapping",
+      "weakest_capability_justification": "No farm financial management, no accounting software integration, no income tracking; cost equations exist but a full profitability analysis suite is absent",
+      "best_suited_for": [
+        "Large farms (> 5,000 acres / > 2,000 ha)",
+        "Medium farms (500–5,000 acres / 200–2,000 ha)",
+        "Corporate / multi-farm operations",
+        "Advanced precision ag users",
+        "Students / educational use"
+      ],
+      "worst_suited_for": "Livestock producers, there is no functionality for their needs",
+      "unique_differentiator": "Best-in-class bi-directional John Deere Operations Center integration, white-label/API-first architecture enabling other AgTech companies to embed its analytics engine, and automated multi-year field productivity mapping.",
+      "recommendation": "Conditionally — good for specific use cases (explain in notes)",
+      "ai_claims_total": 73,
+      "ai_claims_correct": 50,
+      "ai_claims_incorrect": 22,
+      "ai_claims_unverifiable": 1,
+      "ai_notable_error": "Claude did not recognise the languages available, saying it is only available in English, Spanish, and Ukranian. Chat GPT  only made 3 claims in total"
+    },
+    "evidence_log": {
+      "source_types_used": [
+        "Official platform documentation / help center",
+        "Platform trial or demo account (hands-on)",
+        "Vendor website / marketing materials",
+        "YouTube tutorials or demo videos",
+        "AI-generated (specify tool used)"
+      ],
+      "official_doc_urls": [
+        "https://geopard.tech/",
+        "https://docs.geopard.tech/geopard-tutorials/",
+        "https://geopard.tech/data-compatibility/",
+        "https://geopard.tech/policy/",
+        "https://geopard.tech/pricing/",
+        "https://docs.geopard.tech/geopard-tutorials/product-tour-web-app/import",
+        "https://docs.geopard.tech/geopard-tutorials/product-tour-web-app/export-download",
+        "https://docs.geopard.tech/geopard-tutorials/changelog-and-product-releases/release-notes/release-web-january-2025-free-trial-usage-based-pricing-plan-usda-yield-cleaning-protocol-export-of",
+        "https://geopard.tech/api/",
+        "https://geopard.tech/johndeere/"
+      ],
+      "third_party_urls": [
+        "https://pitchbook.com/profiles/company/493943-32#overview",
+        "https://www.agdatatransparent.com/certified"
+      ],
+      "hands_on_notes": "Created farm, fields, field boundaries.\n Created management zones from historical satellilte NDVI data. \nConnected to John Deere Operations Center.\nCreated  soil sampling plans.\nImported yield data.\nExported  management plans, soil sampling plans.\nCreated reports"
+    },
+    "section_plugins_available": {
+      "ingestion": true,
+      "processing_2a": true
+    }
+  },
+  {
+    "meta": {
+      "schema_version": "1.0",
       "platform_slug": "john-deere-ops-center",
       "platform_name": "John Deere Operations Center",
       "evaluator": "mock-jd",
@@ -1080,6 +3228,665 @@
       ],
       "third_party_urls": [],
       "hands_on_notes": "Tested Operations Center free tier (web + mobile). Uploaded shapefile and CSV; viewed yield maps. Did not have JDLink MTG so telematics not tested hands-on."
+    }
+  },
+  {
+    "meta": {
+      "schema_version": "1.0",
+      "platform_slug": "other",
+      "platform_name": "QGIS",
+      "evaluator": "DOZER3530-Fishing",
+      "evaluation_date": "2026-02-26",
+      "last_verified_date": "2026-02-26",
+      "cohort": "AGT3510",
+      "total_hours_spent": 3
+    },
+    "identity": {
+      "version_module_evaluated": "QGIS 3.40 - Bratislava - 2024-10-25",
+      "company_developer": "QGIS Development Team / Open Source Geospatial Foundation",
+      "country_of_origin": "Switzerland",
+      "year_founded": "2002",
+      "platform_type": [
+        "Desktop installed (Mac)",
+        "Desktop installed (Windows)",
+        "API-only (no GUI)",
+        "Mobile app — Android",
+        "Web-based (browser)",
+        "Plugin/extension for other software"
+      ],
+      "primary_agricultural_focus": [
+        "Sector-agnostic (any agriculture)"
+      ],
+      "website_url": "https://qgis.org/",
+      "last_updated_version": "QGIS 3.44 - Solothurn - 2025-06-20"
+    },
+    "sections": {
+      "identity": {
+        "company_developer": {
+          "value": "QGIS Development Team / Open Source Geospatial Foundation",
+          "evidence_tag": "documentation_verified"
+        },
+        "country_of_origin": {
+          "value": "Switzerland",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://qgis.org/"
+        },
+        "version_module_evaluated": {
+          "value": "QGIS 3.40 - Bratislava - 2024-10-25",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://qgis.org/download/"
+        },
+        "year_founded": {
+          "value": "2002",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/about/foreword.html"
+        },
+        "platform_type": {
+          "value": [
+            "Desktop installed (Mac)",
+            "Desktop installed (Windows)",
+            "API-only (no GUI)",
+            "Mobile app — Android",
+            "Web-based (browser)",
+            "Plugin/extension for other software"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://qgis.org/project/overview/"
+        },
+        "primary_agricultural_focus": {
+          "value": [
+            "Sector-agnostic (any agriculture)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "website_url": {
+          "value": "https://qgis.org/",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://qgis.org/"
+        },
+        "last_updated_version": {
+          "value": "QGIS 3.44 - Solothurn - 2025-06-20",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://qgis.org/download/"
+        }
+      },
+      "ingestion": {
+        "file_format_import_open": {
+          "value": [
+            "Shapefile (.shp/.shx/.dbf/.prj)",
+            "GeoJSON (.geojson)",
+            "GeoTIFF (.tif/.tiff)",
+            "KML / KMZ (.kml/.kmz)",
+            "GeoPackage (.gpkg)",
+            "CSV with coordinates (.csv)",
+            "WKT (Well-Known Text)",
+            "CAD (DWG/DXF)",
+            "ESRI formats (e.g. ArcGIS)",
+            "ESRI File Geodatabase (.gdb)"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/opening_data.html"
+        },
+        "file_format_import_proprietary": {
+          "value": [
+            "Not supported"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+        },
+        "yield_monitor_import": {
+          "value": [
+            "Not supported"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+        },
+        "satellite_imagery": {
+          "value": [
+            "Via file upload (user provides imagery)",
+            "Via API connection to third-party"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "drone_imagery": {
+          "value": [
+            "Orthomosaics (GeoTIFF)",
+            "Digital Surface Models (DSM)",
+            "Digital Elevation Models (DEM)",
+            "NDVI / index maps (pre-processed)",
+            "Raw multispectral images",
+            "RGB imagery",
+            "Thermal imagery"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+        },
+        "weather_data": {
+          "value": [
+            "Via API (specify)",
+            "Manual entry"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+        },
+        "direct_telematics": {
+          "value": [
+            "Not supported"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+        },
+        "ease_of_import": {
+          "value": 4,
+          "evidence_tag": "hands_on_verified"
+        },
+        "unit_system_handling": {
+          "value": "Fully supports Imperial, Metric, and Canadian mixed units seamlessly",
+          "evidence_tag": "documentation_verified"
+        },
+        "data_format_limitations": {
+          "value": "No native ISOXML/ISOBUS, ag machine data, or yield monitor format support; requires manual conversion for most precision ag proprietary formats. Requires 3rd party plugins ",
+          "evidence_tag": "hands_on_verified"
+        },
+        "ease_of_import_reason": {
+          "value": "QGIS is fairly drag and drop in many cases. If it is not drag and drop there is many import wizards within the program that make it very easy. Also because it is open source there is lots of recourses that show you how to import all types of data ",
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "processing_2a": {
+        "spatial_filtering": {
+          "value": [
+            "Filter by field boundary",
+            "Filter by management zone",
+            "Filter by custom polygon (draw-on-map)",
+            "Filter by administrative boundary (county/municipality)",
+            "Filter by buffer zone (around a feature)",
+            "Spatial query (select features within / intersecting)"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "temporal_filtering": {
+          "value": [
+            "Filter by date range",
+            "Time-series slider / animation"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "multi_layer_overlay": {
+          "value": [
+            "Yield + soil data overlay",
+            "Satellite imagery + yield overlay",
+            "As-applied + prescription comparison",
+            "Multi-year yield comparison (side-by-side or stacked)",
+            "Custom layer stacking (user selects layers)",
+            "Transparency / opacity adjustment per layer",
+            "Split-screen comparison",
+            "Swipe comparison tool",
+            "Yield + elevation overlay"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html"
+        },
+        "coordinate_system_handling": {
+          "value": "Manual selection required (user specifies CRS)",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/gentle_gis_introduction/coordinate_reference_systems.html"
+        }
+      },
+      "processing_2b": {
+        "yield_data_cleaning": {
+          "value": [
+            "User-configurable cleaning parameters"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "combine_calibration_adjustment": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "yield_map_generation": {
+          "value": "Partial",
+          "evidence_tag": "hands_on_verified"
+        },
+        "vegetation_index_calculation": {
+          "value": [
+            "Custom / user-defined indices"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/working_with_raster/raster_analysis.html"
+        },
+        "management_zone_delineation": {
+          "value": [
+            "K-means clustering",
+            "Threshold-based (user-defined breakpoints)",
+            "Multi-layer input (yield + soil + elevation)",
+            "Manual zone drawing"
+          ],
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/training_manual/processing/more_backends.html"
+        },
+        "vra_prescription_map_creation": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "prescription_export_formats": {
+          "value": [
+            "Shapefile (.shp)",
+            "CSV",
+            "GeoJSON",
+            "GeoPackage"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "interpolation_methods": {
+          "value": [
+            "Inverse Distance Weighting (IDW)",
+            "Ordinary Kriging",
+            "Spline / Thin Plate Spline"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html"
+        },
+        "on_farm_trial_analysis": {
+          "value": [
+            "Not available",
+            "Unknown"
+          ],
+          "evidence_tag": "unknown"
+        },
+        "profit_loss_map": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "No native native functions, you could probably do all of this using user defined functions "
+        },
+        "crop_scouting_tools": {
+          "value": [
+            "Geo-referenced observation points",
+            "Photo capture and attachment"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "yield_map_generation_notes": {
+          "value": "Can create yield maps from imported point data via interpolation, but no native yield cleaning or yield map workflow",
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "processing_2e_financial": {
+        "income_tracking": {
+          "value": "No",
+          "evidence_tag": "hands_on_verified"
+        },
+        "expense_tracking": {
+          "value": "No",
+          "evidence_tag": "hands_on_verified"
+        },
+        "cost_of_production": {
+          "value": "No",
+          "evidence_tag": "hands_on_verified"
+        },
+        "profitability_analysis": {
+          "value": "No",
+          "evidence_tag": "hands_on_verified"
+        },
+        "cost_tracking_granularity": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "integration_accounting": {
+          "value": [
+            "Not available"
+          ],
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "export": {
+        "export_geospatial": {
+          "value": [
+            "GeoJSON (.geojson)",
+            "Shapefile (.shp)",
+            "GeoTIFF (.tif)",
+            "KML / KMZ (.kml/.kmz)",
+            "ESRI File Geodatabase (.gdb)",
+            "ESRI formats (e.g. for ArcGIS)",
+            "CAD (DWG/DXF)",
+            "GeoPackage (.gpkg)",
+            "GeoJSON (.geojson)",
+            "GeoJSON (.geojson)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "Not all formats have been listed, just the ones used most for agriculture"
+        },
+        "export_tabular": {
+          "value": [
+            "CSV (.csv)",
+            "PDF reports (.pdf)",
+            "JSON"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "Not all formats have been listed, just the ones used most for agriculture"
+        },
+        "export_proprietary": {
+          "value": [
+            "API for programmatic data export",
+            "Raw data download (complete, original format)",
+            "Print-ready maps (high resolution)"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "batch_export": {
+          "value": "Must export layer-by-layer within each field",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/processing/batch.html",
+          "source_urls": [
+            "https://docs.qgis.org/3.40/en/docs/user_manual/processing/batch.html"
+          ]
+        },
+        "time_to_first_map": {
+          "value": "5–30 minutes — moderate processing time",
+          "evidence_tag": "hands_on_verified",
+          "comment": "Based heavily on experience, but a new user with some data ready can get a map fairly easy"
+        },
+        "report_generation": {
+          "value": [
+            "Custom report builder"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/print_composer/create_reports.html",
+          "source_urls": [
+            "https://docs.qgis.org/3.40/en/docs/user_manual/print_composer/create_reports.html"
+          ]
+        }
+      },
+      "integration": {
+        "direct_integrations": {
+          "value": [
+            "None identified"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "api_availability": {
+          "value": "Public API — documented, open to third parties",
+          "evidence_tag": "documentation_verified",
+          "source_url": "https://api.qgis.org/api/",
+          "source_urls": [
+            "https://api.qgis.org/api/"
+          ]
+        },
+        "isobus_compliance": {
+          "value": "Not compliant",
+          "evidence_tag": "hands_on_verified"
+        },
+        "oem_equipment_compatibility": {
+          "value": [
+            "Brand-agnostic (any ISOBUS-compliant equipment)"
+          ],
+          "evidence_tag": "documentation_verified"
+        },
+        "data_format_interoperability": {
+          "value": 5,
+          "evidence_tag": "hands_on_verified",
+          "comment": "Has the most geospatial format support possible"
+        },
+        "hardware_dependency": {
+          "value": "Fully software-independent — all core features work without proprietary hardware",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://qgis.org/resources/installation-guide/",
+          "source_urls": [
+            "https://qgis.org/resources/installation-guide/"
+          ]
+        },
+        "adapt_support": {
+          "value": "No — does not support ADAPT",
+          "evidence_tag": "hands_on_verified"
+        }
+      },
+      "governance": {
+        "data_ownership_policy": {
+          "value": "User owns all data (clearly stated in terms)",
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://www.qgis.org/resources/support/privacy/",
+          "source_urls": [
+            "https://www.qgis.org/resources/support/privacy/"
+          ]
+        },
+        "data_portability": {
+          "value": "Full export — all raw and processed data downloadable in standard formats",
+          "evidence_tag": "hands_on_verified"
+        },
+        "data_deletion_policy": {
+          "value": "User can delete all data at any time (self-service)",
+          "evidence_tag": "hands_on_verified"
+        },
+        "data_sharing_third_parties": {
+          "value": "No sharing — data is never shared with third parties",
+          "evidence_tag": "hands_on_verified"
+        },
+        "ag_data_transparent": {
+          "value": null,
+          "evidence_tag": "not_applicable",
+          "comment": "It is local and open source, not certified, but not an issues "
+        },
+        "privacy_policy_url": {
+          "value": "https://www.qgis.org/resources/support/privacy/",
+          "evidence_tag": "documentation_verified"
+        },
+        "data_storage_location": {
+          "value": [
+            "On-premises / local (no cloud)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "There is cloud options but it is through plugins or user defined work and means"
+        },
+        "security_measures": {
+          "value": [],
+          "evidence_tag": "not_applicable",
+          "comment": "Everything is is local "
+        }
+      },
+      "access": {
+        "multi_user_access": {
+          "value": null,
+          "evidence_tag": "not_applicable",
+          "comment": "No license needed"
+        },
+        "user_roles": {
+          "value": [
+            "No roles — single user level"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "sharing_advisors": {
+          "value": "Partial",
+          "evidence_tag": "hands_on_verified",
+          "comment": "You can send file and findings. You can send the project file but you will need to make sure it is repackages properly so the other user can see it "
+        },
+        "offline_functionality": {
+          "value": "Full offline — all features available without internet",
+          "evidence_tag": "unknown",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/plugins/core_plugins/plugins_offline_editing.html",
+          "source_urls": [
+            "https://docs.qgis.org/3.40/en/docs/user_manual/plugins/core_plugins/plugins_offline_editing.html"
+          ],
+          "comment": "Via a \"Core Plugin\""
+        },
+        "mobile_app_available": {
+          "value": [
+            "No mobile support"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "Unless you use external plugins"
+        },
+        "storage_quotas": {
+          "value": "Unlimited (no stated limits)",
+          "evidence_tag": "hands_on_verified",
+          "comment": "Based on your devices storage"
+        }
+      },
+      "pricing": {
+        "pricing_model": {
+          "value": [
+            "Free (no cost, full access)"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "comment": "Open source"
+        },
+        "free_tier_available": {
+          "value": "Yes",
+          "evidence_tag": "not_applicable"
+        },
+        "free_tier_limitations": {
+          "value": [],
+          "evidence_tag": "not_applicable"
+        },
+        "trial_period": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "educational_pricing": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "contract_requirements": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_broadacre_currency": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_broadacre_annual": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_broadacre_notes": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_livestock_currency": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_livestock_annual": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "standardized_cost_livestock_notes": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        },
+        "cost_to_leave": {
+          "value": null,
+          "evidence_tag": "not_applicable"
+        }
+      },
+      "usability": {
+        "onboarding_setup": {
+          "value": 2,
+          "evidence_tag": "hands_on_verified",
+          "comment": "Difficult for non-GIS users; steep learning curve; significant GIS knowledge assumed. Lots of online recourses"
+        },
+        "documentation_quality": {
+          "value": "Excellent — comprehensive knowledge base, searchable, regularly updated",
+          "evidence_tag": "hands_on_verified",
+          "comment": "Vast official documentation as well as community knowledge"
+        },
+        "training_resources": {
+          "value": [
+            "Video tutorials (YouTube, embedded)",
+            "Webinars (live or recorded)",
+            "Written guides / knowledge base",
+            "Interactive tutorials / walkthroughs (in-app)",
+            "Certification programs",
+            "Community forum / user group"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://docs.qgis.org/3.40/en/docs/training_manual/index.html",
+          "source_urls": [
+            "https://docs.qgis.org/3.40/en/docs/training_manual/index.html"
+          ]
+        },
+        "customer_support_channels": {
+          "value": [
+            "Email support",
+            "Community forum",
+            "Support ticket system"
+          ],
+          "evidence_tag": "hands_on_verified",
+          "source_url": "https://qgis.org/resources/support/",
+          "source_urls": [
+            "https://qgis.org/resources/support/"
+          ]
+        },
+        "support_languages": {
+          "value": [
+            "French",
+            "English",
+            "Spanish",
+            "Portuguese",
+            "German",
+            "Dutch",
+            "Ukrainian",
+            "Mandarin / Chinese"
+          ],
+          "evidence_tag": "hands_on_verified"
+        },
+        "update_frequency": {
+          "value": "Long Term release annually; regular releases every 4 months; point releases more frequently",
+          "evidence_tag": "hands_on_verified"
+        }
+      }
+    },
+    "ai_checks": {
+      "ingestion": "ai_minor_errors",
+      "processing_2a": "ai_minor_errors",
+      "processing_2b": "ai_significant_errors",
+      "export": "ai_minor_errors",
+      "integration": "ai_significant_errors"
+    },
+    "assessment": {
+      "strongest_capability": "Data visualization and mapping",
+      "strongest_capability_justification": "QGIS provides world-class geo spatial output, supports 300+ data formats via GDAL/OGR, and offers unmatched flexibility for spatial visualization and analysis",
+      "weakest_capability": "Financial analysis / profitability mapping",
+      "weakest_capability_justification": "QGIS has zero financial management,  it is a GIS platform, not a precision ag management platform.",
+      "best_suited_for": [
+        "Agronomists / crop advisors / consultants",
+        "Precision ag beginners",
+        "Researchers / academic users",
+        "Students / educational use",
+        "Advanced precision ag users"
+      ],
+      "worst_suited_for": "Farmers wanting an all in one farm management software",
+      "unique_differentiator": "completely free and open-source with unrivaled geospatial format support. Massive plugin capabilities. Not locked to any vendor",
+      "recommendation": "Yes — strong recommendation for the right operation",
+      "ai_claims_total": 0,
+      "ai_claims_correct": 0,
+      "ai_claims_incorrect": 0,
+      "ai_claims_unverifiable": 0,
+      "ai_notable_error": "Not really any QGIS is well documented"
+    },
+    "evidence_log": {
+      "source_types_used": [
+        "Official platform documentation / help center",
+        "Vendor website / marketing materials"
+      ],
+      "official_doc_urls": [],
+      "third_party_urls": [],
+      "hands_on_notes": ""
+    },
+    "section_plugins_available": {
+      "ingestion": true,
+      "processing_2a": true,
+      "processing_2b": true,
+      "export": true,
+      "integration": true
     }
   }
 ]
