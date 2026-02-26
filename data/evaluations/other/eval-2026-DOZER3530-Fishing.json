@@ -1,0 +1,659 @@
+{
+  "meta": {
+    "schema_version": "1.0",
+    "platform_slug": "other",
+    "platform_name": "QGIS",
+    "evaluator": "DOZER3530-Fishing",
+    "evaluation_date": "2026-02-26",
+    "last_verified_date": "2026-02-26",
+    "cohort": "AGT3510",
+    "total_hours_spent": 3
+  },
+  "identity": {
+    "version_module_evaluated": "QGIS 3.40 - Bratislava - 2024-10-25",
+    "company_developer": "QGIS Development Team / Open Source Geospatial Foundation",
+    "country_of_origin": "Switzerland",
+    "year_founded": "2002",
+    "platform_type": [
+      "Desktop installed (Mac)",
+      "Desktop installed (Windows)",
+      "API-only (no GUI)",
+      "Mobile app — Android",
+      "Web-based (browser)",
+      "Plugin/extension for other software"
+    ],
+    "primary_agricultural_focus": [
+      "Sector-agnostic (any agriculture)"
+    ],
+    "website_url": "https://qgis.org/",
+    "last_updated_version": "QGIS 3.44 - Solothurn - 2025-06-20"
+  },
+  "sections": {
+    "identity": {
+      "company_developer": {
+        "value": "QGIS Development Team / Open Source Geospatial Foundation",
+        "evidence_tag": "documentation_verified"
+      },
+      "country_of_origin": {
+        "value": "Switzerland",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://qgis.org/"
+      },
+      "version_module_evaluated": {
+        "value": "QGIS 3.40 - Bratislava - 2024-10-25",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://qgis.org/download/"
+      },
+      "year_founded": {
+        "value": "2002",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/about/foreword.html"
+      },
+      "platform_type": {
+        "value": [
+          "Desktop installed (Mac)",
+          "Desktop installed (Windows)",
+          "API-only (no GUI)",
+          "Mobile app — Android",
+          "Web-based (browser)",
+          "Plugin/extension for other software"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://qgis.org/project/overview/"
+      },
+      "primary_agricultural_focus": {
+        "value": [
+          "Sector-agnostic (any agriculture)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "website_url": {
+        "value": "https://qgis.org/",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://qgis.org/"
+      },
+      "last_updated_version": {
+        "value": "QGIS 3.44 - Solothurn - 2025-06-20",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://qgis.org/download/"
+      }
+    },
+    "ingestion": {
+      "file_format_import_open": {
+        "value": [
+          "Shapefile (.shp/.shx/.dbf/.prj)",
+          "GeoJSON (.geojson)",
+          "GeoTIFF (.tif/.tiff)",
+          "KML / KMZ (.kml/.kmz)",
+          "GeoPackage (.gpkg)",
+          "CSV with coordinates (.csv)",
+          "WKT (Well-Known Text)",
+          "CAD (DWG/DXF)",
+          "ESRI formats (e.g. ArcGIS)",
+          "ESRI File Geodatabase (.gdb)"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/opening_data.html"
+      },
+      "file_format_import_proprietary": {
+        "value": [
+          "Not supported"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+      },
+      "yield_monitor_import": {
+        "value": [
+          "Not supported"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+      },
+      "satellite_imagery": {
+        "value": [
+          "Via file upload (user provides imagery)",
+          "Via API connection to third-party"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "drone_imagery": {
+        "value": [
+          "Orthomosaics (GeoTIFF)",
+          "Digital Surface Models (DSM)",
+          "Digital Elevation Models (DEM)",
+          "NDVI / index maps (pre-processed)",
+          "Raw multispectral images",
+          "RGB imagery",
+          "Thermal imagery"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+      },
+      "weather_data": {
+        "value": [
+          "Via API (specify)",
+          "Manual entry"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+      },
+      "direct_telematics": {
+        "value": [
+          "Not supported"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/managing_data_source/supported_data.html"
+      },
+      "ease_of_import": {
+        "value": 4,
+        "evidence_tag": "hands_on_verified"
+      },
+      "unit_system_handling": {
+        "value": "Fully supports Imperial, Metric, and Canadian mixed units seamlessly",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_format_limitations": {
+        "value": "No native ISOXML/ISOBUS, ag machine data, or yield monitor format support; requires manual conversion for most precision ag proprietary formats. Requires 3rd party plugins ",
+        "evidence_tag": "hands_on_verified"
+      },
+      "ease_of_import_reason": {
+        "value": "QGIS is fairly drag and drop in many cases. If it is not drag and drop there is many import wizards within the program that make it very easy. Also because it is open source there is lots of recourses that show you how to import all types of data ",
+        "evidence_tag": "hands_on_verified"
+      }
+    },
+    "processing_2a": {
+      "spatial_filtering": {
+        "value": [
+          "Filter by field boundary",
+          "Filter by management zone",
+          "Filter by custom polygon (draw-on-map)",
+          "Filter by administrative boundary (county/municipality)",
+          "Filter by buffer zone (around a feature)",
+          "Spatial query (select features within / intersecting)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "temporal_filtering": {
+        "value": [
+          "Filter by date range",
+          "Time-series slider / animation"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "multi_layer_overlay": {
+        "value": [
+          "Yield + soil data overlay",
+          "Satellite imagery + yield overlay",
+          "As-applied + prescription comparison",
+          "Multi-year yield comparison (side-by-side or stacked)",
+          "Custom layer stacking (user selects layers)",
+          "Transparency / opacity adjustment per layer",
+          "Split-screen comparison",
+          "Swipe comparison tool",
+          "Yield + elevation overlay"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/processing_algs/qgis/vectoroverlay.html"
+      },
+      "coordinate_system_handling": {
+        "value": "Manual selection required (user specifies CRS)",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/gentle_gis_introduction/coordinate_reference_systems.html"
+      }
+    },
+    "processing_2b": {
+      "yield_data_cleaning": {
+        "value": [
+          "User-configurable cleaning parameters"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "combine_calibration_adjustment": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "yield_map_generation": {
+        "value": "Partial",
+        "evidence_tag": "hands_on_verified"
+      },
+      "vegetation_index_calculation": {
+        "value": [
+          "Custom / user-defined indices"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/working_with_raster/raster_analysis.html"
+      },
+      "management_zone_delineation": {
+        "value": [
+          "K-means clustering",
+          "Threshold-based (user-defined breakpoints)",
+          "Multi-layer input (yield + soil + elevation)",
+          "Manual zone drawing"
+        ],
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/training_manual/processing/more_backends.html"
+      },
+      "vra_prescription_map_creation": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "prescription_export_formats": {
+        "value": [
+          "Shapefile (.shp)",
+          "CSV",
+          "GeoJSON",
+          "GeoPackage"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "interpolation_methods": {
+        "value": [
+          "Inverse Distance Weighting (IDW)",
+          "Ordinary Kriging",
+          "Spline / Thin Plate Spline"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/gentle_gis_introduction/spatial_analysis_interpolation.html"
+      },
+      "on_farm_trial_analysis": {
+        "value": [
+          "Not available",
+          "Unknown"
+        ],
+        "evidence_tag": "unknown"
+      },
+      "profit_loss_map": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "comment": "No native native functions, you could probably do all of this using user defined functions "
+      },
+      "crop_scouting_tools": {
+        "value": [
+          "Geo-referenced observation points",
+          "Photo capture and attachment"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "yield_map_generation_notes": {
+        "value": "Can create yield maps from imported point data via interpolation, but no native yield cleaning or yield map workflow",
+        "evidence_tag": "hands_on_verified"
+      }
+    },
+    "processing_2e_financial": {
+      "income_tracking": {
+        "value": "No",
+        "evidence_tag": "hands_on_verified"
+      },
+      "expense_tracking": {
+        "value": "No",
+        "evidence_tag": "hands_on_verified"
+      },
+      "cost_of_production": {
+        "value": "No",
+        "evidence_tag": "hands_on_verified"
+      },
+      "profitability_analysis": {
+        "value": "No",
+        "evidence_tag": "hands_on_verified"
+      },
+      "cost_tracking_granularity": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "integration_accounting": {
+        "value": [
+          "Not available"
+        ],
+        "evidence_tag": "hands_on_verified"
+      }
+    },
+    "export": {
+      "export_geospatial": {
+        "value": [
+          "GeoJSON (.geojson)",
+          "Shapefile (.shp)",
+          "GeoTIFF (.tif)",
+          "KML / KMZ (.kml/.kmz)",
+          "ESRI File Geodatabase (.gdb)",
+          "ESRI formats (e.g. for ArcGIS)",
+          "CAD (DWG/DXF)",
+          "GeoPackage (.gpkg)",
+          "GeoJSON (.geojson)",
+          "GeoJSON (.geojson)"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "comment": "Not all formats have been listed, just the ones used most for agriculture"
+      },
+      "export_tabular": {
+        "value": [
+          "CSV (.csv)",
+          "PDF reports (.pdf)",
+          "JSON"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "comment": "Not all formats have been listed, just the ones used most for agriculture"
+      },
+      "export_proprietary": {
+        "value": [
+          "API for programmatic data export",
+          "Raw data download (complete, original format)",
+          "Print-ready maps (high resolution)"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "batch_export": {
+        "value": "Must export layer-by-layer within each field",
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/processing/batch.html",
+        "source_urls": [
+          "https://docs.qgis.org/3.40/en/docs/user_manual/processing/batch.html"
+        ]
+      },
+      "time_to_first_map": {
+        "value": "5–30 minutes — moderate processing time",
+        "evidence_tag": "hands_on_verified",
+        "comment": "Based heavily on experience, but a new user with some data ready can get a map fairly easy"
+      },
+      "report_generation": {
+        "value": [
+          "Custom report builder"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/print_composer/create_reports.html",
+        "source_urls": [
+          "https://docs.qgis.org/3.40/en/docs/user_manual/print_composer/create_reports.html"
+        ]
+      }
+    },
+    "integration": {
+      "direct_integrations": {
+        "value": [
+          "None identified"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "api_availability": {
+        "value": "Public API — documented, open to third parties",
+        "evidence_tag": "documentation_verified",
+        "source_url": "https://api.qgis.org/api/",
+        "source_urls": [
+          "https://api.qgis.org/api/"
+        ]
+      },
+      "isobus_compliance": {
+        "value": "Not compliant",
+        "evidence_tag": "hands_on_verified"
+      },
+      "oem_equipment_compatibility": {
+        "value": [
+          "Brand-agnostic (any ISOBUS-compliant equipment)"
+        ],
+        "evidence_tag": "documentation_verified"
+      },
+      "data_format_interoperability": {
+        "value": 5,
+        "evidence_tag": "hands_on_verified",
+        "comment": "Has the most geospatial format support possible"
+      },
+      "hardware_dependency": {
+        "value": "Fully software-independent — all core features work without proprietary hardware",
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://qgis.org/resources/installation-guide/",
+        "source_urls": [
+          "https://qgis.org/resources/installation-guide/"
+        ]
+      },
+      "adapt_support": {
+        "value": "No — does not support ADAPT",
+        "evidence_tag": "hands_on_verified"
+      }
+    },
+    "governance": {
+      "data_ownership_policy": {
+        "value": "User owns all data (clearly stated in terms)",
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://www.qgis.org/resources/support/privacy/",
+        "source_urls": [
+          "https://www.qgis.org/resources/support/privacy/"
+        ]
+      },
+      "data_portability": {
+        "value": "Full export — all raw and processed data downloadable in standard formats",
+        "evidence_tag": "hands_on_verified"
+      },
+      "data_deletion_policy": {
+        "value": "User can delete all data at any time (self-service)",
+        "evidence_tag": "hands_on_verified"
+      },
+      "data_sharing_third_parties": {
+        "value": "No sharing — data is never shared with third parties",
+        "evidence_tag": "hands_on_verified"
+      },
+      "ag_data_transparent": {
+        "value": null,
+        "evidence_tag": "not_applicable",
+        "comment": "It is local and open source, not certified, but not an issues "
+      },
+      "privacy_policy_url": {
+        "value": "https://www.qgis.org/resources/support/privacy/",
+        "evidence_tag": "documentation_verified"
+      },
+      "data_storage_location": {
+        "value": [
+          "On-premises / local (no cloud)"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "comment": "There is cloud options but it is through plugins or user defined work and means"
+      },
+      "security_measures": {
+        "value": [],
+        "evidence_tag": "not_applicable",
+        "comment": "Everything is is local "
+      }
+    },
+    "access": {
+      "multi_user_access": {
+        "value": null,
+        "evidence_tag": "not_applicable",
+        "comment": "No license needed"
+      },
+      "user_roles": {
+        "value": [
+          "No roles — single user level"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "sharing_advisors": {
+        "value": "Partial",
+        "evidence_tag": "hands_on_verified",
+        "comment": "You can send file and findings. You can send the project file but you will need to make sure it is repackages properly so the other user can see it "
+      },
+      "offline_functionality": {
+        "value": "Full offline — all features available without internet",
+        "evidence_tag": "unknown",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/user_manual/plugins/core_plugins/plugins_offline_editing.html",
+        "source_urls": [
+          "https://docs.qgis.org/3.40/en/docs/user_manual/plugins/core_plugins/plugins_offline_editing.html"
+        ],
+        "comment": "Via a \"Core Plugin\""
+      },
+      "mobile_app_available": {
+        "value": [
+          "No mobile support"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "comment": "Unless you use external plugins"
+      },
+      "storage_quotas": {
+        "value": "Unlimited (no stated limits)",
+        "evidence_tag": "hands_on_verified",
+        "comment": "Based on your devices storage"
+      }
+    },
+    "pricing": {
+      "pricing_model": {
+        "value": [
+          "Free (no cost, full access)"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "comment": "Open source"
+      },
+      "free_tier_available": {
+        "value": "Yes",
+        "evidence_tag": "not_applicable"
+      },
+      "free_tier_limitations": {
+        "value": [],
+        "evidence_tag": "not_applicable"
+      },
+      "trial_period": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "educational_pricing": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "contract_requirements": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_broadacre_currency": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_broadacre_annual": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_broadacre_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_currency": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_annual": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "standardized_cost_livestock_notes": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      },
+      "cost_to_leave": {
+        "value": null,
+        "evidence_tag": "not_applicable"
+      }
+    },
+    "usability": {
+      "onboarding_setup": {
+        "value": 2,
+        "evidence_tag": "hands_on_verified",
+        "comment": "Difficult for non-GIS users; steep learning curve; significant GIS knowledge assumed. Lots of online recourses"
+      },
+      "documentation_quality": {
+        "value": "Excellent — comprehensive knowledge base, searchable, regularly updated",
+        "evidence_tag": "hands_on_verified",
+        "comment": "Vast official documentation as well as community knowledge"
+      },
+      "training_resources": {
+        "value": [
+          "Video tutorials (YouTube, embedded)",
+          "Webinars (live or recorded)",
+          "Written guides / knowledge base",
+          "Interactive tutorials / walkthroughs (in-app)",
+          "Certification programs",
+          "Community forum / user group"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://docs.qgis.org/3.40/en/docs/training_manual/index.html",
+        "source_urls": [
+          "https://docs.qgis.org/3.40/en/docs/training_manual/index.html"
+        ]
+      },
+      "customer_support_channels": {
+        "value": [
+          "Email support",
+          "Community forum",
+          "Support ticket system"
+        ],
+        "evidence_tag": "hands_on_verified",
+        "source_url": "https://qgis.org/resources/support/",
+        "source_urls": [
+          "https://qgis.org/resources/support/"
+        ]
+      },
+      "support_languages": {
+        "value": [
+          "French",
+          "English",
+          "Spanish",
+          "Portuguese",
+          "German",
+          "Dutch",
+          "Ukrainian",
+          "Mandarin / Chinese"
+        ],
+        "evidence_tag": "hands_on_verified"
+      },
+      "update_frequency": {
+        "value": "Long Term release annually; regular releases every 4 months; point releases more frequently",
+        "evidence_tag": "hands_on_verified"
+      }
+    }
+  },
+  "ai_checks": {
+    "ingestion": "ai_minor_errors",
+    "processing_2a": "ai_minor_errors",
+    "processing_2b": "ai_significant_errors",
+    "export": "ai_minor_errors",
+    "integration": "ai_significant_errors"
+  },
+  "assessment": {
+    "strongest_capability": "Data visualization and mapping",
+    "strongest_capability_justification": "QGIS provides world-class geo spatial output, supports 300+ data formats via GDAL/OGR, and offers unmatched flexibility for spatial visualization and analysis",
+    "weakest_capability": "Financial analysis / profitability mapping",
+    "weakest_capability_justification": "QGIS has zero financial management,  it is a GIS platform, not a precision ag management platform.",
+    "best_suited_for": [
+      "Agronomists / crop advisors / consultants",
+      "Precision ag beginners",
+      "Researchers / academic users",
+      "Students / educational use",
+      "Advanced precision ag users"
+    ],
+    "worst_suited_for": "Farmers wanting an all in one farm management software",
+    "unique_differentiator": "completely free and open-source with unrivaled geospatial format support. Massive plugin capabilities. Not locked to any vendor",
+    "recommendation": "Yes — strong recommendation for the right operation",
+    "ai_claims_total": 0,
+    "ai_claims_correct": 0,
+    "ai_claims_incorrect": 0,
+    "ai_claims_unverifiable": 0,
+    "ai_notable_error": "Not really any QGIS is well documented"
+  },
+  "evidence_log": {
+    "source_types_used": [
+      "Official platform documentation / help center",
+      "Vendor website / marketing materials"
+    ],
+    "official_doc_urls": [],
+    "third_party_urls": [],
+    "hands_on_notes": ""
+  },
+  "section_plugins_available": {
+    "ingestion": true,
+    "processing_2a": true,
+    "processing_2b": true,
+    "export": true,
+    "integration": true
+  }
+}
